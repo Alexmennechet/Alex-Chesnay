@@ -48,28 +48,6 @@ nav ul li.active {
   color: var(--link-active);
 }
 
-.secondary-nav button {
-  background: none;
-  border: none;
-  font: inherit;
-  color: var(--link-inactive);
-  cursor: pointer;
-  margin: 0 16px;
-  position: relative;
-  padding: 4px 0;
-  transition: color 0.3s ease;
-}
-
-.secondary-nav button[aria-pressed="true"] {
-  color: var(--link-active);
-  font-weight: 700;
-}
-
-.card {
-  display: block;
-  text-decoration: none;
-}
-
 .top-gallery {
   display: flex;
   gap: 16px;
@@ -139,6 +117,55 @@ nav {
 .secondary-nav {
   display: flex;
   justify-content: center;
+}
+
+.secondary-nav ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.secondary-nav a {
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--link-inactive);
+  text-decoration: none;
+  margin: 0 16px;
+  position: relative;
+  padding: 4px 0;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.secondary-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: var(--link-inactive);
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.secondary-nav a:hover {
+  color: var(--link-active);
+}
+
+.secondary-nav a:hover::after {
+  width: 100%;
+  background-color: var(--link-active);
+}
+
+.secondary-nav a.active {
+  color: var(--link-active);
+  font-weight: 700;
+}
+
+.secondary-nav a.active::after {
+  width: 100%;
+  background-color: var(--link-active);
 }
 
 .hero {
@@ -220,7 +247,7 @@ nav {
     font-size: 48px;
   }
 
-  .secondary-nav button {
+  .secondary-nav a {
     font-size: 20px;
   }
 }

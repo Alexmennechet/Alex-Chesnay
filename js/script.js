@@ -7,17 +7,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('loaded');
 
-  const filterButtons = document.querySelectorAll('.secondary-nav [data-filter]');
-  const cards = document.querySelectorAll('.card');
-
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
-      const filter = btn.dataset.filter;
-      cards.forEach(card => {
-        const cats = card.dataset.cat.split(' ');
-        card.hidden = filter !== 'all' && !cats.includes(filter);
-      });
+  const navLinks = document.querySelectorAll('.secondary-nav a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      navLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
     });
   });
 });
