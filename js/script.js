@@ -5,6 +5,8 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('loaded');
+
   const navLinks = document.querySelectorAll('.secondary-nav a');
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
@@ -13,5 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
       link.classList.add('active');
     });
   });
+});
+
+window.addEventListener('beforeunload', () => {
+  document.body.classList.remove('loaded');
 });
 
