@@ -104,8 +104,8 @@ nav {
   bottom: -4px;
   width: 0;
   height: 2px;
-  background: var(--link-active);
-  transition: width 0.3s ease;
+  background: #1BC6E4;
+  transition: width 0.3s;
 }
 
 .secondary-nav a:hover {
