@@ -42,15 +42,28 @@ nav ul li.active {
 }
 
 .top-gallery {
-  display: flex;
-  gap: 16px;
+  overflow: hidden;
   width: 100%;
 }
 
+.gallery-track {
+  display: flex;
+  width: 200%;
+  animation: scroll 40s linear infinite;
+}
+
 .top-img {
-  flex: 1;
+  width: 20%;
   height: 220px;
   object-fit: cover;
+}
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .bottom-gallery {
@@ -318,12 +331,10 @@ nav {
 }
 
 @media (max-width: 768px) {
-  .top-gallery,
   .bottom-gallery {
     flex-wrap: wrap;
   }
 
-  .top-img,
   .bottom-img {
     width: calc(50% - 8px);
     height: auto;
