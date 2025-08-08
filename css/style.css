@@ -44,27 +44,39 @@ nav ul li.active {
 
 .top-gallery {
   display: flex;
-  gap: 16px;
+  gap: 32px;
   width: 100%;
+  background-color: #f8f8f8;
+  padding: 32px;
 }
 
 .top-img {
   flex: 1;
-  height: 220px;
+  aspect-ratio: 16/9;
   object-fit: cover;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .bottom-gallery {
   display: flex;
-  gap: 24px;
+  gap: 32px;
   margin-top: 80px;
+  background-color: #f8f8f8;
+  padding: 32px;
 }
 
 .bottom-img {
   width: 32%;
-  height: 330px;
+  aspect-ratio: 16/9;
   object-fit: cover;
   border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.top-img:hover,
+.bottom-img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 header {
@@ -329,8 +341,7 @@ nav {
 
   .top-img,
   .bottom-img {
-    width: calc(50% - 8px);
-    height: auto;
+    width: calc(50% - 16px);
   }
 
   .logo,
