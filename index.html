@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio d'Alex Chesnay</title>
+  <!-- Import modern font for a more polished look -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- En-tête et navigation -->
+  <header>
+    <div class="container">
+      <h1>Alex Chesnay</h1>
+      <button id="menu-toggle" aria-label="Menu">☰</button>
+      <nav>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Section Hero -->
+    <section class="hero" id="accueil">
+      <div class="hero-content">
+        <h2>Motion&nbsp;Design &amp; Animation</h2>
+        <p>Transformons vos idées en expériences visuelles captivantes.</p>
+        <a href="#projets" class="btn-primary">Voir mes projets</a>
+      </div>
+    </section>
+
+    <!-- Section Portfolio -->
+    <section class="portfolio" id="projets">
+      <h2>Mes Projets</h2>
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Tous</button>
+        <button class="filter-btn" data-filter="2d">2D</button>
+        <button class="filter-btn" data-filter="3d">3D</button>
+        <button class="filter-btn" data-filter="vr">VR</button>
+      </div>
+      <div class="grid">
+        <div class="card" data-category="2d">
+          <img src="assets/images/project1.png" alt="Projet 2D 1" />
+          <div class="overlay">
+            <h3>Animation 2D</h3>
+            <p>Projet créatif en 2D</p>
+          </div>
+        </div>
+        <div class="card" data-category="3d">
+          <img src="assets/images/project2.png" alt="Projet 3D 1" />
+          <div class="overlay">
+            <h3>Animation 3D</h3>
+            <p>Modélisation et rendu 3D</p>
+          </div>
+        </div>
+        <div class="card" data-category="vr">
+          <img src="assets/images/project3.png" alt="Projet VR 1" />
+          <div class="overlay">
+            <h3>Expérience VR</h3>
+            <p>Réalité virtuelle immersive</p>
+          </div>
+        </div>
+        <div class="card" data-category="2d">
+          <img src="assets/images/project4.png" alt="Projet 2D 2" />
+          <div class="overlay">
+            <h3>Animation 2D</h3>
+            <p>Projet créatif en 2D</p>
+          </div>
+        </div>
+        <div class="card" data-category="3d">
+          <img src="assets/images/project5.png" alt="Projet 3D 2" />
+          <div class="overlay">
+            <h3>Animation 3D</h3>
+            <p>Modélisation et rendu 3D</p>
+          </div>
+        </div>
+        <div class="card" data-category="vr">
+          <img src="assets/images/project6.png" alt="Projet VR 2" />
+          <div class="overlay">
+            <h3>Expérience VR</h3>
+            <p>Réalité virtuelle immersive</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Section Contact -->
+    <section class="contact" id="contact">
+      <h2>Me contacter</h2>
+      <p>N’hésitez pas à me contacter pour discuter de vos projets.</p>
+      <a href="mailto:exemple@mail.com" class="btn-secondary">Me contacter</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Alex Chesnay. Tous droits réservés.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

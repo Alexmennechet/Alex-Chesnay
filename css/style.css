@@ -1,0 +1,319 @@
+/* Basic reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  /* Use Poppins as the primary font for a modern feel */
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  color: #e5e7eb; /* light grey text for dark backgrounds */
+  background-color: #0a0a0a; /* dark base for the whole site */
+}
+
+header {
+  background: #0f0f0f;
+  color: #fff;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  /* Mobile hidden by default; toggled via JS */
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+
+nav a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+nav a:hover {
+  color: #38bdf8; /* light blue accent on hover */
+}
+
+/* Hero section with animated gradient and center alignment */
+.hero {
+  padding: 6rem 1rem;
+  text-align: center;
+  background: linear-gradient(135deg, #111827, #1f2937);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  color: #f1f5f9;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+}
+
+.portfolio {
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 1rem;
+}
+
+.portfolio h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #f1f5f9;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card styling for dark mode */
+.card {
+  background: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.card .card-content {
+  padding: 1rem;
+  color: #e5e7eb;
+}
+
+.card .card-content h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.card .card-content p {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  background: #0f0f0f;
+  color: #9ca3af;
+  margin-top: 2rem;
+}
+
+/* --------------------------------------------------
+   Custom styles inspired by NeighborAnimation
+   These rules override and extend previous declarations
+   to provide a darker palette, animated hero section,
+   filterable portfolio grid and call-to-action buttons.
+   -------------------------------------------------- */
+
+/* Shared button styling */
+.btn-primary,
+.btn-secondary {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background-color: #00bcd4;
+  color: #0a0a0a;
+}
+
+.btn-primary:hover {
+  background-color: #02a0b5;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: #00bcd4;
+  border: 2px solid #00bcd4;
+}
+
+.btn-secondary:hover {
+  background-color: #00bcd4;
+  color: #0a0a0a;
+}
+
+/* Hero content wrapper to constrain text width */
+.hero .hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Portfolio filters */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background-color: transparent;
+  border: 2px solid #00bcd4;
+  color: #00bcd4;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background-color: #00bcd4;
+  color: #0a0a0a;
+}
+
+/* Enhanced card styling */
+.grid .card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.grid .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
+}
+
+.grid .card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.8);
+  transition: filter 0.3s ease;
+}
+
+.grid .card:hover img {
+  filter: brightness(1);
+}
+
+/* Overlay that slides up on hover */
+.card .overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.7);
+  color: #e5e7eb;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.grid .card:hover .overlay {
+  transform: translateY(0);
+}
+
+/* Fade-in animation for cards when they become visible */
+.grid .card {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.grid .card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Contact section styling */
+.contact {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: #111827;
+  color: #f1f5f9;
+}
+
+.contact h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  color: #cbd5e1;
+}
+
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.2rem;
+  }
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* Mobile menu styles */
+  nav ul {
+    flex-direction: column;
+    max-height: 0;
+    background: #0f0f0f;
+    width: 100%;
+  }
+  nav ul.open {
+    max-height: 300px;
+  }
+}
