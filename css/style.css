@@ -18,11 +18,12 @@ body {
 }
 
 .logo {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Raleway', sans-serif;
   font-size: 72px;
-  font-weight: 700;
+  font-weight: 300;
   color: #333;
-  margin-bottom: 40px;
+  margin: 20px 0 40px;
+  padding: 10px 0;
 }
 
 .main-hero {
@@ -97,24 +98,26 @@ nav {
 }
 
 .secondary-nav a {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 400;
   color: var(--link-inactive);
   text-decoration: none;
-  margin: 0 18px;
+  margin: 0 16px;
   position: relative;
+  padding: 4px 0;
   cursor: pointer;
+  transition: color 0.3s ease;
 }
 
 .secondary-nav a::after {
   content: "";
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: 0;
   width: 0;
   height: 2px;
-  background: #1BC6E4;
-  transition: width 0.3s;
+  background: var(--link-inactive);
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
 
 .secondary-nav a:hover {
@@ -123,16 +126,17 @@ nav {
 
 .secondary-nav a:hover::after {
   width: 100%;
+  background-color: var(--link-active);
 }
 
 .secondary-nav a.active {
   color: var(--link-active);
   font-weight: 700;
-  text-decoration: underline;
 }
 
 .secondary-nav a.active::after {
   width: 100%;
+  background-color: var(--link-active);
 }
 
 .hero {
@@ -339,7 +343,7 @@ nav {
   }
 
   .secondary-nav a {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 
