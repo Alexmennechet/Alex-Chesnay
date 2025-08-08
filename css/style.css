@@ -66,23 +66,44 @@ nav ul li.active {
   opacity: 0.95;
 }
 
-.bottom-gallery {
-  display: flex;
+/* Bottom gallery grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 24px;
   margin-top: 80px;
 }
 
-.bottom-img {
-  width: 32%;
-  height: 330px;
-  object-fit: cover;
-  border-radius: 12px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  aspect-ratio: 16/9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.bottom-img:hover {
-  transform: scale(1.03);
-  opacity: 0.95;
+.media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .media {
+  transform: scale(1.05);
+}
+
+.card:hover .overlay {
+  opacity: 1;
 }
 
 button,
@@ -227,13 +248,11 @@ nav {
 }
 
 @media (max-width: 768px) {
-  .top-gallery,
-  .bottom-gallery {
+  .top-gallery {
     flex-wrap: wrap;
   }
 
-  .top-img,
-  .bottom-img {
+  .top-img {
     width: calc(50% - 8px);
     height: auto;
   }
