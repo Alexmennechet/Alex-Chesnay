@@ -5,14 +5,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.querySelector('#menu-toggle');
-  const nav = document.querySelector('nav ul');
-
-  if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-      nav.classList.toggle('open');
-    });
-  }
 
   // ----- Filtrage des cartes de projets -----
   const filterButtons = document.querySelectorAll('.filter-btn');
