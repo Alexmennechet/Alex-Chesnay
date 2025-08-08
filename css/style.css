@@ -281,6 +281,32 @@ footer {
   color: #334155;
 }
 
+@media (max-width: 768px) {
+  .top-gallery,
+  .bottom-gallery {
+    flex-wrap: wrap;
+  }
+
+  .top-img,
+  .bottom-img {
+    width: calc(50% - 8px);
+    height: auto;
+  }
+
+  .logo,
+  .secondary-nav {
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 48px;
+  }
+
+  .secondary-nav a {
+    font-size: 24px;
+  }
+}
+
 @media (max-width: 600px) {
   header {
     font-size: 2rem;
