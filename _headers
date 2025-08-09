@@ -5,6 +5,7 @@
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' https://www.youtube.com https://player.vimeo.com; frame-src https://www.youtube.com https://player.vimeo.com;
-
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
+/index.html
+  Cache-Control: no-cache
