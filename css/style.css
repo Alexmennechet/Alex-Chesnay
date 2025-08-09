@@ -43,6 +43,12 @@ body.loaded {
   opacity: 1;
 }
 
+.container {
+  max-width: 1560px;
+  margin: 0 auto;
+  padding-inline: 28px;
+}
+
 .logo {
   font-family: 'Raleway', sans-serif;
   font-size: 72px;
