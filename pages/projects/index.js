@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
@@ -12,53 +13,76 @@ const cardVariants = {
   exit: { opacity: 0, y: -20 }
 };
 
+const siteUrl = 'https://alex-chesnay.com';
+
 export default function Projects({ projects }) {
   const [selectedCategory, setSelectedCategory] = useState('3D');
   const filteredProjects = projects.filter(
     (p) => p.category === selectedCategory
   );
 
+  const title = 'Projets - Alex Chesnay';
+  const description = 'Galerie de mes projets.';
+  const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
+  const url = `${siteUrl}/projects`;
+
   return (
-    <main style={{ padding: theme.spacing.lg }}>
-      <h1>Galerie</h1>
-      <FilterBar
-        selectedCategory={selectedCategory}
-        onSelect={setSelectedCategory}
-      />
-      <motion.ul
-        layout
-        className="responsive-grid"
-        style={{
-          listStyle: 'none',
-          padding: 0,
-          margin: `${theme.spacing.lg} 0`,
-          gap: theme.spacing.md
-        }}
-      >
-        <AnimatePresence>
-          {filteredProjects.map((p) => (
-            <motion.li
-              key={p.slug}
-              layout
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.3 }}
-              style={{
-                background: theme.colors.background,
-                padding: theme.spacing.md,
-                borderRadius: '8px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-              }}
-            >
-              <Link href={`/projects/${p.slug}`}>{p.title}</Link>
-            </motion.li>
-          ))}
-        </AnimatePresence>
-      </motion.ul>
-    </main>
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={url} />
+        <meta property="og:image" content={image} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
+        <link rel="canonical" href={url} />
+      </Head>
+      <main style={{ padding: theme.spacing.lg }}>
+        <h1>Galerie</h1>
+        <FilterBar
+          selectedCategory={selectedCategory}
+          onSelect={setSelectedCategory}
+        />
+        <motion.ul
+          layout
+          className="responsive-grid"
+          style={{
+            listStyle: 'none',
+            padding: 0,
+            margin: `${theme.spacing.lg} 0`,
+            gap: theme.spacing.md
+          }}
+        >
+          <AnimatePresence>
+            {filteredProjects.map((p) => (
+              <motion.li
+                key={p.slug}
+                layout
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  background: theme.colors.background,
+                  padding: theme.spacing.md,
+                  borderRadius: '8px',
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+                }}
+              >
+                <Link href={`/projects/${p.slug}`}>{p.title}</Link>
+              </motion.li>
+            ))}
+          </AnimatePresence>
+        </motion.ul>
+      </main>
+    </>
   );
 }
 
