@@ -90,3 +90,20 @@ button {
 .contact-button:hover {
   background-color: #005f73;
 }
+
+.project-hero .hero-media {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.project-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 1rem;
+}
