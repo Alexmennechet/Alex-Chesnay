@@ -6,17 +6,54 @@
 }
 
 :root {
-  --link-active: #007A9A;
-  --link-inactive: #555555;
+  --cyan: #007A9A;
+  --grey-600: #555555;
+  --grey-500: #333333;
+  --grey-700: #334155;
+  --grey-800: #1f2937;
+  --grey-900: #111827;
+  --grey-100: #f8f9fa;
+  --grey-200: #f0f4f8;
+  --white: #ffffff;
+
+  --space-2: 2px;
+  --space-3: 3px;
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-16: 1rem;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-32: 2rem;
+  --space-36: 36px;
+  --space-40: 40px;
+  --space-48: 3rem;
+  --space-64: 4rem;
+  --space-80: 80px;
+
+  --fs-72: 72px;
+  --fs-48: 48px;
+  --fs-40: 2.5rem;
+  --fs-32: 2rem;
+  --fs-28: 1.8rem;
+  --fs-24: 24px;
+  --fs-20: 20px;
+  --fs-18: 1.125rem;
+  --fs-16: 16px;
+
+  --link-active: var(--cyan);
+  --link-inactive: var(--grey-600);
 }
 
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: calc(var(--space-40) * -1);
   left: 0;
-  background: #ffffff;
-  color: #111827;
-  padding: 8px;
+  background: var(--white);
+  color: var(--grey-900);
+  padding: var(--space-8);
   z-index: 100;
 }
 
@@ -26,15 +63,15 @@
 
 a:focus,
 button:focus {
-  outline: 3px solid var(--link-active);
-  outline-offset: 2px;
+  outline: var(--space-3) solid var(--link-active);
+  outline-offset: var(--space-2);
 }
 
 body {
   font-family: 'Roboto', sans-serif;
   line-height: 1.6;
-  color: #111827;
-  background-color: #ffffff;
+  color: var(--grey-900);
+  background-color: var(--white);
   opacity: 0;
   transition: opacity 0.5s ease;
 }
@@ -45,11 +82,11 @@ body.loaded {
 
 .logo {
   font-family: 'Raleway', sans-serif;
-  font-size: 72px;
+  font-size: var(--fs-72);
   font-weight: 300;
-  color: #333;
-  margin: 20px 0 40px;
-  padding: 10px 0;
+  color: var(--grey-500);
+  margin: var(--space-20) 0 var(--space-40);
+  padding: var(--space-10) 0;
 }
 
 .main-hero {
@@ -70,7 +107,7 @@ nav ul li.active {
 
 .top-gallery {
   display: flex;
-  gap: 16px;
+  gap: var(--space-16);
   width: 100%;
 }
 
@@ -90,16 +127,16 @@ nav ul li.active {
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 24px;
-  margin-top: 80px;
+  gap: var(--space-24);
+  margin-top: var(--space-80);
 }
 
 .card {
   position: relative;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: var(--space-14);
   aspect-ratio: 16/9;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 var(--space-4) var(--space-12) rgba(0, 0, 0, 0.15);
 }
 
 .media {
@@ -138,17 +175,17 @@ button:hover,
 }
 
 header {
-  background: #f8f9fa;
-  color: #111827;
-  padding: 3rem 1rem;
+  background: var(--grey-100);
+  color: var(--grey-900);
+  padding: var(--space-48) var(--space-16);
   text-align: center;
   font-style: italic;
-  font-size: 1.8rem;
+  font-size: var(--fs-28);
   font-weight: 500;
 }
 
 header h1 {
-  font-size: 2.5rem;
+  font-size: var(--fs-40);
 }
 
 nav {
@@ -168,13 +205,13 @@ nav {
 }
 
 .secondary-nav a {
-  font-size: 24px;
+  font-size: var(--fs-24);
   font-weight: 400;
   color: var(--link-inactive);
   text-decoration: none;
-  margin: 0 16px;
+  margin: 0 var(--space-16);
   position: relative;
-  padding: 4px 0;
+  padding: var(--space-4) 0;
   cursor: pointer;
   transition: color 0.3s ease;
 }
@@ -185,7 +222,7 @@ nav {
   left: 0;
   bottom: 0;
   width: 0;
-  height: 2px;
+  height: var(--space-2);
   background: var(--link-inactive);
   transition: width 0.3s ease, background-color 0.3s ease;
 }
@@ -215,28 +252,28 @@ nav {
 
 .contact {
   text-align: center;
-  padding: 4rem 1rem;
-  background: #f0f4f8;
-  color: #1f2937;
+  padding: var(--space-64) var(--space-16);
+  background: var(--grey-200);
+  color: var(--grey-800);
 }
 
 .contact h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: var(--fs-32);
+  margin-bottom: var(--space-16);
 }
 
 .contact p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #334155;
+  font-size: var(--fs-18);
+  margin-bottom: var(--space-24);
+  color: var(--grey-700);
 }
 
 
 .site-footer {
   position: relative;
   text-align: center;
-  padding: 36px 0;
-  font-size: 16px;
+  padding: var(--space-36) 0;
+  font-size: var(--fs-16);
   color: var(--link-inactive);
 }
 
@@ -249,7 +286,7 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-16);
 }
 
 .footer-bottom {
@@ -264,19 +301,19 @@ nav {
 
 .footer-phone,
 .footer-email {
-  font-size: 20px;
+  font-size: var(--fs-20);
 }
 
 .footer-socials {
   position: absolute;
-  right: 40px;
+  right: var(--space-40);
   display: flex;
-  gap: 24px;
+  gap: var(--space-24);
 }
 
 .footer-socials a {
   color: var(--link-inactive);
-  font-size: 24px;
+  font-size: var(--fs-24);
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -291,7 +328,7 @@ nav {
   }
 
   .top-img {
-    width: calc(50% - 8px);
+    width: calc(50% - var(--space-8));
     height: auto;
   }
 
@@ -301,18 +338,18 @@ nav {
   }
 
   .logo {
-    font-size: 48px;
+    font-size: var(--fs-48);
   }
 
   .secondary-nav a {
-    font-size: 20px;
+    font-size: var(--fs-20);
   }
 }
 
 @media (max-width: 600px) {
   header {
-    font-size: 2rem;
-    padding: 2rem 1rem;
+    font-size: var(--fs-32);
+    padding: var(--space-32) var(--space-16);
   }
   .hero {
     display: none;
@@ -320,7 +357,7 @@ nav {
   nav ul {
     flex-direction: column;
     max-height: 0;
-    background: #f8f9fa;
+    background: var(--grey-100);
     width: 100%;
   }
   nav ul.open {
@@ -329,7 +366,7 @@ nav {
 
   .footer-socials {
     position: static;
-    margin-top: 16px;
+    margin-top: var(--space-16);
     justify-content: center;
   }
 
@@ -349,11 +386,11 @@ nav {
 /* ===== Marquee header ===== */
 .hero-marquee{
   overflow:hidden;
-  background:#fff;
-  padding-block:8px;
+  background: var(--white);
+  padding-block: var(--space-8);
 }
 #hero-scroller{
-  --gap:24px;
+  --gap:var(--space-24);
   --height:clamp(120px,18vw,220px);
   --duration:60s;
   display:flex;
@@ -371,8 +408,8 @@ nav {
   height:var(--height);
   width:auto;
   object-fit:cover;
-  border-radius:12px;
-  box-shadow:0 10px 24px rgba(0,0,0,.06);
+  border-radius:var(--space-12);
+  box-shadow:0 10px var(--space-24) rgba(0,0,0,.06);
 }
 #hero-scroller:hover{animation-play-state:paused;}
 @media (prefers-reduced-motion:reduce){
