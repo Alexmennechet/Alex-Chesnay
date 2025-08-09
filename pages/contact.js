@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useState, useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { generateSecret, generateToken } from '../lib/csrf.js';
 
@@ -80,7 +81,12 @@ export default function Contact({ csrfToken }) {
         <meta name="twitter:image" content={image} />
         <link rel="canonical" href={url} />
       </Head>
-      <main>
+      <motion.main
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         <h1>Contact</h1>
         <form onSubmit={handleSubmit}>
           <div>
@@ -129,7 +135,7 @@ export default function Contact({ csrfToken }) {
             {status.message}
           </p>
         )}
-      </main>
+      </motion.main>
     </>
   );
 }

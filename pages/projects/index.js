@@ -42,7 +42,13 @@ export default function Projects({ projects }) {
         <meta name="twitter:image" content={image} />
         <link rel="canonical" href={url} />
       </Head>
-      <main style={{ padding: theme.spacing.lg }}>
+      <motion.main
+        style={{ padding: theme.spacing.lg }}
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         <h1>Galerie</h1>
         <FilterBar
           selectedCategory={selectedCategory}
@@ -81,7 +87,7 @@ export default function Projects({ projects }) {
             ))}
           </AnimatePresence>
         </motion.ul>
-      </main>
+      </motion.main>
     </>
   );
 }
