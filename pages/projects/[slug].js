@@ -1,29 +1,29 @@
 import fs from 'fs';
 import path from 'path';
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Project({ project }) {
   return (
     <main>
       <h1>{project.title}</h1>
-      <div>
+      <div className="responsive-grid">
         {project.images.map((img, idx) => (
-          <Image
+          <img
             key={idx}
             src={img}
+            srcSet={`${img} 480w, ${img} 800w`}
+            sizes="(max-width: 600px) 100vw, 50vw"
             alt={`${project.title} image ${idx + 1}`}
-            width={800}
-            height={600}
+            loading="lazy"
+            decoding="async"
           />
         ))}
       </div>
-      <div>
+      <div className="video-wrapper">
         <iframe
           src={project.video}
           title={project.title}
           allowFullScreen
-          style={{ width: '100%', height: '400px' }}
         />
       </div>
       <p>{project.description}</p>

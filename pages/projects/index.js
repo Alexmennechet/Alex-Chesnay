@@ -27,11 +27,11 @@ export default function Projects({ projects }) {
       />
       <motion.ul
         layout
+        className="responsive-grid"
         style={{
           listStyle: 'none',
           padding: 0,
           margin: `${theme.spacing.lg} 0`,
-          display: 'grid',
           gap: theme.spacing.md
         }}
       >
