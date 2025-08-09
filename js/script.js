@@ -2,7 +2,17 @@
  * Fichier JavaScript principal pour le portfolio.
  * Ce script gère simplement un menu responsive. D'autres interactions
  * pourront être ajoutées ultérieurement.
- */
+*/
+
+// Sanitize dynamic user-provided content to mitigate XSS attacks
+// Usage: const safe = window.sanitizeInput(userInput);
+function sanitizeInput(input) {
+  const div = document.createElement('div');
+  div.textContent = input;
+  return div.innerHTML;
+}
+
+window.sanitizeInput = sanitizeInput;
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.classList.add('loaded');

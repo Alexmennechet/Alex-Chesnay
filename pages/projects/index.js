@@ -63,7 +63,7 @@ export default function Projects({ projects }) {
 }
 
 export async function getStaticProps() {
-  const filePath = path.join(process.cwd(), 'data', 'projects.json');
+  const filePath = path.join(process.cwd(), 'private', 'projects.json');
   const projects = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   return { props: { projects } };
 }

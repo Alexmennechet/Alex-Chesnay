@@ -3,7 +3,7 @@
 ## Ajouter un projet
 
 1. Ajouter les images du projet dans le dossier `assets/images`.
-2. Éditer `data/projects.json` et ajouter un objet contenant les champs :
+2. Éditer `private/projects.json` et ajouter un objet contenant les champs :
    - `slug`
    - `title`
    - `images` (tableau des chemins d'images)
