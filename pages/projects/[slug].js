@@ -8,7 +8,7 @@ import theme from '../../styles/theme';
 
 const siteUrl = 'https://alex-chesnay.com';
 
-export default function Project({ project }) {
+export default function Project({ project, prev, next }) {
   const url = `${siteUrl}/projects/${project.slug}`;
   const image = `${siteUrl}${project.images[0]}`;
   const title = `${project.title} - Projet - Alex Chesnay`;
@@ -44,66 +44,83 @@ export default function Project({ project }) {
         />
       </Head>
       <main>
-        <header
-          style={{
-            backgroundImage: `url(${project.images[0]})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            height: '60vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: theme.colors.primary,
-            fontFamily: theme.fonts.heading,
-            marginBottom: theme.spacing.lg,
-          }}
-        >
-          <h1>{project.title}</h1>
+        <header className="project-hero">
+          <img
+            className="hero-media"
+            src={project.images[0]}
+            srcSet={`${project.images[0]} 480w, ${project.images[0]} 800w`}
+            sizes="100vw"
+            alt={project.imageAlts?.[0] || `${project.title} couverture`}
+            fetchPriority="high"
+            decoding="async"
+          />
         </header>
-        <section style={{ padding: theme.spacing.lg }}>
-          <div className="responsive-grid">
-            {project.images.map((img, idx) => (
-              <Zoom key={idx}>
-                <img
-                  src={img}
-                  srcSet={`${img} 480w, ${img} 800w`}
-                  sizes="(max-width: 600px) 100vw, 50vw"
-                  alt={project.imageAlts?.[idx] || `${project.title} illustration ${idx + 1}`}
-                  {...(idx === 0 ? { fetchPriority: 'high' } : { loading: 'lazy' })}
-                  decoding="async"
-                />
-              </Zoom>
-            ))}
-          </div>
-          <section style={{ margin: `${theme.spacing.lg} 0` }}>
-            <h2>Making-of</h2>
-            <div className="video-wrapper">
-              <iframe
-                src={project.video}
-                title={`${project.title} making-of`}
-                allowFullScreen
-              />
-            </div>
+        <div className="project-content" style={{ padding: theme.spacing.lg }}>
+          <section className="pitch">
+            <h1>{project.title}</h1>
+            <p>{project.description}</p>
           </section>
-          <section style={{ margin: `${theme.spacing.lg} 0` }}>
-            <h2>Fiche technique</h2>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              <li>
-                <strong>Outils :</strong> {project.tools}
-              </li>
-              <li>
-                <strong>Durée :</strong> {project.duration}
-              </li>
-              <li>
-                <strong>Rôle :</strong> {project.role}
-              </li>
+
+          <section className="role" style={{ margin: `${theme.spacing.lg} 0` }}>
+            <h2>Rôle</h2>
+            <p>{project.role}</p>
+          </section>
+
+          <section className="tools" style={{ margin: `${theme.spacing.lg} 0` }}>
+            <h2>Outils</h2>
+            <ul>
+              {project.tools.split(',').map((tool) => (
+                <li key={tool.trim()}>{tool.trim()}</li>
+              ))}
             </ul>
           </section>
-          <p>{project.description}</p>
-          <Link href="/projects">
-            <button>Retour à la galerie</button>
+
+          <section className="gallery" style={{ margin: `${theme.spacing.lg} 0` }}>
+            <h2>Galerie</h2>
+            <div className="responsive-grid">
+              {project.images.map((img, idx) => (
+                <Zoom key={idx}>
+                  <img
+                    src={img}
+                    srcSet={`${img} 480w, ${img} 800w`}
+                    sizes="(max-width: 600px) 100vw, 50vw"
+                    alt={project.imageAlts?.[idx] || `${project.title} illustration ${idx + 1}`}
+                    {...(idx === 0 ? { fetchPriority: 'high' } : { loading: 'lazy' })}
+                    decoding="async"
+                  />
+                </Zoom>
+              ))}
+            </div>
+          </section>
+
+          <section className="cta" style={{ margin: `${theme.spacing.lg} 0` }}>
+            <h2>Intéressé ?</h2>
+            <a className="contact-button" href="mailto:alex-mennechet@outlook.fr">
+              Contactez-moi
+            </a>
+          </section>
+
+          <Link className="back-link" href="/projects">
+            Retour à la galerie
           </Link>
-        </section>
+        </div>
+
+        <nav className="project-nav">
+          {prev ? (
+            <Link className="prev" href={`/projects/${prev.slug}`}>
+              Projet précédent
+            </Link>
+          ) : (
+            <span />
+          )}
+          {next ? (
+            <Link className="next" href={`/projects/${next.slug}`}>
+              Projet suivant
+            </Link>
+          ) : (
+            <span />
+          )}
+        </nav>
       </main>
     </>
   );
@@ -119,6 +136,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const filePath = path.join(process.cwd(), 'private', 'projects.json');
   const projects = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  const project = projects.find((p) => p.slug === params.slug);
-  return { props: { project } };
+  const index = projects.findIndex((p) => p.slug === params.slug);
+  const project = projects[index];
+  const prev = projects[index - 1] || null;
+  const next = projects[index + 1] || null;
+  return { props: { project, prev, next } };
 }
