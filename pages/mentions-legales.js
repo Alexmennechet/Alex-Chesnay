@@ -26,7 +26,39 @@ export default function MentionsLegales() {
       </Head>
       <main>
         <h1>Mentions légales</h1>
-        <p>Informations légales du site.</p>
+        <section>
+          <h2>Éditeur du site</h2>
+          <p>Alex Chesnay</p>
+        </section>
+        <section>
+          <h2>Siège social</h2>
+          <p>10 rue de la Liberté, 75000 Paris, France</p>
+        </section>
+        <section>
+          <h2>Directeur de publication</h2>
+          <p>Alex Chesnay</p>
+        </section>
+        <section>
+          <h2>Hébergeur</h2>
+          <p>
+            Vercel Inc.<br />
+            340 S Lemon Ave #4133<br />
+            Walnut, CA 91789<br />
+            États-Unis
+          </p>
+        </section>
+        <section>
+          <h2>Numéro SIREN / SIRET</h2>
+          <p>123&nbsp;456&nbsp;789&nbsp;00000</p>
+        </section>
+        <section>
+          <h2>Contact</h2>
+          <p>
+            <a href="mailto:alex-mennechet@outlook.fr">
+              alex-mennechet@outlook.fr
+            </a>
+          </p>
+        </section>
       </main>
     </>
   );
