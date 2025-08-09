@@ -304,37 +304,29 @@ nav {
   font-size: var(--fs-20);
 }
 
-.footer-socials {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  display: flex;
-  gap: var(--space-24);
-  align-items: center;
-  transform: translateY(-50%);
+.social-icons {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 
-.footer-socials i {
-  font-family: "Font Awesome 6 Brands";
-  font-weight: 400;
+.social-icons li {
+  display: inline-block;
+  margin: 0 8px;
 }
 
-.footer-socials a {
-  color: #a0a0a0;
-  font-size: 22px;
+.social-icons a {
+  color: #fff;
+  font-size: 1.5em;
+  text-decoration: none;
 }
 
-.footer-socials a:hover {
-  color: #6f6f6f;
+.social-icons a:hover {
+  color: #cccccc;
 }
 
 @media (max-width: 768px) {
-  .footer-socials {
-    position: static;
-    transform: none;
-    margin-top: var(--space-16);
-    justify-content: center;
-  }
   .top-gallery {
     flex-wrap: wrap;
   }
