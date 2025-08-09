@@ -16,9 +16,10 @@ export default function HeroHeader() {
   }, []);
 
   return (
-    <header
-      ref={ref}
-      style={{
+      <header
+        className="container"
+        ref={ref}
+        style={{
         backgroundImage: 'url(/assets/images/PAGES_0_Couverture.jpg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
