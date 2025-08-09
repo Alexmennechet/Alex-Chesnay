@@ -11,4 +11,8 @@
    - `description`
    - `category`
 3. La page du projet est générée automatiquement et l'entrée apparaît dans la galerie `/projects`.
-4. Le bouton « Retour à la galerie » permet de revenir à la liste des projets.
+4. Le bouton « Retour à la galerie » permet de revenir à la liste des projets.
+
+## Déploiement
+
+Les modifications poussées sur une branche déclenchent automatiquement un Deploy Preview sur Netlify. Vérifier que les checks "Header rules", "Redirect rules", "Pages changed" et "Deploy preview" passent au vert.
