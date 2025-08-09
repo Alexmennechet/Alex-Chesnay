@@ -14,22 +14,9 @@ function sanitizeInput(input) {
 
 window.sanitizeInput = sanitizeInput;
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.body.classList.add('loaded');
-
-  const navLinks = document.querySelectorAll('.secondary-nav a');
-  navLinks.forEach(link => {
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      navLinks.forEach(l => {
-        l.classList.remove('active');
-        l.removeAttribute('aria-current');
-      });
-      link.classList.add('active');
-      link.setAttribute('aria-current', 'page');
-    });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('loaded');
   });
-});
 
 window.addEventListener('beforeunload', () => {
   document.body.classList.remove('loaded');
