@@ -22,9 +22,16 @@ export default function Contact({ csrfToken }) {
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
   const url = `${siteUrl}/contact`;
 
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [form, setForm] = useState({
+    firstName: '',
+    lastName: '',
+    phone: '',
+    email: '',
+    message: '',
+  });
   const [status, setStatus] = useState(null);
   const recaptchaRef = useRef(null);
+  const [recaptchaToken, setRecaptchaToken] = useState(null);
   const [hasConsent, setHasConsent] = useState(false);
 
   useEffect(() => {
@@ -42,12 +49,17 @@ export default function Contact({ csrfToken }) {
     e.preventDefault();
     setStatus(null);
     if (!hasConsent) {
-      setStatus({ type: 'error', message: 'Veuillez accepter les cookies pour envoyer le formulaire.' });
+      setStatus({
+        type: 'error',
+        message: 'Veuillez accepter les cookies pour envoyer le formulaire.',
+      });
+      return;
+    }
+    if (!recaptchaToken) {
+      setStatus({ type: 'error', message: 'Veuillez valider le reCAPTCHA.' });
       return;
     }
     try {
-      const recaptchaToken = await recaptchaRef.current.executeAsync();
-      recaptchaRef.current.reset();
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -56,9 +68,20 @@ export default function Contact({ csrfToken }) {
       const data = await res.json();
       if (res.ok) {
         setStatus({ type: 'success', message: 'Message envoyé !' });
-        setForm({ name: '', email: '', message: '' });
+        setForm({
+          firstName: '',
+          lastName: '',
+          phone: '',
+          email: '',
+          message: '',
+        });
+        setRecaptchaToken(null);
+        recaptchaRef.current?.reset();
       } else {
-        setStatus({ type: 'error', message: data.error || 'Une erreur est survenue' });
+        setStatus({
+          type: 'error',
+          message: data.error || 'Une erreur est survenue',
+        });
       }
     } catch (err) {
       setStatus({ type: 'error', message: 'Une erreur est survenue' });
@@ -90,13 +113,35 @@ export default function Contact({ csrfToken }) {
         <h1>Contact</h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <label htmlFor="name">Nom</label>
+            <label htmlFor="firstName">Prénom</label>
             <input
-              id="name"
-              name="name"
-              value={form.name}
+              id="firstName"
+              name="firstName"
+              value={form.firstName}
               onChange={handleChange}
               required
+            />
+          </div>
+          <div>
+            <label htmlFor="lastName">Nom</label>
+            <input
+              id="lastName"
+              name="lastName"
+              value={form.lastName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="phone">Téléphone</label>
+            <input
+              id="phone"
+              type="tel"
+              name="phone"
+              value={form.phone}
+              onChange={handleChange}
+              required
+              pattern="^[0-9+\s-]{10,}$"
             />
           </div>
           <div>
@@ -126,10 +171,51 @@ export default function Contact({ csrfToken }) {
             <ReCAPTCHA
               ref={recaptchaRef}
               sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-              size="invisible"
+              onChange={setRecaptchaToken}
             />
           )}
         </form>
+        <div className="map-wrapper">
+          <div className="map-responsive">
+            <iframe
+              src="https://www.google.com/maps?q=75001+Paris&output=embed"
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+          <div className="contact-details">
+            <p>Adresse : 75001 Paris</p>
+            <p>
+              Téléphone : <a href="tel:+33768563197">07 68 56 31 97</a>
+            </p>
+            <p>
+              Email : <a href="mailto:alex-mennechet@outlook.fr">alex-mennechet@outlook.fr</a>
+            </p>
+          </div>
+        </div>
+        <style jsx>{`
+          .map-wrapper {
+            margin-top: 2rem;
+          }
+          .map-responsive {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+          }
+          .map-responsive iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+          }
+          .contact-details {
+            margin-top: 1rem;
+          }
+        `}</style>
         {status && (
           <p className={status.type === 'success' ? 'success' : 'error'}>
             {status.message}

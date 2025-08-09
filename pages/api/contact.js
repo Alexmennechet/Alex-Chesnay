@@ -18,9 +18,25 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, message, recaptchaToken, csrfToken } = req.body;
+  const {
+    firstName,
+    lastName,
+    phone,
+    email,
+    message,
+    recaptchaToken,
+    csrfToken,
+  } = req.body;
 
-  if (!name || !email || !message || !recaptchaToken || !csrfToken) {
+  if (
+    !firstName ||
+    !lastName ||
+    !phone ||
+    !email ||
+    !message ||
+    !recaptchaToken ||
+    !csrfToken
+  ) {
     return res.status(400).json({ error: 'Tous les champs sont requis.' });
   }
 
@@ -28,16 +44,26 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Email invalide." });
   }
 
+  if (!validator.isMobilePhone(phone, 'fr-FR')) {
+    return res.status(400).json({ error: 'Téléphone invalide.' });
+  }
+
   if (
-    validator.contains(name, '<') ||
-    validator.contains(name, '>') ||
+    validator.contains(firstName, '<') ||
+    validator.contains(firstName, '>') ||
+    validator.contains(lastName, '<') ||
+    validator.contains(lastName, '>') ||
     validator.contains(message, '<') ||
-    validator.contains(message, '>')
+    validator.contains(message, '>') ||
+    validator.contains(phone, '<') ||
+    validator.contains(phone, '>')
   ) {
     return res.status(400).json({ error: 'Contenu invalide.' });
   }
 
-  const cleanName = validator.escape(name.trim());
+  const cleanFirstName = validator.escape(firstName.trim());
+  const cleanLastName = validator.escape(lastName.trim());
+  const cleanPhone = validator.escape(phone.trim());
   const cleanEmail = validator.normalizeEmail(email);
   const cleanMessage = validator.escape(message.trim());
 
@@ -67,7 +93,12 @@ export default async function handler(req, res) {
       from: process.env.SMTP_FROM || cleanEmail,
       to: process.env.SMTP_TO,
       subject: 'Nouveau message de contact',
-      text: `Nom: ${cleanName}\nEmail: ${cleanEmail}\nMessage: ${cleanMessage}`,
+      text:
+        `Prénom: ${cleanFirstName}\n` +
+        `Nom: ${cleanLastName}\n` +
+        `Téléphone: ${cleanPhone}\n` +
+        `Email: ${cleanEmail}\n` +
+        `Message: ${cleanMessage}`,
     });
 
     return res.status(200).json({ message: 'Message envoyé.' });
