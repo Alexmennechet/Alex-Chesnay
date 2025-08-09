@@ -1,5 +1,7 @@
 import nodemailer from 'nodemailer';
 import validator from 'validator';
+import fs from 'fs';
+import path from 'path';
 
 async function verifyRecaptcha(token) {
   const secret = process.env.RECAPTCHA_SECRET_KEY;
@@ -26,16 +28,26 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Email invalide." });
   }
 
-  const cleanName = validator.escape(name.trim());
-  const cleanEmail = validator.normalizeEmail(email);
-  const cleanMessage = validator.escape(message.trim());
+    const cleanName = validator.escape(name.trim());
+    const cleanEmail = validator.normalizeEmail(email);
+    const cleanMessage = validator.escape(message.trim());
 
-  const recap = await verifyRecaptcha(token);
-  if (!recap.success) {
+    const recap = await verifyRecaptcha(token);
+    if (!recap.success) {
     return res.status(400).json({ error: 'Échec de la vérification reCAPTCHA.' });
-  }
+    }
 
-  try {
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const suspicious = /https?:\/\//i.test(cleanMessage);
+    const logLine = `${new Date().toISOString()} | IP: ${ip} | Suspicious: ${suspicious} | Name: ${cleanName} | Email: ${cleanEmail} | Message: ${cleanMessage}\n`;
+    const logFile = path.join(process.cwd(), 'private', 'contact-submissions.log');
+    try {
+    await fs.promises.appendFile(logFile, logLine);
+    } catch (err) {
+    console.error('Failed to log submission', err);
+    }
+
+    try {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT) || 587,
@@ -54,7 +66,7 @@ export default async function handler(req, res) {
     });
 
     return res.status(200).json({ message: 'Message envoyé.' });
-  } catch (err) {
+    } catch (err) {
     return res.status(500).json({ error: "Échec de l'envoi du message." });
+    }
   }
-}

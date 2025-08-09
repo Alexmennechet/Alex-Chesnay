@@ -1,8 +1,8 @@
 /private/* /404.html 404
 
-# Allow asset requests from own domains
-/assets/* /assets/:splat 200! Referer=https://alexchesnay.com/*
-/assets/* /assets/:splat 200! Referer=https://alex-chesnay.com/*
+# Allow image requests from own domains
+/assets/images/* /assets/images/:splat 200! Referer=https://alexchesnay.com/*
+/assets/images/* /assets/images/:splat 200! Referer=https://alex-chesnay.com/*
 
 # Block external hotlinking
-/assets/* 403
+/assets/images/* 403
