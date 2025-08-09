@@ -2,11 +2,11 @@ import Head from 'next/head';
 
 const siteUrl = 'https://alex-chesnay.com';
 
-export default function About() {
-  const title = 'À propos - Alex Chesnay';
-  const description = 'Quelques informations sur moi.';
+export default function Services() {
+  const title = 'Services - Alex Chesnay';
+  const description = 'Description des services proposés.';
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
-  const url = `${siteUrl}/about`;
+  const url = `${siteUrl}/services`;
 
   return (
     <>
@@ -25,8 +25,8 @@ export default function About() {
         <link rel="canonical" href={url} />
       </Head>
       <main>
-        <h1>À propos</h1>
-        <p>Quelques informations sur moi.</p>
+        <h1>Services</h1>
+        <p>Description des services proposés.</p>
       </main>
     </>
   );
