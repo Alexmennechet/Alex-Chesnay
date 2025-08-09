@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://alex-chesnay.com
+
+# Sitemaps
+Sitemap: https://alex-chesnay.com/sitemap.xml
