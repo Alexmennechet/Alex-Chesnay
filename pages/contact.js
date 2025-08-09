@@ -1,10 +1,21 @@
 import Head from 'next/head';
 import { useState, useRef, useEffect } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { generateSecret, generateToken } from '../lib/csrf.js';
 
 const siteUrl = 'https://alex-chesnay.com';
 
-export default function Contact() {
+export async function getServerSideProps({ res }) {
+  const secret = generateSecret();
+  const token = generateToken(secret);
+  res.setHeader(
+    'Set-Cookie',
+    `csrfSecret=${secret}; HttpOnly; Path=/; SameSite=Strict`
+  );
+  return { props: { csrfToken: token } };
+}
+
+export default function Contact({ csrfToken }) {
   const title = 'Contact - Alex Chesnay';
   const description = 'Contactez-moi via email.';
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
@@ -34,12 +45,12 @@ export default function Contact() {
       return;
     }
     try {
-      const token = await recaptchaRef.current.executeAsync();
+      const recaptchaToken = await recaptchaRef.current.executeAsync();
       recaptchaRef.current.reset();
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, token }),
+        body: JSON.stringify({ ...form, recaptchaToken, csrfToken }),
       });
       const data = await res.json();
       if (res.ok) {
@@ -103,6 +114,7 @@ export default function Contact() {
               required
             />
           </div>
+          <input type="hidden" name="csrfToken" value={csrfToken} />
           <button type="submit">Envoyer</button>
           {hasConsent && (
             <ReCAPTCHA

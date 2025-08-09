@@ -1,7 +1,7 @@
 import nodemailer from 'nodemailer';
 import validator from 'validator';
-import fs from 'fs';
-import path from 'path';
+import { verifyToken } from '../../lib/csrf.js';
+import { parseCookies } from '../../lib/cookies.js';
 
 async function verifyRecaptcha(token) {
   const secret = process.env.RECAPTCHA_SECRET_KEY;
@@ -18,9 +18,9 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, message, token } = req.body;
+  const { name, email, message, recaptchaToken, csrfToken } = req.body;
 
-  if (!name || !email || !message || !token) {
+  if (!name || !email || !message || !recaptchaToken || !csrfToken) {
     return res.status(400).json({ error: 'Tous les champs sont requis.' });
   }
 
@@ -28,26 +28,31 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Email invalide." });
   }
 
-    const cleanName = validator.escape(name.trim());
-    const cleanEmail = validator.normalizeEmail(email);
-    const cleanMessage = validator.escape(message.trim());
+  if (
+    validator.contains(name, '<') ||
+    validator.contains(name, '>') ||
+    validator.contains(message, '<') ||
+    validator.contains(message, '>')
+  ) {
+    return res.status(400).json({ error: 'Contenu invalide.' });
+  }
 
-    const recap = await verifyRecaptcha(token);
-    if (!recap.success) {
+  const cleanName = validator.escape(name.trim());
+  const cleanEmail = validator.normalizeEmail(email);
+  const cleanMessage = validator.escape(message.trim());
+
+  const cookies = parseCookies(req.headers.cookie || '');
+  const secret = cookies['csrfSecret'];
+  if (!secret || !verifyToken(secret, csrfToken)) {
+    return res.status(403).json({ error: 'Jeton CSRF invalide.' });
+  }
+
+  const recap = await verifyRecaptcha(recaptchaToken);
+  if (!recap.success) {
     return res.status(400).json({ error: 'Échec de la vérification reCAPTCHA.' });
-    }
+  }
 
-    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    const suspicious = /https?:\/\//i.test(cleanMessage);
-    const logLine = `${new Date().toISOString()} | IP: ${ip} | Suspicious: ${suspicious} | Name: ${cleanName} | Email: ${cleanEmail} | Message: ${cleanMessage}\n`;
-    const logFile = path.join(process.cwd(), 'private', 'contact-submissions.log');
-    try {
-    await fs.promises.appendFile(logFile, logLine);
-    } catch (err) {
-    console.error('Failed to log submission', err);
-    }
-
-    try {
+  try {
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT) || 587,
@@ -66,7 +71,7 @@ export default async function handler(req, res) {
     });
 
     return res.status(200).json({ message: 'Message envoyé.' });
-    } catch (err) {
+  } catch (err) {
     return res.status(500).json({ error: "Échec de l'envoi du message." });
-    }
   }
+}
