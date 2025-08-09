@@ -7,7 +7,7 @@
 
 :root {
   --link-active: #007A9A;
-  --link-inactive: #888888;
+  --link-inactive: #555555;
 }
 
 .skip-link {
@@ -237,7 +237,7 @@ nav {
   text-align: center;
   padding: 36px 0;
   font-size: 16px;
-  color: #a0a0a0;
+  color: var(--link-inactive);
 }
 
 .site-footer a {
@@ -275,7 +275,7 @@ nav {
 }
 
 .footer-socials a {
-  color: #a1a1a1;
+  color: var(--link-inactive);
   font-size: 24px;
   transition: color 0.2s ease, transform 0.2s ease;
 }
