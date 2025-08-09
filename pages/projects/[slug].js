@@ -33,14 +33,14 @@ export default function Project({ project }) {
 }
 
 export async function getStaticPaths() {
-  const filePath = path.join(process.cwd(), 'data', 'projects.json');
+  const filePath = path.join(process.cwd(), 'private', 'projects.json');
   const projects = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const paths = projects.map((p) => ({ params: { slug: p.slug } }));
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const filePath = path.join(process.cwd(), 'data', 'projects.json');
+  const filePath = path.join(process.cwd(), 'private', 'projects.json');
   const projects = JSON.parse(fs.readFileSync(filePath, 'utf8'));
   const project = projects.find((p) => p.slug === params.slug);
   return { props: { project } };
