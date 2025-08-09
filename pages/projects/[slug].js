@@ -69,7 +69,7 @@ export default function Project({ project }) {
                   srcSet={`${img} 480w, ${img} 800w`}
                   sizes="(max-width: 600px) 100vw, 50vw"
                   alt={`${project.title} illustration ${idx + 1}`}
-                  loading="lazy"
+                  {...(idx === 0 ? { fetchPriority: 'high' } : { loading: 'lazy' })}
                   decoding="async"
                 />
               </Zoom>
