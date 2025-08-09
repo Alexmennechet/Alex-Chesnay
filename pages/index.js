@@ -2,6 +2,7 @@ import Head from 'next/head';
 import HeroHeader from '../components/HeroHeader';
 import theme from '../styles/theme';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -29,6 +30,11 @@ export default function Home() {
       </Head>
       <main>
         <HeroHeader />
+        <div style={{ textAlign: 'center', marginBottom: theme.spacing.lg }}>
+          <Link href="/contact" className="contact-button">
+            Contact
+          </Link>
+        </div>
         <motion.section
           style={{ padding: theme.spacing.lg }}
           initial={{ opacity: 0, y: 40 }}

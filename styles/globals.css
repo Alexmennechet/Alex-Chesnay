@@ -74,3 +74,19 @@ button {
   opacity: 1;
   transform: none;
 }
+
+.contact-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #007A9A;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 700;
+  transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+  background-color: #005f73;
+}
