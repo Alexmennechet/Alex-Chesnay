@@ -304,23 +304,9 @@ nav {
   font-size: var(--fs-20);
 }
 
-.footer-socials {
-  position: absolute;
-  right: var(--space-40);
-  display: flex;
-  gap: var(--space-24);
-}
-
-.footer-socials a {
-  color: var(--link-inactive);
-  font-size: var(--fs-24);
-  transition: color 0.2s ease, transform 0.2s ease;
-}
-
-.footer-socials a:hover {
-  color: var(--link-active);
-  transform: scale(1.1);
-}
+.footer-socials { display:flex; gap:24px; align-items:center; justify-content:center; }
+.footer-socials a { color:#a0a0a0; font-size:22px; }
+.footer-socials a:hover { color:#6f6f6f; }
 
 @media (max-width: 768px) {
   .top-gallery {
@@ -364,11 +350,6 @@ nav {
     max-height: 300px;
   }
 
-  .footer-socials {
-    position: static;
-    margin-top: var(--space-16);
-    justify-content: center;
-  }
 
 }
 
