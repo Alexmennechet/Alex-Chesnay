@@ -6,8 +6,8 @@ const theme = {
     accent: '#FF6347'
   },
   fonts: {
-    heading: '"Helvetica Neue", sans-serif',
-    body: 'Arial, sans-serif'
+    heading: "'Playfair Display', serif",
+    body: "'Raleway', sans-serif"
   },
   spacing: {
     xs: '4px',
