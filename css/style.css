@@ -233,10 +233,11 @@ nav {
 
 
 .site-footer {
+  position: relative;
   text-align: center;
-  padding: 48px 0;
-  font-size: 18px;
-  color: #a1a1a1;
+  padding: 36px 0;
+  font-size: 16px;
+  color: #a0a0a0;
 }
 
 .site-footer a {
@@ -251,15 +252,26 @@ nav {
   gap: 16px;
 }
 
+.footer-bottom {
+  position: relative;
+  width: 100%;
+}
+
+.footer-email {
+  display: block;
+  text-align: center;
+}
+
 .footer-phone,
 .footer-email {
   font-size: 20px;
 }
 
 .footer-socials {
+  position: absolute;
+  right: 40px;
   display: flex;
-  justify-content: center;
-  gap: 20px;
+  gap: 24px;
 }
 
 .footer-socials a {
@@ -313,6 +325,12 @@ nav {
   }
   nav ul.open {
     max-height: 300px;
+  }
+
+  .footer-socials {
+    position: static;
+    margin-top: 16px;
+    justify-content: center;
   }
 
 }
