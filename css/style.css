@@ -429,3 +429,21 @@ nav {
   opacity: 1;
   transform: none;
 }
+
+.site-pages ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.site-pages a {
+  color: #7c7c7c;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.site-pages a:hover {
+  color: #00bfe8;
+  text-decoration: underline;
+}
