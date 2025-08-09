@@ -314,6 +314,11 @@ nav {
   transform: translateY(-50%);
 }
 
+.footer-socials i {
+  font-family: "Font Awesome 6 Brands";
+  font-weight: 400;
+}
+
 .footer-socials a {
   color: #a0a0a0;
   font-size: 22px;
