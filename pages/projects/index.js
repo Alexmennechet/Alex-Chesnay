@@ -1,16 +1,13 @@
 import Link from 'next/link';
+import fs from 'fs';
+import path from 'path';
 
-const projects = [
-  { slug: 'alpha', title: 'Projet Alpha' },
-  { slug: 'beta', title: 'Projet Beta' }
-];
-
-export default function Projects() {
+export default function Projects({ projects }) {
   return (
     <main>
       <h1>Galerie</h1>
       <ul>
-        {projects.map(p => (
+        {projects.map((p) => (
           <li key={p.slug}>
             <Link href={`/projects/${p.slug}`}>{p.title}</Link>
           </li>
@@ -18,4 +15,10 @@ export default function Projects() {
       </ul>
     </main>
   );
+}
+
+export async function getStaticProps() {
+  const filePath = path.join(process.cwd(), 'data', 'projects.json');
+  const projects = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+  return { props: { projects } };
 }
