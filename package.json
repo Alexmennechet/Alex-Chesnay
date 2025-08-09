@@ -17,7 +17,8 @@
     "react-dom": "latest",
     "react-google-recaptcha": "latest",
     "nodemailer": "latest",
-    "validator": "latest"
+    "validator": "latest",
+    "react-medium-image-zoom": "latest"
   },
   "devDependencies": {
     "next-sitemap": "latest"

@@ -8,7 +8,10 @@
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Alpha.",
-    "category": "3D"
+    "category": "3D",
+    "tools": "Blender, Photoshop",
+    "duration": "3 mois",
+    "role": "Artiste 3D"
   },
   {
     "slug": "beta",
@@ -19,7 +22,10 @@
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Beta.",
-    "category": "Animation"
+    "category": "Animation",
+    "tools": "After Effects, Premiere",
+    "duration": "2 mois",
+    "role": "Animateur"
   },
   {
     "slug": "gamma",
@@ -30,7 +36,10 @@
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Gamma.",
-    "category": "VFX"
+    "category": "VFX",
+    "tools": "Nuke, Houdini",
+    "duration": "1 mois",
+    "role": "VFX Artist"
   },
   {
     "slug": "delta",
@@ -41,7 +50,10 @@
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Delta.",
-    "category": "VR"
+    "category": "VR",
+    "tools": "Unity, C#",
+    "duration": "4 mois",
+    "role": "Développeur VR"
   },
   {
     "slug": "epsilon",
@@ -52,6 +64,9 @@
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Epsilon.",
-    "category": "IA"
+    "category": "IA",
+    "tools": "Python, TensorFlow",
+    "duration": "6 mois",
+    "role": "Data Scientist"
   }
 ]
