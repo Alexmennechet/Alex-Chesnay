@@ -71,3 +71,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   elements.forEach(el => observer.observe(el));
 });
+
+// Filtering logic for static index.html gallery
+document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelectorAll('.secondary-nav a');
+  const cards = document.querySelectorAll('.project-card');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const category = link.textContent.trim();
+
+      navLinks.forEach(l => {
+        l.classList.remove('active');
+        l.removeAttribute('aria-current');
+      });
+      link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
+
+      cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        card.style.display =
+          category === 'Featured' || cardCategory === category
+            ? ''
+            : 'none';
+      });
+    });
+  });
+});
