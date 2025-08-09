@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion';
 import theme from '../styles/theme';
 
-const categories = ['3D', 'Animation', 'VFX', 'VR', 'IA'];
+const categories = [
+  'Featured',
+  '3D Animation',
+  '2D Animation',
+  'VFX',
+  'Virtual Reality'
+];
 
 export default function FilterBar({ selectedCategory, onSelect }) {
   return (

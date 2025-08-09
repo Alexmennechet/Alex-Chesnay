@@ -16,10 +16,11 @@ const cardVariants = {
 const siteUrl = 'https://alex-chesnay.com';
 
 export default function Projects({ projects }) {
-  const [selectedCategory, setSelectedCategory] = useState('3D');
-  const filteredProjects = projects.filter(
-    (p) => p.category === selectedCategory
-  );
+  const [selectedCategory, setSelectedCategory] = useState('Featured');
+  const filteredProjects =
+    selectedCategory === 'Featured'
+      ? projects
+      : projects.filter((p) => p.category === selectedCategory);
 
   const title = 'Projets - Alex Chesnay';
   const description = 'Galerie de mes projets.';
