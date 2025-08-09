@@ -28,21 +28,20 @@ export default function Home() {
         <meta name="twitter:image" content={image} />
         <link rel="canonical" href={url} />
       </Head>
-        <main>
-          <HeroHeader />
-          <div className="container" style={{ textAlign: 'center', marginBottom: theme.spacing.lg }}>
-            <Link href="/contact" className="contact-button">
-              Contact
-            </Link>
-          </div>
-          <motion.section
-            className="container"
-            style={{ padding: theme.spacing.lg }}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
+      <main>
+        <HeroHeader />
+        <div style={{ textAlign: 'center', marginBottom: theme.spacing.lg }}>
+          <Link href="/contact" className="contact-button">
+            Contact
+          </Link>
+        </div>
+        <motion.section
+          style={{ padding: theme.spacing.lg }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <h1>Accueil</h1>
           <p>Bienvenue sur mon portfolio.</p>
         </motion.section>
