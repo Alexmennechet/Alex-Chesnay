@@ -18,8 +18,10 @@ export default function Header() {
     >
       <Link href="/" className={asPath === '/' ? styles.active : ''}>Accueil</Link>
       <Link href="/projects" className={asPath.startsWith('/projects') ? styles.active : ''}>Projets</Link>
-      <Link href="/about" className={asPath === '/about' ? styles.active : ''}>À propos</Link>
+      <Link href="/services" className={asPath.startsWith('/services') ? styles.active : ''}>Services</Link>
+      <Link href="/a-propos" className={asPath === '/a-propos' ? styles.active : ''}>À propos</Link>
       <Link href="/contact" className={asPath === '/contact' ? styles.active : ''}>Contact</Link>
+      <Link href="/mentions-legales" className={asPath === '/mentions-legales' ? styles.active : ''}>Mentions légales</Link>
     </nav>
   );
 }
