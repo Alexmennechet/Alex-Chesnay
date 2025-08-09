@@ -44,7 +44,7 @@ export default function Project({ project, prev, next }) {
         />
       </Head>
       <main>
-          <header className="project-hero container">
+        <header className="project-hero">
           <img
             className="hero-media"
             src={project.images[0]}
@@ -55,7 +55,7 @@ export default function Project({ project, prev, next }) {
             decoding="async"
           />
         </header>
-          <div className="project-content container" style={{ padding: theme.spacing.lg }}>
+        <div className="project-content" style={{ padding: theme.spacing.lg }}>
           <section className="pitch">
             <h1>{project.title}</h1>
             <p>{project.description}</p>
@@ -105,7 +105,7 @@ export default function Project({ project, prev, next }) {
           </Link>
         </div>
 
-          <nav className="project-nav container">
+        <nav className="project-nav">
           {prev ? (
             <Link className="prev" href={`/projects/${prev.slug}`}>
               Projet précédent
