@@ -6,9 +6,9 @@ import { motion } from 'framer-motion';
 const siteUrl = 'https://alex-chesnay.com';
 
 export default function Home() {
-  const title = 'Accueil - Alex Chesnay';
-  const description = 'Bienvenue sur mon portfolio.';
-  const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
+  const title = 'Alex Chesnay Portfolio';
+  const description = "Portfolio d'Alex Chesnay, spécialiste 3D, VFX et réalité virtuelle.";
+  const image = `${siteUrl}/assets/images/ProjetGateauxRendu1.jpg`;
   const url = `${siteUrl}/`;
 
   return (
