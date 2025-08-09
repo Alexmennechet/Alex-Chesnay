@@ -6,6 +6,10 @@
       "/assets/images/project1.png",
       "/assets/images/project2.png"
     ],
+    "imageAlts": [
+      "Rendu principal du projet Alpha",
+      "Vue de détail du projet Alpha"
+    ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Alpha.",
     "category": "3D",
@@ -19,6 +23,10 @@
     "images": [
       "/assets/images/project3.png",
       "/assets/images/project4.png"
+    ],
+    "imageAlts": [
+      "Rendu principal du projet Beta",
+      "Vue de détail du projet Beta"
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Beta.",
@@ -34,6 +42,10 @@
       "/assets/images/project1.png",
       "/assets/images/project2.png"
     ],
+    "imageAlts": [
+      "Rendu principal du projet Gamma",
+      "Vue de détail du projet Gamma"
+    ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Gamma.",
     "category": "VFX",
@@ -48,6 +60,10 @@
       "/assets/images/project3.png",
       "/assets/images/project4.png"
     ],
+    "imageAlts": [
+      "Rendu principal du projet Delta",
+      "Vue de détail du projet Delta"
+    ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Delta.",
     "category": "VR",
@@ -61,6 +77,10 @@
     "images": [
       "/assets/images/project1.png",
       "/assets/images/project2.png"
+    ],
+    "imageAlts": [
+      "Rendu principal du projet Epsilon",
+      "Vue de détail du projet Epsilon"
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Epsilon.",

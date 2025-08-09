@@ -68,7 +68,7 @@ export default function Project({ project }) {
                   src={img}
                   srcSet={`${img} 480w, ${img} 800w`}
                   sizes="(max-width: 600px) 100vw, 50vw"
-                  alt={`${project.title} illustration ${idx + 1}`}
+                  alt={project.imageAlts?.[idx] || `${project.title} illustration ${idx + 1}`}
                   {...(idx === 0 ? { fetchPriority: 'high' } : { loading: 'lazy' })}
                   decoding="async"
                 />
