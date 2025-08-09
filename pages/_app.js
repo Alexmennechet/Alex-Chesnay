@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import Header from '../components/Layout/Header';
+import CookieBanner from '../components/CookieBanner';
 import theme from '../styles/theme';
 
 export default function MyApp({ Component, pageProps }) {
@@ -16,6 +17,7 @@ export default function MyApp({ Component, pageProps }) {
       }}
     >
       <Header />
+      <CookieBanner />
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={router.asPath}

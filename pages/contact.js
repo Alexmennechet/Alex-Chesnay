@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 const siteUrl = 'https://alex-chesnay.com';
@@ -13,6 +13,14 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState(null);
   const recaptchaRef = useRef(null);
+  const [hasConsent, setHasConsent] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const consent = localStorage.getItem('cookieConsent');
+      setHasConsent(consent === 'accepted');
+    }
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -21,6 +29,10 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus(null);
+    if (!hasConsent) {
+      setStatus({ type: 'error', message: 'Veuillez accepter les cookies pour envoyer le formulaire.' });
+      return;
+    }
     try {
       const token = await recaptchaRef.current.executeAsync();
       recaptchaRef.current.reset();
@@ -92,11 +104,13 @@ export default function Contact() {
             />
           </div>
           <button type="submit">Envoyer</button>
-          <ReCAPTCHA
-            ref={recaptchaRef}
-            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-            size="invisible"
-          />
+          {hasConsent && (
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+              size="invisible"
+            />
+          )}
         </form>
         {status && (
           <p className={status.type === 'success' ? 'success' : 'error'}>
