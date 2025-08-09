@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -24,7 +25,12 @@ export default function MentionsLegales() {
         <meta name="twitter:image" content={image} />
         <link rel="canonical" href={url} />
       </Head>
-      <main>
+        <motion.main
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
         <h1>Mentions légales</h1>
         <section>
           <h2>Éditeur du site</h2>
@@ -59,7 +65,7 @@ export default function MentionsLegales() {
             </a>
           </p>
         </section>
-      </main>
+        </motion.main>
     </>
   );
 }

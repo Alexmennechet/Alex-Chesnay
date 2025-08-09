@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import HeroHeader from '../components/HeroHeader';
 import theme from '../styles/theme';
+import { motion } from 'framer-motion';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -28,10 +29,16 @@ export default function Home() {
       </Head>
       <main>
         <HeroHeader />
-        <section style={{ padding: theme.spacing.lg }}>
+        <motion.section
+          style={{ padding: theme.spacing.lg }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <h1>Accueil</h1>
           <p>Bienvenue sur mon portfolio.</p>
-        </section>
+        </motion.section>
       </main>
     </>
   );

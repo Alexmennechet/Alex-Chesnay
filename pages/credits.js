@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { motion } from 'framer-motion';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -42,7 +43,12 @@ export default function Credits() {
         <meta name="twitter:image" content={image} />
         <link rel="canonical" href={url} />
       </Head>
-      <main>
+      <motion.main
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         <h1>Crédits</h1>
         <p>Liste des images utilisées sur ce site avec leur source et licence.</p>
         <ul>
@@ -52,7 +58,7 @@ export default function Credits() {
             </li>
           ))}
         </ul>
-      </main>
+      </motion.main>
     </>
   );
 }
