@@ -57,6 +57,7 @@ export default function Header() {
       >
         Politique de confidentialité
       </Link>
+      <Link href="/credits" className={asPath === '/credits' ? styles.active : ''}>Crédits</Link>
     </nav>
   );
 }
