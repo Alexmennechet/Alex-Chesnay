@@ -5,6 +5,9 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta name="theme-color" content="#1E90FF" />
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
           <link
             rel="preload"
             href="/fonts/Raleway-400.woff2"
