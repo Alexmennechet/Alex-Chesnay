@@ -16,3 +16,14 @@
 ## Déploiement
 
 Les modifications poussées sur une branche déclenchent automatiquement un Deploy Preview sur Netlify. Vérifier que les checks "Header rules", "Redirect rules", "Pages changed" et "Deploy preview" passent au vert.
+
+## Historique QA
+
+Les branches sont testées avant fusion avec Lighthouse (Perf ≥90, A11y ≥95), le validateur W3C et des tests mobiles. Les résultats sont consignés ci‑dessous.
+
+| Branche | Portée | Lighthouse (Perf/A11y) | Validateur W3C | Tests mobiles | Notes |
+| --- | --- | --- | --- | --- | --- |
+| `debug/pass-01` | Container & footer | – | – | – | Branches antérieures, résultats non archivés |
+| `ui/pass-02` | Navigation & marquee | – | – | – | Branches antérieures, résultats non archivés |
+| `perf-seo/pass-03` | WebP/srcset, metas, cache headers | Échec : npm 403 lors de Lighthouse | Échec : npm 403 lors du validateur | `npm test` : No tests specified | Dépendances manquantes, tests non exécutés |
+
