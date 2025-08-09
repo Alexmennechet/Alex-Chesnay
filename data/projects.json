@@ -8,7 +8,7 @@
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Alpha.",
-    "category": "Demo"
+    "category": "3D"
   },
   {
     "slug": "beta",
@@ -19,6 +19,39 @@
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Beta.",
-    "category": "Demo"
+    "category": "Animation"
+  },
+  {
+    "slug": "gamma",
+    "title": "Projet Gamma",
+    "images": [
+      "/assets/images/project1.png",
+      "/assets/images/project2.png"
+    ],
+    "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "description": "Description du projet Gamma.",
+    "category": "VFX"
+  },
+  {
+    "slug": "delta",
+    "title": "Projet Delta",
+    "images": [
+      "/assets/images/project3.png",
+      "/assets/images/project4.png"
+    ],
+    "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "description": "Description du projet Delta.",
+    "category": "VR"
+  },
+  {
+    "slug": "epsilon",
+    "title": "Projet Epsilon",
+    "images": [
+      "/assets/images/project1.png",
+      "/assets/images/project2.png"
+    ],
+    "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    "description": "Description du projet Epsilon.",
+    "category": "IA"
   }
 ]
