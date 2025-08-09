@@ -11,8 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
       e.preventDefault();
-      navLinks.forEach(l => l.classList.remove('active'));
+      navLinks.forEach(l => {
+        l.classList.remove('active');
+        l.removeAttribute('aria-current');
+      });
       link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
     });
   });
 });
