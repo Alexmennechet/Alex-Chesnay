@@ -2,6 +2,9 @@ import Head from 'next/head';
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
+import theme from '../../styles/theme';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -41,29 +44,66 @@ export default function Project({ project }) {
         />
       </Head>
       <main>
-        <h1>{project.title}</h1>
-        <div className="responsive-grid">
-          {project.images.map((img, idx) => (
-            <img
-              key={idx}
-              src={img}
-              srcSet={`${img} 480w, ${img} 800w`}
-              sizes="(max-width: 600px) 100vw, 50vw"
-              alt={`${project.title} illustration ${idx + 1}`}
-              loading="lazy"
-              decoding="async"
-            />
-          ))}
-        </div>
-        <div className="video-wrapper">
-          <iframe
-            src={project.video}
-            title={project.title}
-            allowFullScreen
-          />
-        </div>
-        <p>{project.description}</p>
-        <Link href="/projects"><button>Retour à la galerie</button></Link>
+        <header
+          style={{
+            backgroundImage: `url(${project.images[0]})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            height: '60vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: theme.colors.primary,
+            fontFamily: theme.fonts.heading,
+            marginBottom: theme.spacing.lg,
+          }}
+        >
+          <h1>{project.title}</h1>
+        </header>
+        <section style={{ padding: theme.spacing.lg }}>
+          <div className="responsive-grid">
+            {project.images.map((img, idx) => (
+              <Zoom key={idx}>
+                <img
+                  src={img}
+                  srcSet={`${img} 480w, ${img} 800w`}
+                  sizes="(max-width: 600px) 100vw, 50vw"
+                  alt={`${project.title} illustration ${idx + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </Zoom>
+            ))}
+          </div>
+          <section style={{ margin: `${theme.spacing.lg} 0` }}>
+            <h2>Making-of</h2>
+            <div className="video-wrapper">
+              <iframe
+                src={project.video}
+                title={`${project.title} making-of`}
+                allowFullScreen
+              />
+            </div>
+          </section>
+          <section style={{ margin: `${theme.spacing.lg} 0` }}>
+            <h2>Fiche technique</h2>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              <li>
+                <strong>Outils :</strong> {project.tools}
+              </li>
+              <li>
+                <strong>Durée :</strong> {project.duration}
+              </li>
+              <li>
+                <strong>Rôle :</strong> {project.role}
+              </li>
+            </ul>
+          </section>
+          <p>{project.description}</p>
+          <Link href="/projects">
+            <button>Retour à la galerie</button>
+          </Link>
+        </section>
       </main>
     </>
   );
