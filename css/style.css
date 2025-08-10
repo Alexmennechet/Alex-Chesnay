@@ -466,6 +466,17 @@ nav {
   transform: none;
 }
 
+.site-header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.site-pages {
+  flex: 1;
+  display: block;
+}
+
 .site-pages ul {
   display: flex;
   flex-wrap: wrap;
@@ -491,6 +502,22 @@ nav {
   font-size: var(--fs-24);
 }
 
+.contact-button-small {
+  margin-left: auto;
+  padding: var(--space-8) var(--space-16);
+  background-color: var(--cyan);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: var(--space-4);
+  font-weight: 700;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.contact-button-small:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
   .menu-toggle {
     display: block;
@@ -506,6 +533,9 @@ nav {
     gap: var(--space-16);
     align-items: center;
   }
+  .contact-button-small {
+    display: none;
+  }
 }
 
 .contact-button,
@@ -513,15 +543,16 @@ nav {
   display: inline-block;
   margin-top: var(--space-24);
   padding: var(--space-10) var(--space-24);
-  background-color: #d90429;
+  background-color: var(--cyan);
   color: var(--white);
   text-decoration: none;
   border-radius: var(--space-4);
   font-weight: 700;
-  transition: background-color 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .contact-button:hover,
 .btn-contact:hover {
-  background-color: #9d021e;
+  opacity: 0.9;
+  transform: translateY(-2px);
 }
