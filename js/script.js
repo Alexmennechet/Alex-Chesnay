@@ -54,6 +54,10 @@ window.addEventListener('beforeunload', () => {
   document.body.classList.remove('loaded');
 });
 
+window.addEventListener('pageshow', () => {
+  document.body.classList.add('loaded');
+});
+
 (() => {
   const SPEED = 40; // pixels per second
 
