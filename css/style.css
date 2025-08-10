@@ -478,7 +478,7 @@ header h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .site-pages a {

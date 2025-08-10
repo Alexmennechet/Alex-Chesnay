@@ -96,6 +96,10 @@
 }
 
 @media (min-width: 769px) {
+  .nav {
+    justify-content: flex-start;
+  }
+
   .contactLink {
     display: none;
   }
