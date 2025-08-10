@@ -1,10 +1,18 @@
-.nav {
+.header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .menuButton {
@@ -55,6 +63,20 @@
   font-weight: bold;
 }
 
+.contactButton {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 700;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.contactButton:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
   .menuButton {
     display: flex;
@@ -68,4 +90,14 @@
   .open summary {
     display: flex;
   }
+  .contactButton {
+    display: none;
+  }
 }
+
+@media (min-width: 769px) {
+  .contactLink {
+    display: none;
+  }
+}
+

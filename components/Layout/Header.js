@@ -11,55 +11,71 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav
-      className={`${styles.nav} ${menuOpen ? styles.open : ''}`}
+    <header
+      className={styles.header}
       style={{
         background: theme.colors.background,
         borderBottom: `1px solid ${theme.colors.text}`,
         color: theme.colors.text,
-        gap: theme.spacing.md,
         padding: theme.spacing.md
       }}
     >
-      <button
-        className={styles.menuButton}
-        aria-label="Menu"
-        aria-expanded={menuOpen}
-        onClick={() => setMenuOpen(!menuOpen)}
+      <nav
+        className={`${styles.nav} ${menuOpen ? styles.open : ''}`}
+        style={{ gap: theme.spacing.md }}
       >
-        ☰
-      </button>
-      <Link href="/" className={asPath === '/' ? styles.active : ''}>Accueil</Link>
-      <details
-        className={styles.dropdown}
-        open={projectsOpen}
-        onToggle={(e) => setProjectsOpen(e.target.open)}
-      >
-        <summary
-          aria-haspopup="menu"
-          aria-expanded={projectsOpen}
-          className={asPath.startsWith('/projects') ? styles.active : ''}
+        <button
+          className={styles.menuButton}
+          aria-label="Menu"
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen(!menuOpen)}
         >
-          Projets
-        </summary>
-        <ul className={styles.dropdownMenu} role="menu">
-          {projects.map((project) => (
-            <li key={project.slug} role="none">
-              <Link
-                href={`/projects/${project.slug}`}
-                className={asPath === `/projects/${project.slug}` ? styles.active : ''}
-                role="menuitem"
-              >
-                {project.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </details>
-      <Link href="/services" className={asPath.startsWith('/services') ? styles.active : ''}>Services</Link>
-      <Link href="/a-propos" className={asPath === '/a-propos' ? styles.active : ''}>À propos</Link>
-      <Link href="/blog" className={asPath.startsWith('/blog') ? styles.active : ''}>Blog</Link>
-      <Link href="/contact" className={asPath === '/contact' ? styles.active : ''}>Contact</Link>
-    </nav>
+          ☰
+        </button>
+        <Link href="/" className={asPath === '/' ? styles.active : ''}>Accueil</Link>
+        <details
+          className={styles.dropdown}
+          open={projectsOpen}
+          onToggle={(e) => setProjectsOpen(e.target.open)}
+        >
+          <summary
+            aria-haspopup="menu"
+            aria-expanded={projectsOpen}
+            className={asPath.startsWith('/projects') ? styles.active : ''}
+          >
+            Projets
+          </summary>
+          <ul className={styles.dropdownMenu} role="menu">
+            {projects.map((project) => (
+              <li key={project.slug} role="none">
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className={asPath === `/projects/${project.slug}` ? styles.active : ''}
+                  role="menuitem"
+                >
+                  {project.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </details>
+        <Link href="/services" className={asPath.startsWith('/services') ? styles.active : ''}>Services</Link>
+        <Link href="/a-propos" className={asPath === '/a-propos' ? styles.active : ''}>À propos</Link>
+        <Link href="/blog" className={asPath.startsWith('/blog') ? styles.active : ''}>Blog</Link>
+        <Link
+          href="/contact"
+          className={`${asPath === '/contact' ? styles.active : ''} ${styles.contactLink}`}
+        >
+          Contact
+        </Link>
+      </nav>
+      <Link
+        href="/contact"
+        className={styles.contactButton}
+        style={{ background: theme.colors.cyan, color: theme.colors.white }}
+      >
+        Contact
+      </Link>
+    </header>
   );
 }
