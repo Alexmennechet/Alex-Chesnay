@@ -100,6 +100,21 @@
     justify-content: flex-start;
   }
 
+  .nav a,
+  .nav summary {
+    background-color: var(--cyan);
+    color: var(--white);
+    border-radius: 4px;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .nav a:hover,
+  .nav summary:hover {
+    filter: brightness(1.1);
+  }
+
   .contactLink {
     display: none;
   }
