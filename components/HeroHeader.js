@@ -31,7 +31,7 @@ export default function HeroHeader() {
         marginBottom: theme.spacing.lg
       }}
     >
-      <h1>Mon Portfolio</h1>
+      <h1>Studio d'animation 3D – Mon Portfolio</h1>
     </header>
   );
 }
