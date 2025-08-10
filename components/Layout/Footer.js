@@ -16,6 +16,14 @@ export default function Footer() {
         <a className={styles.phone} href="tel:0768563197">0768563197</a>
         <div className={styles.bottom}>
           <a className={styles.email} href="mailto:alex-mennechet@outlook.fr">alex-mennechet@outlook.fr</a>
+          <ul className={styles.links}>
+            <li>
+              <a href="/mentions-legales.html">Mentions légales</a>
+            </li>
+            <li>
+              <a href="/politique-confidentialite.html">Politique de confidentialité</a>
+            </li>
+          </ul>
           <ul className={styles.social}>
             <li><a href="https://www.instagram.com/alexchesnay" aria-label="Instagram" target="_blank" rel="noopener"><i className="fa-brands fa-instagram"></i></a></li>
             <li><a href="https://www.linkedin.com/in/alexchesnay" aria-label="LinkedIn" target="_blank" rel="noopener"><i className="fa-brands fa-linkedin-in"></i></a></li>
