@@ -8,10 +8,11 @@ import projects from '../../private/projects.json' assert { type: 'json' };
 export default function Header() {
   const { asPath } = useRouter();
   const [projectsOpen, setProjectsOpen] = useState(asPath.startsWith('/projects'));
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav
-      className={styles.nav}
+      className={`${styles.nav} ${menuOpen ? styles.open : ''}`}
       style={{
         background: theme.colors.background,
         borderBottom: `1px solid ${theme.colors.text}`,
@@ -20,6 +21,14 @@ export default function Header() {
         padding: theme.spacing.md
       }}
     >
+      <button
+        className={styles.menuButton}
+        aria-label="Menu"
+        aria-expanded={menuOpen}
+        onClick={() => setMenuOpen(!menuOpen)}
+      >
+        ☰
+      </button>
       <Link href="/" className={asPath === '/' ? styles.active : ''}>Accueil</Link>
       <details
         className={styles.dropdown}
@@ -50,14 +59,6 @@ export default function Header() {
       <Link href="/services" className={asPath.startsWith('/services') ? styles.active : ''}>Services</Link>
       <Link href="/a-propos" className={asPath === '/a-propos' ? styles.active : ''}>À propos</Link>
       <Link href="/contact" className={asPath === '/contact' ? styles.active : ''}>Contact</Link>
-      <Link href="/mentions-legales" className={asPath === '/mentions-legales' ? styles.active : ''}>Mentions légales</Link>
-      <Link
-        href="/politique-de-confidentialite"
-        className={asPath === '/politique-de-confidentialite' ? styles.active : ''}
-      >
-        Politique de confidentialité
-      </Link>
-      <Link href="/credits" className={asPath === '/credits' ? styles.active : ''}>Crédits</Link>
     </nav>
   );
 }

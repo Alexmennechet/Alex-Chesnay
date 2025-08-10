@@ -18,7 +18,7 @@ export async function getServerSideProps({ res }) {
 
 export default function Contact({ csrfToken }) {
   const title = 'Contact - Alex Chesnay';
-  const description = 'Contactez-moi via email.';
+  const description = 'Contactez-nous via email.';
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
   const url = `${siteUrl}/contact`;
 
@@ -110,7 +110,7 @@ export default function Contact({ csrfToken }) {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h1>Contact</h1>
+        <h1>Contactez-nous</h1>
         <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="firstName">Prénom</label>
