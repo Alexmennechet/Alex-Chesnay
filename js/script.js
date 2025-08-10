@@ -96,28 +96,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Filtering logic for static index.html gallery
 document.addEventListener('DOMContentLoaded', () => {
-  const navLinks = document.querySelectorAll('.secondary-nav a');
+  const navLinks = document.querySelectorAll('.secondary-nav a[data-filter]');
   const cards = document.querySelectorAll('.project-card');
 
   navLinks.forEach(link => {
     link.addEventListener('click', e => {
-      e.preventDefault();
-      const category = link.textContent.trim();
+      const category = link.getAttribute('data-filter');
+      if (category) {
+        e.preventDefault();
 
-      navLinks.forEach(l => {
-        l.classList.remove('active');
-        l.removeAttribute('aria-current');
-      });
-      link.classList.add('active');
-      link.setAttribute('aria-current', 'page');
+        navLinks.forEach(l => {
+          l.classList.remove('active');
+          l.removeAttribute('aria-current');
+        });
+        link.classList.add('active');
+        link.setAttribute('aria-current', 'page');
 
-      cards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-        card.style.display =
-          category === 'Featured' || cardCategory === category
-            ? ''
-            : 'none';
-      });
+        cards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          card.style.display =
+            category === 'Featured' || cardCategory === category
+              ? ''
+              : 'none';
+        });
+      }
     });
   });
 });
