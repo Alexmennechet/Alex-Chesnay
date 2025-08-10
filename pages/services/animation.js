@@ -1,14 +1,13 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const siteUrl = 'https://alex-chesnay.com';
 
-export default function Services() {
-  const title = 'Services - Alex Chesnay';
-  const description = 'Découvrez les prestations que nous proposons.';
+export default function Animation() {
+  const title = 'Animation - Alex Chesnay';
+  const description = 'Animations 2D et 3D pour donner vie à vos idées.';
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
-  const url = `${siteUrl}/services`;
+  const url = `${siteUrl}/services/animation`;
 
   return (
     <>
@@ -32,21 +31,11 @@ export default function Services() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h1>Nos services</h1>
-        <ul>
-          <li>
-            <Link href="/services/modelisation">Modélisation</Link> – création
-            de modèles 3D détaillés.
-          </li>
-          <li>
-            <Link href="/services/animation">Animation</Link> – mise en
-            mouvement réaliste de vos concepts.
-          </li>
-          <li>
-            <Link href="/services/vfx">VFX</Link> – effets visuels pour des
-            images plus immersives.
-          </li>
-        </ul>
+        <h1>Animation</h1>
+        <p>
+          Nous produisons des animations fluides pour le cinéma, la publicité ou
+          la communication interne.
+        </p>
       </motion.main>
     </>
   );

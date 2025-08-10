@@ -58,6 +58,7 @@ export default function Header() {
       </details>
       <Link href="/services" className={asPath.startsWith('/services') ? styles.active : ''}>Services</Link>
       <Link href="/a-propos" className={asPath === '/a-propos' ? styles.active : ''}>À propos</Link>
+      <Link href="/blog" className={asPath.startsWith('/blog') ? styles.active : ''}>Blog</Link>
       <Link href="/contact" className={asPath === '/contact' ? styles.active : ''}>Contact</Link>
     </nav>
   );

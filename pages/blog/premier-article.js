@@ -1,14 +1,13 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const siteUrl = 'https://alex-chesnay.com';
 
-export default function Services() {
-  const title = 'Services - Alex Chesnay';
-  const description = 'Découvrez les prestations que nous proposons.';
+export default function PremierArticle() {
+  const title = 'Premier article - Alex Chesnay';
+  const description = 'Introduction au blog et premières actualités.';
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
-  const url = `${siteUrl}/services`;
+  const url = `${siteUrl}/blog/premier-article`;
 
   return (
     <>
@@ -17,7 +16,7 @@ export default function Services() {
         <meta name="description" content={description} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
         <meta property="og:url" content={url} />
         <meta property="og:image" content={image} />
         <meta name="twitter:card" content="summary_large_image" />
@@ -32,21 +31,11 @@ export default function Services() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h1>Nos services</h1>
-        <ul>
-          <li>
-            <Link href="/services/modelisation">Modélisation</Link> – création
-            de modèles 3D détaillés.
-          </li>
-          <li>
-            <Link href="/services/animation">Animation</Link> – mise en
-            mouvement réaliste de vos concepts.
-          </li>
-          <li>
-            <Link href="/services/vfx">VFX</Link> – effets visuels pour des
-            images plus immersives.
-          </li>
-        </ul>
+        <h1>Premier article</h1>
+        <p>
+          Bienvenue sur notre blog&nbsp;! Nous partagerons ici nos projets,
+          conseils et retours d'expérience dans le domaine de la 3D.
+        </p>
       </motion.main>
     </>
   );
