@@ -88,41 +88,5 @@
     "tools": "Python, TensorFlow",
     "duration": "6 mois",
     "role": "Data Scientist"
-  },
-  {
-    "slug": "project1",
-    "title": "Project 1",
-    "images": ["/assets/images/project1.png"],
-    "imageAlts": ["Rendu principal du projet 1"],
-    "video": "",
-    "description": "Pitch du premier projet.",
-    "category": "3D Animation",
-    "tools": "Outil A, Outil B",
-    "duration": "",
-    "role": "Mon rôle dans ce projet."
-  },
-  {
-    "slug": "project2",
-    "title": "Project 2",
-    "images": ["/assets/images/project2.png"],
-    "imageAlts": ["Rendu principal du projet 2"],
-    "video": "",
-    "description": "Pitch du deuxième projet.",
-    "category": "2D Animation",
-    "tools": "Outil C, Outil D",
-    "duration": "",
-    "role": "Mon rôle dans ce projet."
-  },
-  {
-    "slug": "project3",
-    "title": "Project 3",
-    "images": ["/assets/images/project3.png"],
-    "imageAlts": ["Rendu principal du projet 3"],
-    "video": "",
-    "description": "Pitch du troisième projet.",
-    "category": "VFX",
-    "tools": "Outil E, Outil F",
-    "duration": "",
-    "role": "Mon rôle dans ce projet."
   }
 ]

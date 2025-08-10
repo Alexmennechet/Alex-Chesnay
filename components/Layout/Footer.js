@@ -18,10 +18,10 @@ export default function Footer() {
           <a className={styles.email} href="mailto:alex-mennechet@outlook.fr">alex-mennechet@outlook.fr</a>
           <ul className={styles.links}>
             <li>
-              <a href="/mentions-legales">Mentions légales</a>
+              <a href="/mentions-legales.html">Mentions légales</a>
             </li>
             <li>
-              <a href="/politique-de-confidentialite">Politique de confidentialité</a>
+              <a href="/politique-confidentialite.html">Politique de confidentialité</a>
             </li>
           </ul>
           <ul className={styles.social}>
