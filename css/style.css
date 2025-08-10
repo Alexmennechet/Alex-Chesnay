@@ -72,11 +72,15 @@ body {
   line-height: 1.6;
   color: var(--grey-900);
   background-color: var(--white);
+  opacity: 1;
+}
+
+html.js body {
   opacity: 0;
   transition: opacity 0.5s ease;
 }
 
-body.loaded {
+html.js body.loaded {
   opacity: 1;
 }
 
