@@ -198,9 +198,6 @@ header h1 {
   font-size: var(--fs-40);
 }
 
-nav {
-  display: none;
-}
 
 .secondary-nav {
   display: flex;
@@ -519,6 +516,9 @@ nav {
 }
 
 @media (max-width: 768px) {
+  nav {
+    display: none;
+  }
   .menu-toggle {
     display: block;
   }
@@ -555,4 +555,20 @@ nav {
 .btn-contact:hover {
   opacity: 0.9;
   transform: translateY(-2px);
+}
+
+@media (min-width: 1024px){
+  nav, .secondary-nav{
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+  nav ul, .secondary-nav ul{
+    display: flex;
+    gap: var(--space-24, 24px);
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .menu-toggle, .burger, .nav-toggle { display: none !important; }
 }
