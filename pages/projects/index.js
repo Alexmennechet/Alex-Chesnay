@@ -15,21 +15,18 @@ const cardVariants = {
 
 const siteUrl = 'https://alex-chesnay.com';
 
-export default function Projects({
-  projects,
-  initialCategory = 'Featured',
-  title = "Projets - Studio d'animation 3D Alex Chesnay",
-  description = "Galerie des projets de notre studio d'animation 3D.",
-  canonical = '/projects'
-}) {
-  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
+export default function Projects({ projects }) {
+  const [selectedCategory, setSelectedCategory] = useState('Featured');
   const filteredProjects =
     selectedCategory === 'Featured'
       ? projects
       : projects.filter((p) => p.category === selectedCategory);
 
+  const title = "Projets - Studio d'animation 3D Alex Chesnay";
+  const description =
+    'Galerie des projets de notre studio d\'animation 3D.';
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
-  const url = `${siteUrl}${canonical}`;
+  const url = `${siteUrl}/projects`;
 
   return (
     <>
