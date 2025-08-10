@@ -17,10 +17,20 @@ window.sanitizeInput = sanitizeInput;
 function initMenu() {
   const header = document.querySelector('.site-header');
   const toggle = header ? header.querySelector('.menu-toggle') : null;
-  if (header && toggle) {
+  const nav = header ? header.querySelector('nav') : null;
+  if (nav && toggle) {
     toggle.addEventListener('click', () => {
-      const open = header.classList.toggle('open');
+      const open = nav.classList.toggle('open');
       toggle.setAttribute('aria-expanded', open);
+    });
+  }
+  if (nav) {
+    const path = window.location.pathname.replace(/\/$/, '') || '/';
+    nav.querySelectorAll('a').forEach(link => {
+      const linkPath = new URL(link.href).pathname.replace(/\/$/, '') || '/';
+      if (linkPath === path) {
+        link.setAttribute('aria-current', 'page');
+      }
     });
   }
 }
