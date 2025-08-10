@@ -5,7 +5,7 @@ const siteUrl = 'https://alex-chesnay.com';
 
 export default function APropos() {
   const title = 'À propos - Alex Chesnay';
-  const description = 'Quelques informations sur moi.';
+  const description = "Présentation de l'équipe, de notre histoire et de nos valeurs.";
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
   const url = `${siteUrl}/a-propos`;
 
@@ -32,7 +32,30 @@ export default function APropos() {
         transition={{ duration: 0.5 }}
       >
         <h1>À propos</h1>
-        <p>Quelques informations sur moi.</p>
+        <section>
+          <h2>L'équipe</h2>
+          <p>
+            Notre équipe réunit des spécialistes passionnés de modélisation,
+            d'animation et de VFX. Chaque membre apporte son expertise pour
+            donner vie à vos projets.
+          </p>
+        </section>
+        <section>
+          <h2>Historique</h2>
+          <p>
+            Depuis nos débuts, nous accompagnons studios et agences dans la
+            réalisation de visuels innovants. Notre expérience nous permet de
+            relever des défis toujours plus ambitieux.
+          </p>
+        </section>
+        <section>
+          <h2>Nos valeurs</h2>
+          <p>
+            Créativité, exigence et écoute sont au cœur de notre démarche. Nous
+            plaçons la collaboration et la satisfaction client au centre de
+            chaque projet.
+          </p>
+        </section>
       </motion.main>
     </>
   );

@@ -4,11 +4,11 @@ import { motion } from 'framer-motion';
 
 const siteUrl = 'https://alex-chesnay.com';
 
-export default function Services() {
-  const title = 'Services - Alex Chesnay';
-  const description = 'Découvrez les prestations que nous proposons.';
+export default function Blog() {
+  const title = 'Blog - Alex Chesnay';
+  const description = 'Actualités et articles récents.';
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
-  const url = `${siteUrl}/services`;
+  const url = `${siteUrl}/blog`;
 
   return (
     <>
@@ -32,19 +32,10 @@ export default function Services() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h1>Nos services</h1>
+        <h1>Blog</h1>
         <ul>
           <li>
-            <Link href="/services/modelisation">Modélisation</Link> – création
-            de modèles 3D détaillés.
-          </li>
-          <li>
-            <Link href="/services/animation">Animation</Link> – mise en
-            mouvement réaliste de vos concepts.
-          </li>
-          <li>
-            <Link href="/services/vfx">VFX</Link> – effets visuels pour des
-            images plus immersives.
+            <Link href="/blog/premier-article">Premier article</Link>
           </li>
         </ul>
       </motion.main>
