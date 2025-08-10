@@ -1,3 +1,7 @@
 /instagram https://www.instagram.com/alexchesnay 301
 /linkedin https://www.linkedin.com/in/alexchesnay 301
+/services.html /services 301
+/a-propos.html /a-propos 301
+/work /projects 301
+/work/ /projects 301
 /* /index.html 200
