@@ -56,6 +56,46 @@ export default function APropos() {
             chaque projet.
           </p>
         </section>
+        <section>
+          <h2>Ils nous font confiance</h2>
+          <blockquote>
+            « Une collaboration exceptionnelle ! » – Studio XYZ
+          </blockquote>
+          <blockquote>
+            « Des résultats au-delà de nos attentes. » – Agence 123
+          </blockquote>
+          <div
+            style={{
+              display: 'flex',
+              gap: '20px',
+              marginTop: '20px',
+              flexWrap: 'wrap'
+            }}
+          >
+            <img
+              src="/assets/images/clients/client1.svg"
+              alt="Logo Client 1"
+              style={{ maxWidth: '120px' }}
+            />
+            <img
+              src="/assets/images/clients/client2.svg"
+              alt="Logo Client 2"
+              style={{ maxWidth: '120px' }}
+            />
+            <img
+              src="/assets/images/clients/client3.svg"
+              alt="Logo Client 3"
+              style={{ maxWidth: '120px' }}
+            />
+          </div>
+        </section>
+        <section>
+          <h2>Certifications et affiliations</h2>
+          <p>
+            Nous sommes <strong>Autodesk Certified</strong> et membres de la
+            <strong> Fédération des créateurs numériques</strong>.
+          </p>
+        </section>
       </motion.main>
     </>
   );
