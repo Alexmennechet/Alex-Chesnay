@@ -7,6 +7,14 @@
   flex-wrap: wrap;
 }
 
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .nav a,
 .nav summary {
   text-decoration: none;
@@ -45,4 +53,19 @@
 
 .active {
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .menuButton {
+    display: flex;
+    align-items: center;
+  }
+  .nav a,
+  .nav summary {
+    display: none;
+  }
+  .open a,
+  .open summary {
+    display: flex;
+  }
 }

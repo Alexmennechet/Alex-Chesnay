@@ -96,7 +96,7 @@ export default function Project({ project, prev, next }) {
           <section className="cta" style={{ margin: `${theme.spacing.lg} 0` }}>
             <h2>Intéressé ?</h2>
             <a className="contact-button" href="mailto:alex-mennechet@outlook.fr">
-              Contactez-moi
+              Contactez-nous
             </a>
           </section>
 

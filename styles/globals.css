@@ -75,11 +75,12 @@ button {
   transform: none;
 }
 
-.contact-button {
+.contact-button,
+.btn-contact {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background-color: #007A9A;
+  background-color: #d90429;
   color: #ffffff;
   text-decoration: none;
   border-radius: 4px;
@@ -87,8 +88,9 @@ button {
   transition: background-color 0.3s ease;
 }
 
-.contact-button:hover {
-  background-color: #005f73;
+.contact-button:hover,
+.btn-contact:hover {
+  background-color: #9d021e;
 }
 
 .project-hero .hero-media {

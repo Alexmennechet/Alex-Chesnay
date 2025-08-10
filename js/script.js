@@ -14,6 +14,17 @@ function sanitizeInput(input) {
 
 window.sanitizeInput = sanitizeInput;
 
+function initMenu() {
+  const header = document.querySelector('.site-header');
+  const toggle = header ? header.querySelector('.menu-toggle') : null;
+  if (header && toggle) {
+    toggle.addEventListener('click', () => {
+      const open = header.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   ['header', 'footer'].forEach(name => {
     const el = document.getElementById(`${name}-placeholder`);
@@ -22,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(res => res.text())
         .then(html => {
           el.innerHTML = html;
+          if (name === 'header') initMenu();
         });
     }
   });

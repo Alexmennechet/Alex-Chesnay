@@ -32,7 +32,10 @@ export default function Home() {
         <HeroHeader />
         <div style={{ textAlign: 'center', marginBottom: theme.spacing.lg }}>
           <Link href="/contact" className="contact-button">
-            Contact
+            Contactez-nous
+          </Link>
+          <Link href="/projects" className="contact-button" style={{ marginLeft: theme.spacing.md }}>
+            Voir nos réalisations
           </Link>
         </div>
         <motion.section

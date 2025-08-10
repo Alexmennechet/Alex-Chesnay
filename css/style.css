@@ -475,11 +475,36 @@ nav {
   text-decoration: underline;
 }
 
-.contact-button {
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: var(--fs-24);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  .site-pages {
+    display: none;
+  }
+  .site-header.open .site-pages {
+    display: block;
+  }
+  .site-pages ul {
+    flex-direction: column;
+    gap: var(--space-16);
+    align-items: center;
+  }
+}
+
+.contact-button,
+.btn-contact {
   display: inline-block;
   margin-top: var(--space-24);
   padding: var(--space-10) var(--space-24);
-  background-color: var(--cyan);
+  background-color: #d90429;
   color: var(--white);
   text-decoration: none;
   border-radius: var(--space-4);
@@ -487,6 +512,7 @@ nav {
   transition: background-color 0.3s ease;
 }
 
-.contact-button:hover {
-  background-color: #005f73;
+.contact-button:hover,
+.btn-contact:hover {
+  background-color: #9d021e;
 }
