@@ -318,12 +318,13 @@ nav {
   list-style: none;
   padding: 0;
   margin: 0;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
 }
 
 .social-icons li {
   display: inline-block;
-  margin: 0 8px;
 }
 
 .social-icons a {
