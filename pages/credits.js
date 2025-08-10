@@ -11,8 +11,6 @@ const mediaCredits = [
   { file: '/assets/images/MontreMaisonEclatIA.jpg', source: 'Alex Chesnay', license: 'Tous droits réservés' },
   { file: '/assets/images/ProjetGateauxRendu1.jpg', source: 'Alex Chesnay', license: 'Tous droits réservés' },
   { file: '/assets/images/PAGES_0_Couverture.jpg', source: 'Alex Chesnay', license: 'Tous droits réservés' },
-  { file: '/assets/images/placeholder2.png', source: 'Alex Chesnay', license: 'Tous droits réservés' },
-  { file: '/assets/images/placeholder3.png', source: 'Alex Chesnay', license: 'Tous droits réservés' },
   { file: '/assets/images/project1.png', source: 'Alex Chesnay', license: 'Tous droits réservés' },
   { file: '/assets/images/project2.png', source: 'Alex Chesnay', license: 'Tous droits réservés' },
   { file: '/assets/images/project3.png', source: 'Alex Chesnay', license: 'Tous droits réservés' },

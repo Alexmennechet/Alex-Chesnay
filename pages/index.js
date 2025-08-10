@@ -38,6 +38,15 @@ export default function Home() {
             Voir nos réalisations
           </Link>
         </div>
+        <div className="video-wrapper" style={{ marginBottom: theme.spacing.lg }}>
+          <iframe
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="Vidéo de démonstration"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
         <motion.section
           style={{ padding: theme.spacing.lg }}
           initial={{ opacity: 0, y: 40 }}
