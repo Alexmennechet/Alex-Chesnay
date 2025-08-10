@@ -107,3 +107,18 @@ button {
   display: inline-block;
   margin-top: 1rem;
 }
+
+@media (max-width: 768px) {
+  .responsive-grid {
+    grid-template-columns: 1fr;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .project-hero .hero-media {
+    height: auto;
+  }
+}
