@@ -7,8 +7,9 @@ import Link from 'next/link';
 const siteUrl = 'https://alex-chesnay.com';
 
 export default function Home() {
-  const title = 'Alex Chesnay Portfolio';
-  const description = "Portfolio d'Alex Chesnay, spécialiste 3D, VFX et réalité virtuelle.";
+  const title = "Studio d'animation 3D - Alex Chesnay Portfolio";
+  const description =
+    "Portfolio du studio d'animation 3D d'Alex Chesnay, spécialiste 3D, VFX et réalité virtuelle.";
   const image = `${siteUrl}/assets/images/ProjetGateauxRendu1.jpg`;
   const url = `${siteUrl}/`;
 
@@ -45,8 +46,11 @@ export default function Home() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h1>Accueil</h1>
-          <p>Bienvenue sur mon portfolio.</p>
+          <h1>Accueil de notre studio d'animation 3D</h1>
+          <p>
+            Bienvenue sur le portfolio de notre studio d'animation 3D, dédié aux
+            images de synthèse et effets visuels.
+          </p>
         </motion.section>
       </main>
     </>

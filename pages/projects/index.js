@@ -22,8 +22,9 @@ export default function Projects({ projects }) {
       ? projects
       : projects.filter((p) => p.category === selectedCategory);
 
-  const title = 'Projets - Alex Chesnay';
-  const description = 'Galerie de mes projets.';
+  const title = "Projets - Studio d'animation 3D Alex Chesnay";
+  const description =
+    'Galerie des projets de notre studio d\'animation 3D.';
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
   const url = `${siteUrl}/projects`;
 
@@ -50,7 +51,7 @@ export default function Projects({ projects }) {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h1>Galerie</h1>
+        <h1>Galerie de notre studio d'animation 3D</h1>
         <FilterBar
           selectedCategory={selectedCategory}
           onSelect={setSelectedCategory}

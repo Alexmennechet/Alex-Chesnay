@@ -4,8 +4,9 @@ import { motion } from 'framer-motion';
 const siteUrl = 'https://alex-chesnay.com';
 
 export default function APropos() {
-  const title = 'À propos - Alex Chesnay';
-  const description = "Présentation de l'équipe, de notre histoire et de nos valeurs.";
+  const title = "À propos - Studio d'animation 3D Alex Chesnay";
+  const description =
+    "Présentation de notre studio d'animation 3D, de notre histoire et de nos valeurs.";
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
   const url = `${siteUrl}/a-propos`;
 
@@ -31,13 +32,13 @@ export default function APropos() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h1>À propos</h1>
+        <h1>À propos de notre studio d'animation 3D</h1>
         <section>
           <h2>L'équipe</h2>
           <p>
-            Notre équipe réunit des spécialistes passionnés de modélisation,
-            d'animation et de VFX. Chaque membre apporte son expertise pour
-            donner vie à vos projets.
+            Notre studio d'animation 3D réunit des spécialistes passionnés de
+            modélisation, d'animation et de VFX. Chaque membre apporte son
+            expertise pour donner vie à vos projets.
           </p>
         </section>
         <section>
@@ -74,17 +75,17 @@ export default function APropos() {
           >
             <img
               src="/assets/images/clients/client1.svg"
-              alt="Logo Client 1"
+              alt="Logo du Studio XYZ"
               style={{ maxWidth: '120px' }}
             />
             <img
               src="/assets/images/clients/client2.svg"
-              alt="Logo Client 2"
+              alt="Logo de l'Agence 123"
               style={{ maxWidth: '120px' }}
             />
             <img
               src="/assets/images/clients/client3.svg"
-              alt="Logo Client 3"
+              alt="Logo du partenaire 3"
               style={{ maxWidth: '120px' }}
             />
           </div>

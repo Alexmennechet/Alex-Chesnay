@@ -1,15 +1,14 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const siteUrl = 'https://alex-chesnay.com';
 
-export default function Blog() {
-  const title = "Blog - Studio d'animation 3D Alex Chesnay";
+export default function StudioAnimation3D() {
+  const title = "Studio d'animation 3D : nouveautés - Alex Chesnay";
   const description =
-    "Actualités du studio d'animation 3D et articles récents.";
-  const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
-  const url = `${siteUrl}/blog`;
+    "Actualités récentes de notre studio d'animation 3D et projets en cours.";
+  const image = `${siteUrl}/assets/images/ProjetGateauxRendu1.jpg`;
+  const url = `${siteUrl}/blog/studio-animation-3d`;
 
   return (
     <>
@@ -18,7 +17,7 @@ export default function Blog() {
         <meta name="description" content={description} />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
         <meta property="og:url" content={url} />
         <meta property="og:image" content={image} />
         <meta name="twitter:card" content="summary_large_image" />
@@ -33,15 +32,17 @@ export default function Blog() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <h1>Blog du studio d'animation 3D</h1>
-        <ul>
-          <li>
-            <Link href="/blog/premier-article">Premier article</Link>
-          </li>
-          <li>
-            <Link href="/blog/studio-animation-3d">Studio d'animation 3D : nouveautés</Link>
-          </li>
-        </ul>
+        <h1>Studio d'animation 3D : nouveautés</h1>
+        <p>
+          Notre studio d'animation 3D continue d'innover avec de nouveaux projets
+          et collaborations. Découvrez un aperçu de nos dernières réalisations
+          ci-dessous.
+        </p>
+        <img
+          src="/assets/images/ProjetGateauxRendu1.jpg"
+          alt="Exemple de rendu d'animation 3D d'un gâteau coloré"
+          style={{ maxWidth: '100%', height: 'auto' }}
+        />
       </motion.main>
     </>
   );
