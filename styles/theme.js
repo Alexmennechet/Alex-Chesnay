@@ -1,15 +1,12 @@
 const theme = {
-  colors: {
-    cyan: '#007A9A',
-    grey600: '#555555',
-    grey500: '#333333',
-    grey700: '#334155',
-    grey800: '#1f2937',
-    grey900: '#111827',
-    grey100: '#f8f9fa',
-    grey200: '#f0f4f8',
-    white: '#ffffff'
-  },
+   colors: {
+     primary: '#1e3a8a',
+     secondary: '#9333ea',
+     accent: '#d90429',
+     background: '#f8f9fa',
+     text: '#111827',
+     white: '#ffffff'
+   },
   spacing: {
     '2': '2px',
     '3': '3px',
@@ -39,10 +36,10 @@ const theme = {
     '18': '1.125rem',
     '16': '16px'
   },
-  fonts: {
-    heading: "'Playfair Display', serif",
-    body: "'Raleway', sans-serif"
-  }
+   fonts: {
+     heading: "'Playfair Display', serif",
+     body: "'Roboto', sans-serif"
+   }
 };
 
 export default theme;

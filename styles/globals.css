@@ -1,42 +1,31 @@
-@font-face {
-  font-family: 'Raleway';
-  src: url('/fonts/Raleway-400.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Raleway';
-  src: url('/fonts/Raleway-700.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Playfair Display';
-  src: url('/fonts/PlayfairDisplay-400.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Playfair Display';
-  src: url('/fonts/PlayfairDisplay-700.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
 * {
   box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #1e3a8a;
+  --color-secondary: #9333ea;
+  --color-accent: #d90429;
+  --color-accent-dark: #9d021e;
+  --color-background: #f8f9fa;
+  --color-text: #111827;
 }
 
 body {
   margin: 0;
   padding-top: 60px;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Playfair Display', serif;
 }
 
 .responsive-grid {
@@ -80,8 +69,8 @@ button {
   display: inline-block;
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background-color: #d90429;
-  color: #ffffff;
+  background-color: var(--color-accent);
+  color: var(--color-background);
   text-decoration: none;
   border-radius: 4px;
   font-weight: 700;
@@ -90,7 +79,7 @@ button {
 
 .contact-button:hover,
 .btn-contact:hover {
-  background-color: #9d021e;
+  background-color: var(--color-accent-dark);
 }
 
 .project-hero .hero-media {
