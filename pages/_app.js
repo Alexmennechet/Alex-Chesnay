@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import Header from '../components/Layout/Header';
+import Footer from '../components/Layout/Footer';
 import CookieBanner from '../components/CookieBanner';
 import Preloader from '../components/Preloader';
 import theme from '../styles/theme';
@@ -50,6 +51,7 @@ export default function MyApp({ Component, pageProps }) {
           <Component {...pageProps} />
         </motion.div>
       </AnimatePresence>
+      <Footer />
     </div>
   );
 }

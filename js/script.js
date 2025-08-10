@@ -14,9 +14,19 @@ function sanitizeInput(input) {
 
 window.sanitizeInput = sanitizeInput;
 
-  document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
+document.addEventListener('DOMContentLoaded', () => {
+  ['header', 'footer'].forEach(name => {
+    const el = document.getElementById(`${name}-placeholder`);
+    if (el) {
+      fetch(`/components/${name}.html`)
+        .then(res => res.text())
+        .then(html => {
+          el.innerHTML = html;
+        });
+    }
   });
+  document.body.classList.add('loaded');
+});
 
 window.addEventListener('beforeunload', () => {
   document.body.classList.remove('loaded');
