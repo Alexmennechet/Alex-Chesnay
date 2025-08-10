@@ -12,12 +12,56 @@
         crossorigin="anonymous" referrerpolicy="no-referrer">
 </head>
 <body>
-  <div id="header-placeholder"></div>
+  <a class="skip-link" href="#main">Aller au contenu principal</a>
+<header class="site-header">
+  <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Menu</button>
+  <nav class="site-pages" id="primary-menu">
+    <ul class="main-nav">
+      <li><a href="/">Accueil</a></li>
+      <li><a href="/projects">Projets</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><a href="/a-propos">À propos</a></li>
+      <li><a href="/blog">Blog</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+  <a href="/contact" class="contact-button-small">Contact</a>
+</header>
+
   <main id="main">
     <h1>VFX</h1>
     <p>Découvrez une sélection de projets d'effets visuels.</p>
   </main>
-  <div id="footer-placeholder"></div>
+  <footer class="site-footer">
+  <div class="footer-content">
+    <a class="footer-phone" href="tel:0768563197">0768563197</a>
+    <div class="footer-bottom">
+      <a class="footer-email" href="mailto:alex-mennechet@outlook.fr">alex-mennechet@outlook.fr</a>
+      <ul class="footer-links">
+        <li><a href="/mentions-legales.html">Mentions légales</a></li>
+        <li><a href="/politique-confidentialite.html">Politique de confidentialité</a></li>
+      </ul>
+      <div class="footer-socials" aria-label="Réseaux sociaux">
+        <a href="https://instagram.com/alexchesnay" aria-label="Instagram" target="_blank" rel="noopener">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://facebook.com/" aria-label="Facebook" target="_blank" rel="noopener">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://vimeo.com/" aria-label="Vimeo" target="_blank" rel="noopener">
+          <i class="fa-brands fa-vimeo-v"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/alexchesnay" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+        <a href="https://x.com/" aria-label="X" target="_blank" rel="noopener">
+          <i class="fa-brands fa-x-twitter"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
   <script src="/js/script.min.js" defer></script>
 </body>
 </html>
