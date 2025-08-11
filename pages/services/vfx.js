@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import theme from '../../styles/theme';
+import ServiceSection from '../../components/ServiceSection';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -38,6 +39,17 @@ export default function VFX() {
           Nous concevons des effets visuels saisissants pour renforcer l'impact
           de vos images et immerser votre audience.
         </p>
+        <ServiceSection
+          title="Expertises"
+          text="Des effets sur mesure pour un rendu spectaculaire."
+          items={[
+            'Intégration avancée',
+            'Simulations physiques',
+            'Compositing final',
+          ]}
+          ctaText="Collaborer avec nous"
+          ctaHref="/contact"
+        />
       </motion.main>
     </>
   );

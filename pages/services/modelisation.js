@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import theme from '../../styles/theme';
+import ServiceSection from '../../components/ServiceSection';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -38,6 +39,17 @@ export default function Modelisation() {
           Nous réalisons des modèles 3D précis et optimisés pour vos besoins,
           qu'il s'agisse de prototypes ou de visuels finalisés.
         </p>
+        <ServiceSection
+          title="Nos prestations"
+          text="Une modélisation sur mesure pour chaque projet."
+          items={[
+            'Modèles haute fidélité',
+            'Optimisation pour le temps réel',
+            'Texturing et shading',
+          ]}
+          ctaText="Parler de votre idée"
+          ctaHref="/contact"
+        />
       </motion.main>
     </>
   );

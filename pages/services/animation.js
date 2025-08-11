@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import theme from '../../styles/theme';
+import ServiceSection from '../../components/ServiceSection';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -38,6 +39,17 @@ export default function Animation() {
           Nous produisons des animations fluides pour le cinéma, la publicité ou
           la communication interne.
         </p>
+        <ServiceSection
+          title="Ce que nous faisons"
+          text="Des solutions d'animation adaptées à vos objectifs."
+          items={[
+            'Conception de storyboards',
+            'Animations 2D/3D fluides',
+            'Rendu et compositing',
+          ]}
+          ctaText="Démarrer un projet"
+          ctaHref="/contact"
+        />
       </motion.main>
     </>
   );
