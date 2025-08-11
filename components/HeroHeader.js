@@ -1,7 +1,11 @@
 import { useEffect, useRef } from 'react';
 import theme from '../styles/theme';
 
-export default function HeroHeader() {
+export default function HeroHeader({
+  title = "Studio d'animation 3D – Mon Portfolio",
+  baseline,
+  backgroundImage = '/assets/images/PAGES_0_Couverture.jpg'
+}) {
   const ref = useRef(null);
 
   useEffect(() => {
@@ -19,19 +23,24 @@ export default function HeroHeader() {
     <header
       ref={ref}
       style={{
-        backgroundImage: 'url(/assets/images/PAGES_0_Couverture.jpg)',
+        backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '60vh',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
+        textAlign: 'center',
         color: theme.colors.primary,
         fontFamily: theme.fonts.heading,
         marginBottom: theme.spacing.lg
       }}
     >
-      <h1>Studio d'animation 3D – Mon Portfolio</h1>
+      <h1>{title}</h1>
+      {baseline && (
+        <p style={{ fontFamily: theme.fonts.body }}>{baseline}</p>
+      )}
     </header>
   );
 }
