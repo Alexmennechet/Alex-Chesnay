@@ -1,9 +1,27 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import theme from '../../styles/theme';
+import BlogCard from '../../components/BlogCard';
 
 const siteUrl = 'https://alex-chesnay.com';
+
+const posts = [
+  {
+    slug: 'premier-article',
+    title: 'Premier article',
+    date: '1 janvier 2023',
+    excerpt: "Introduction au blog et premières actualités.",
+    image: '/assets/images/placeholder2.png'
+  },
+  {
+    slug: 'studio-animation-3d',
+    title: "Studio d'animation 3D : nouveautés",
+    date: '15 février 2023',
+    excerpt: "Les dernières nouveautés du studio d'animation 3D.",
+    image: '/assets/images/placeholder3.png'
+  }
+];
 
 export default function Blog() {
   const title = "Blog - Studio d'animation 3D Alex Chesnay";
@@ -11,6 +29,9 @@ export default function Blog() {
     "Actualités du studio d'animation 3D et articles récents.";
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
   const url = `${siteUrl}/blog`;
+  const [visibleCount, setVisibleCount] = useState(1);
+
+  const loadMore = () => setVisibleCount((c) => c + 1);
 
   return (
     <>
@@ -36,14 +57,18 @@ export default function Blog() {
         transition={{ duration: 0.5 }}
       >
         <h1>Blog du studio d'animation 3D</h1>
-        <ul>
-          <li>
-            <Link href="/blog/premier-article">Premier article</Link>
-          </li>
-          <li>
-            <Link href="/blog/studio-animation-3d">Studio d'animation 3D : nouveautés</Link>
-          </li>
-        </ul>
+        <div className="responsive-grid">
+          {posts.slice(0, visibleCount).map((post) => (
+            <BlogCard key={post.slug} {...post} />
+          ))}
+        </div>
+        {visibleCount < posts.length && (
+          <div style={{ textAlign: 'center', marginTop: theme.spacing.lg }}>
+            <button onClick={loadMore} className="contact-button">
+              Charger plus
+            </button>
+          </div>
+        )}
       </motion.main>
     </>
   );
