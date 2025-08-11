@@ -5,6 +5,13 @@
   box-sizing: border-box;
 }
 
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 :root {
   --cyan: #007A9A;
   --grey-600: #555555;
