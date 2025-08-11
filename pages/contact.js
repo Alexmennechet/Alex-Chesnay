@@ -47,7 +47,7 @@ export default function Contact() {
         body: new URLSearchParams(formData).toString(),
       });
       if (response.ok) {
-        setStatus({ type: 'success', message: 'Message envoyé !' });
+        setStatus({ type: 'success', message: 'Merci, votre message a bien été envoyé.' });
         setForm({ firstName: '', lastName: '', phone: '', email: '', message: '' });
         setRecaptchaToken(null);
         recaptchaRef.current?.reset();
@@ -169,13 +169,18 @@ export default function Contact() {
         <div className="map-wrapper">
           <div className="map-responsive">
             <iframe
-              src="https://www.google.com/maps?q=75001+Paris&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9174186333637!2d2.3364!3d48.8627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671d877f6799d%3A0x8c43efed8a4f6f75!2s75001%20Paris!5e0!3m2!1sfr!2sfr!4v1716660000000!5m2!1sfr!2sfr"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Localisation 75001 Paris"
             ></iframe>
           </div>
+          <p>
+            <a href="https://www.google.com/maps?q=75001+Paris" target="_blank" rel="noopener">
+              Ouvrir dans Google Maps
+            </a>
+          </p>
           <div className="contact-details">
             <p>Adresse : 75001 Paris</p>
             <p>
