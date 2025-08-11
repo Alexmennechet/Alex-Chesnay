@@ -1,0 +1,5 @@
+[[notifications]]
+  type = "form_submission"
+  to = "alex-mennechet@outlook.fr"
+  [notifications.conditions]
+    form = "contact"
