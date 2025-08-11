@@ -145,8 +145,7 @@ button:focus-visible {
   transform: none;
 }
 
-.contact-button,
-.btn-contact {
+.contact-button {
   display: inline-block;
   margin-top: var(--space-md);
   padding: var(--space-sm) var(--space-lg);
@@ -158,8 +157,24 @@ button:focus-visible {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.contact-button:hover,
-.btn-contact:hover {
+.contact-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btn-primary {
+  display: inline-block;
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.btn-primary:hover {
   opacity: 0.9;
   transform: translateY(-2px);
 }
