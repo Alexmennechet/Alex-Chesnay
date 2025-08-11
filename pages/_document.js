@@ -9,18 +9,12 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#1E90FF" />
           <link rel="icon" href="/favicon.ico" />
           <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css"
-              crossOrigin="anonymous"
-              referrerPolicy="no-referrer"
-            />
-            <link
-              rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css"
-              crossOrigin="anonymous"
-              referrerPolicy="no-referrer"
-            />
+          <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+            crossOrigin="anonymous"
+            referrerPolicy="no-referrer"
+          />
           <link
             rel="preload"
             href="/fonts/Raleway-400.woff2"
