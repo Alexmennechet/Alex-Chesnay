@@ -26,9 +26,36 @@ export default function Footer() {
               </li>
             </ul>
             <ul className={styles.social}>
-              <li><a href="https://www.instagram.com/alexchesnay" aria-label="Instagram" target="_blank" rel="noopener"><i className="fa-brands fa-instagram"></i></a></li>
-              <li><a href="https://www.linkedin.com/in/alexchesnay" aria-label="LinkedIn" target="_blank" rel="noopener"><i className="fa-brands fa-linkedin-in"></i></a></li>
-              <li><a href="https://www.artstation.com/alexchesnay" aria-label="ArtStation" target="_blank" rel="noopener"><i className="fa-brands fa-artstation"></i></a></li>
+              <li>
+                <a
+                  href="https://www.instagram.com/alexchesnay"
+                  aria-label="Instagram"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i className="fa-brands fa-instagram" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/alexchesnay"
+                  aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i className="fa-brands fa-linkedin-in" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.artstation.com/alexchesnay"
+                  aria-label="ArtStation"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  <i className="fa-brands fa-artstation" />
+                </a>
+              </li>
             </ul>
           </div>
         </div>
