@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import ReCAPTCHA from 'react-google-recaptcha';
+import dynamic from 'next/dynamic';
 import theme from '../styles/theme';
+
+const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), { ssr: false });
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -185,14 +187,40 @@ export default function Contact() {
           </div>
         </div>
         <style jsx>{`
+          form {
+            display: flex;
+            flex-direction: column;
+            gap: ${theme.spacing.md};
+            margin-top: ${theme.spacing.md};
+          }
+          label {
+            margin-bottom: ${theme.spacing.xs};
+          }
+          input,
+          textarea {
+            width: 100%;
+            padding: ${theme.spacing.sm};
+            border: 1px solid ${theme.colors.grey500};
+            border-radius: ${theme.radii.sm};
+            background: ${theme.colors.white};
+            color: ${theme.colors.text};
+          }
+          button {
+            padding: ${theme.spacing.sm} ${theme.spacing.md};
+            background: ${theme.colors.primary};
+            color: ${theme.colors.white};
+            border: none;
+            border-radius: ${theme.radii.sm};
+            cursor: pointer;
+            margin-top: ${theme.spacing.md};
+          }
           .map-wrapper {
-            margin-top: 2rem;
+            margin-top: ${theme.spacing.lg};
           }
           .map-responsive {
             position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
+            width: 100%;
+            aspect-ratio: 16/9;
           }
           .map-responsive iframe {
             position: absolute;
@@ -203,10 +231,10 @@ export default function Contact() {
             border: 0;
           }
           .contact-details {
-            margin-top: 1rem;
+            margin-top: ${theme.spacing.md};
           }
           .rgpd-note {
-            margin-top: 1rem;
+            margin-top: ${theme.spacing.md};
             font-size: 0.875rem;
           }
         `}</style>
