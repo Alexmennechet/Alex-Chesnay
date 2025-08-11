@@ -47,6 +47,30 @@
   --link-inactive: var(--grey-600);
 }
 
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.content-narrow {
+  max-width: 840px;
+  margin-inline: auto;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+p {
+  text-align: left;
+}
+
+section {
+  padding-block: clamp(48px, 8vw, 72px);
+}
+
 .skip-link {
   position: absolute;
   top: calc(var(--space-40) * -1);
