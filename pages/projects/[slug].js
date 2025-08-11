@@ -9,7 +9,7 @@ import theme from '../../styles/theme';
 const siteUrl = 'https://alex-chesnay.com';
 
 export default function Project({ project, prev, next }) {
-  const url = `${siteUrl}/projects/${project.slug}`;
+  const url = `${siteUrl}/projets/${project.slug}`;
   const image = `${siteUrl}${project.images[0]}`;
   const title = `${project.title} - Projet - Alex Chesnay`;
   const description = project.description;
@@ -100,21 +100,21 @@ export default function Project({ project, prev, next }) {
             </a>
           </section>
 
-          <Link className="back-link" href="/projects">
+          <Link className="back-link" href="/projets/">
             Retour à la galerie
           </Link>
         </div>
 
         <nav className="project-nav">
           {prev ? (
-            <Link className="prev" href={`/projects/${prev.slug}`}>
+            <Link className="prev" href={`/projets/${prev.slug}`}>
               Projet précédent
             </Link>
           ) : (
             <span />
           )}
           {next ? (
-            <Link className="next" href={`/projects/${next.slug}`}>
+            <Link className="next" href={`/projets/${next.slug}`}>
               Projet suivant
             </Link>
           ) : (

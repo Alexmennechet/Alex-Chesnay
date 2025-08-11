@@ -7,7 +7,7 @@ import projects from '../../private/projects.json' assert { type: 'json' };
 
 export default function Header() {
   const { asPath } = useRouter();
-  const [projectsOpen, setProjectsOpen] = useState(asPath.startsWith('/projects'));
+  const [projectsOpen, setProjectsOpen] = useState(asPath.startsWith('/projets'));
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -41,7 +41,7 @@ export default function Header() {
           <summary
             aria-haspopup="menu"
             aria-expanded={projectsOpen}
-            className={asPath.startsWith('/projects') ? styles.active : ''}
+            className={asPath.startsWith('/projets') ? styles.active : ''}
           >
             Projets
           </summary>
@@ -49,8 +49,8 @@ export default function Header() {
             {projects.map((project) => (
               <li key={project.slug} role="none">
                 <Link
-                  href={`/projects/${project.slug}`}
-                  className={asPath === `/projects/${project.slug}` ? styles.active : ''}
+                  href={`/projets/${project.slug}`}
+                  className={asPath === `/projets/${project.slug}` ? styles.active : ''}
                   role="menuitem"
                 >
                   {project.title}
@@ -59,18 +59,18 @@ export default function Header() {
             ))}
           </ul>
         </details>
-        <Link href="/services" className={asPath.startsWith('/services') ? styles.active : ''}>Services</Link>
-        <Link href="/a-propos" className={asPath === '/a-propos' ? styles.active : ''}>À propos</Link>
-        <Link href="/blog" className={asPath.startsWith('/blog') ? styles.active : ''}>Blog</Link>
+        <Link href="/services/" className={asPath.startsWith('/services') ? styles.active : ''}>Services</Link>
+        <Link href="/a-propos/" className={asPath === '/a-propos' ? styles.active : ''}>À propos</Link>
+        <Link href="/blog/" className={asPath.startsWith('/blog') ? styles.active : ''}>Blog</Link>
         <Link
-          href="/contact"
+          href="/contact/"
           className={`${asPath === '/contact' ? styles.active : ''} ${styles.contactLink}`}
         >
           Contact
         </Link>
       </nav>
       <Link
-        href="/contact"
+        href="/contact/"
         className={styles.contactButton}
         style={{ background: theme.colors.cyan, color: theme.colors.white }}
       >
