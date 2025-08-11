@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!toggle || !nav) return;
   toggle.addEventListener('click', () => {
     const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', open);
+    nav.setAttribute('aria-expanded', open);
   });
 });
 
