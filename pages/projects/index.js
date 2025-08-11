@@ -3,24 +3,18 @@ import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
 import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import theme from '../../styles/theme';
-import FilterBar from '../../components/FilterBar';
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 }
-};
 
 const siteUrl = 'https://alex-chesnay.com';
 
 export default function Projects({ projects }) {
-  const [selectedCategory, setSelectedCategory] = useState('Featured');
+  const categories = [
+    'Tous',
+    ...Array.from(new Set(projects.map((p) => p.category)))
+  ];
+  const [filter, setFilter] = useState('Tous');
   const filteredProjects =
-    selectedCategory === 'Featured'
-      ? projects
-      : projects.filter((p) => p.category === selectedCategory);
+    filter === 'Tous' ? projects : projects.filter((p) => p.category === filter);
 
   const title = "Projets - Studio d'animation 3D Alex Chesnay";
   const description =
@@ -44,52 +38,68 @@ export default function Projects({ projects }) {
         <meta name="twitter:image" content={image} />
         <link rel="canonical" href={url} />
       </Head>
-      <motion.main
-        style={{ padding: theme.spacing.lg }}
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
+      <main style={{ padding: theme.spacing.lg }}>
         <h1>Galerie de notre studio d'animation 3D</h1>
-        <FilterBar
-          selectedCategory={selectedCategory}
-          onSelect={setSelectedCategory}
-        />
-        <motion.ul
-          layout
-          className="responsive-grid"
-          style={{
-            listStyle: 'none',
-            padding: 0,
-            margin: `${theme.spacing.lg} 0`,
-            gap: theme.spacing.md
-          }}
+        <nav
+          className="project-filters"
+          style={{ margin: `${theme.spacing.lg} 0` }}
         >
-          <AnimatePresence>
-            {filteredProjects.map((p) => (
-              <motion.li
-                key={p.slug}
-                layout
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-                style={{
-                  background: theme.colors.background,
-                  padding: theme.spacing.md,
-                  borderRadius: '8px',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
-                }}
-              >
-                <Link href={`/projects/${p.slug}`}>{p.title}</Link>
-              </motion.li>
+          <ul
+            style={{
+              listStyle: 'none',
+              display: 'flex',
+              gap: theme.spacing.sm,
+              padding: 0
+            }}
+          >
+            {categories.map((cat) => (
+              <li key={cat}>
+                <button
+                  onClick={() => setFilter(cat)}
+                  style={{
+                    padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
+                    border: `1px solid ${theme.colors.primary}`,
+                    borderRadius: '4px',
+                    background:
+                      filter === cat ? theme.colors.primary : 'transparent',
+                    color:
+                      filter === cat
+                        ? theme.colors.background
+                        : theme.colors.primary,
+                    cursor: 'pointer'
+                  }}
+                >
+                  {cat}
+                </button>
+              </li>
             ))}
-          </AnimatePresence>
-        </motion.ul>
-      </motion.main>
+          </ul>
+        </nav>
+        <section id="projects" className="project-gallery">
+          <div className="grid">
+            {filteredProjects.map((p) => (
+              <Link
+                key={p.slug}
+                href={`/projects/${p.slug}`}
+                className="project-card"
+                data-category={p.category}
+                data-title={p.title}
+              >
+                <img
+                  src={p.images[0]}
+                  alt={p.imageAlts ? p.imageAlts[0] : p.title}
+                  className="project-img"
+                />
+              </Link>
+            ))}
+          </div>
+        </section>
+        <div style={{ textAlign: 'center', marginTop: theme.spacing.lg }}>
+          <Link href="/contact" className="contact-button">
+            Nous contacter
+          </Link>
+        </div>
+      </main>
     </>
   );
 }
