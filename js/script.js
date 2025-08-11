@@ -2,6 +2,8 @@
  * Gestion du menu burger.
  */
 document.addEventListener('DOMContentLoaded', () => {
+  document.body.classList.add('loaded');
+
   const header = document.querySelector('.site-header');
   if (!header) return;
   const toggle = header.querySelector('.menu-toggle');
@@ -11,4 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const open = nav.classList.toggle('open');
     toggle.setAttribute('aria-expanded', open);
   });
+});
+
+window.addEventListener('pageshow', (event) => {
+  if (event.persisted) {
+    document.body.classList.add('loaded');
+  }
 });
