@@ -4,6 +4,13 @@
   <script>document.documentElement.classList.add('js');</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Découvrez les projets 3D, 2D, VFX et réalité virtuelle d'Alex Chesnay." />
+  <meta property="og:title" content="Projets - Alex Chesnay" />
+  <meta property="og:description" content="Découvrez les projets 3D, 2D, VFX et réalité virtuelle d'Alex Chesnay." />
+  <meta property="og:image" content="https://alexchesnay.com/assets/images/ProjetGateauxRendu1.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://alexchesnay.com/projets/" />
   <title>Projets - Alex Chesnay</title>
   <link rel="stylesheet" href="/css/style.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -16,7 +23,7 @@
     <nav class="site-pages" id="primary-menu">
       <ul class="main-nav">
         <li><a href="/">Accueil</a></li>
-        <li><a href="/projets/">Projets</a></li>
+        <li><a href="/projets/" aria-current="page">Projets</a></li>
         <li><a href="/services/">Services</a></li>
         <li><a href="/a-propos/">À propos</a></li>
         <li><a href="/blog/">Blog</a></li>
@@ -27,7 +34,39 @@
 
   <main id="main">
     <h1>Projets</h1>
-    <p>Contenu en cours de création.</p>
+    <p>Découvrez nos réalisations en 3D, 2D, VFX et réalité virtuelle, illustrant notre expertise en image de synthèse et effets visuels.</p>
+
+    <nav class="secondary-nav project-filters open" aria-label="Filtrer les projets">
+      <ul>
+        <li><a href="#" class="active" data-filter="all">Tous</a></li>
+        <li><a href="#" data-filter="3D">3D</a></li>
+        <li><a href="#" data-filter="2D">2D</a></li>
+        <li><a href="#" data-filter="VFX">VFX</a></li>
+        <li><a href="#" data-filter="VR">VR</a></li>
+      </ul>
+    </nav>
+
+    <section id="projects" class="project-gallery">
+      <h2 class="visually-hidden">Galerie des projets</h2>
+      <div class="grid">
+        <a class="project-card" href="/work/project1.html" data-category="3D">
+          <img class="project-img" src="/assets/images/PAGES_0_Couverture.jpg" srcset="/assets/images/PAGES_0_Couverture.jpg" sizes="(max-width: 600px) 100vw, 33vw" alt="Rendu 3D – couverture du magazine PAGES" loading="lazy" decoding="async" />
+        </a>
+        <a class="project-card" href="/work/project2.html" data-category="2D">
+          <img class="project-img" src="/assets/images/project2.png" srcset="/assets/images/project2.png" sizes="(max-width: 600px) 100vw, 33vw" alt="Visuel conceptuel – projet 2" loading="lazy" decoding="async" />
+        </a>
+        <a class="project-card" href="/work/project3.html" data-category="VFX">
+          <img class="project-img" src="/assets/images/project3.png" srcset="/assets/images/project3.png" sizes="(max-width: 600px) 100vw, 33vw" alt="Visuel conceptuel – projet 3" loading="lazy" decoding="async" />
+        </a>
+        <a class="project-card" href="/work/project4.html" data-category="VR">
+          <img class="project-img" src="/assets/images/project4.png" srcset="/assets/images/project4.png" sizes="(max-width: 600px) 100vw, 33vw" alt="Visuel conceptuel – projet 4" loading="lazy" decoding="async" />
+        </a>
+      </div>
+    </section>
+
+    <section class="cta">
+      <a href="/contact/" class="btn-contact">Nous contacter</a>
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -61,5 +100,6 @@
   </footer>
 
   <script src="/js/script.min.js" defer></script>
+  <script src="/js/projects.js" defer></script>
 </body>
 </html>
