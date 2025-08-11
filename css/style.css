@@ -620,21 +620,26 @@ header h1 {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
   padding: 24px;
 }
 
+.card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+}
+
 .card-grid {
   display: grid;
   gap: 24px;
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-  .card-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin: 0 auto;
 }
 
 .map-embed {
