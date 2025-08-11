@@ -1,22 +1,11 @@
 import Head from 'next/head';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import ReCAPTCHA from 'react-google-recaptcha';
-import { generateSecret, generateToken } from '../lib/csrf.js';
 
 const siteUrl = 'https://alex-chesnay.com';
 
-export async function getServerSideProps({ res }) {
-  const secret = generateSecret();
-  const token = generateToken(secret);
-  res.setHeader(
-    'Set-Cookie',
-    `csrfSecret=${secret}; HttpOnly; Path=/; SameSite=Strict`
-  );
-  return { props: { csrfToken: token } };
-}
-
-export default function Contact({ csrfToken }) {
+export default function Contact() {
   const title = "Contact - Studio d'animation 3D Alex Chesnay";
   const description = "Contactez notre studio d'animation 3D via email.";
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
@@ -32,14 +21,6 @@ export default function Contact({ csrfToken }) {
   const [status, setStatus] = useState(null);
   const recaptchaRef = useRef(null);
   const [recaptchaToken, setRecaptchaToken] = useState(null);
-  const [hasConsent, setHasConsent] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const consent = localStorage.getItem('cookieConsent');
-      setHasConsent(consent === 'accepted');
-    }
-  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -47,41 +28,28 @@ export default function Contact({ csrfToken }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setStatus(null);
-    if (!hasConsent) {
-      setStatus({
-        type: 'error',
-        message: 'Veuillez accepter les cookies pour envoyer le formulaire.',
-      });
-      return;
-    }
     if (!recaptchaToken) {
       setStatus({ type: 'error', message: 'Veuillez valider le reCAPTCHA.' });
       return;
     }
+    const formData = {
+      'form-name': 'contact',
+      ...form,
+      'g-recaptcha-response': recaptchaToken,
+    };
     try {
-      const res = await fetch('/api/contact', {
+      const response = await fetch('/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, recaptchaToken, csrfToken }),
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString(),
       });
-      const data = await res.json();
-      if (res.ok) {
+      if (response.ok) {
         setStatus({ type: 'success', message: 'Message envoyé !' });
-        setForm({
-          firstName: '',
-          lastName: '',
-          phone: '',
-          email: '',
-          message: '',
-        });
+        setForm({ firstName: '', lastName: '', phone: '', email: '', message: '' });
         setRecaptchaToken(null);
         recaptchaRef.current?.reset();
       } else {
-        setStatus({
-          type: 'error',
-          message: data.error || 'Une erreur est survenue',
-        });
+        setStatus({ type: 'error', message: 'Une erreur est survenue' });
       }
     } catch (err) {
       setStatus({ type: 'error', message: 'Une erreur est survenue' });
@@ -111,7 +79,20 @@ export default function Contact({ csrfToken }) {
         transition={{ duration: 0.5 }}
       >
         <h1>Contactez notre studio d'animation 3D</h1>
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-recaptcha="true"
+          netlify-honeypot="bot-field"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p hidden>
+            <label>
+              Ne pas remplir : <input name="bot-field" onChange={handleChange} />
+            </label>
+          </p>
           <div>
             <label htmlFor="firstName">Prénom</label>
             <input
@@ -165,16 +146,22 @@ export default function Contact({ csrfToken }) {
               required
             />
           </div>
-          <input type="hidden" name="csrfToken" value={csrfToken} />
+          <ReCAPTCHA
+            ref={recaptchaRef}
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+            onChange={setRecaptchaToken}
+          />
           <button type="submit">Envoyer</button>
-          {hasConsent && (
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-              onChange={setRecaptchaToken}
-            />
-          )}
         </form>
+        {status && (
+          <p className={status.type === 'success' ? 'success' : 'error'}>
+            {status.message}
+          </p>
+        )}
+        <p className="rgpd-note">
+          Les informations recueillies dans ce formulaire sont enregistrées pour permettre de vous recontacter. Consultez notre{' '}
+          <a href="/politique-de-confidentialite">politique de confidentialité</a>.
+        </p>
         <div className="map-wrapper">
           <div className="map-responsive">
             <iframe
@@ -182,6 +169,7 @@ export default function Contact({ csrfToken }) {
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
+              title="Localisation 75001 Paris"
             ></iframe>
           </div>
           <div className="contact-details">
@@ -215,12 +203,11 @@ export default function Contact({ csrfToken }) {
           .contact-details {
             margin-top: 1rem;
           }
+          .rgpd-note {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+          }
         `}</style>
-        {status && (
-          <p className={status.type === 'success' ? 'success' : 'error'}>
-            {status.message}
-          </p>
-        )}
       </motion.main>
     </>
   );

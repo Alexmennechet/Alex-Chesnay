@@ -64,6 +64,7 @@ export default function Header() {
         <Link href="/blog/" className={asPath.startsWith('/blog') ? styles.active : ''}>Blog</Link>
         <Link
           href="/contact/"
+          aria-current={asPath === '/contact' ? 'page' : undefined}
           className={`${asPath === '/contact' ? styles.active : ''} ${styles.contactLink}`}
         >
           Contact
@@ -71,6 +72,7 @@ export default function Header() {
       </nav>
       <Link
         href="/contact/"
+        aria-current={asPath === '/contact' ? 'page' : undefined}
         className={styles.contactButton}
         style={{ background: theme.colors.cyan, color: theme.colors.white }}
       >
