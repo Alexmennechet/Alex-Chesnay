@@ -4,3 +4,10 @@
 /a-propos.html /a-propos 301
 /work /projects 301
 /work/ /projects 301
+/mentions-legales.html /mentions-legales 301
+/politique-confidentialite.html /politique-de-confidentialite 301
+/animation-3d.html /animation-3d 301
+/animation-2d.html /animation-2d 301
+/vfx.html /vfx 301
+/virtual-reality.html /virtual-reality 301
+/work/:slug.html /projects/:slug 301
