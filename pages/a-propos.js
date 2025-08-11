@@ -76,16 +76,28 @@ export default function APropos() {
                 src="/assets/images/clients/client1.svg"
                 alt="Logo du Studio XYZ"
                 style={{ maxWidth: '120px' }}
+                loading="lazy"
+                decoding="async"
+                width={100}
+                height={100}
               />
               <img
                 src="/assets/images/clients/client2.svg"
                 alt="Logo de l'Agence 123"
                 style={{ maxWidth: '120px' }}
+                loading="lazy"
+                decoding="async"
+                width={100}
+                height={100}
               />
               <img
                 src="/assets/images/clients/client3.svg"
                 alt="Logo du partenaire 3"
                 style={{ maxWidth: '120px' }}
+                loading="lazy"
+                decoding="async"
+                width={100}
+                height={100}
               />
             </div>
           </Card>
