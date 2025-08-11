@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+import theme from '../styles/theme';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -26,13 +27,14 @@ export default function PolitiqueDeConfidentialite() {
         <link rel="canonical" href={url} />
       </Head>
       <motion.main
+        style={{ padding: theme.spacing.lg }}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
         <h1>Politique de confidentialité</h1>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Données collectées</h2>
           <p>
             Nous collectons les informations que vous nous fournissez via les formulaires de
@@ -40,14 +42,14 @@ export default function PolitiqueDeConfidentialite() {
             adresse e-mail et toute autre donnée fournie volontairement.
           </p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Finalités</h2>
           <p>
             Les données recueillies sont utilisées pour répondre à vos demandes, améliorer nos
             services et assurer le bon fonctionnement du site.
           </p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Durée de conservation</h2>
           <p>
             Vos informations sont conservées pendant une durée maximale de trois ans à compter de
@@ -55,7 +57,7 @@ export default function PolitiqueDeConfidentialite() {
             légales.
           </p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Droits des utilisateurs</h2>
           <p>
             Vous disposez d'un droit d'accès, de rectification, d'opposition, d'effacement et de
@@ -63,7 +65,7 @@ export default function PolitiqueDeConfidentialite() {
             traitement.
           </p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Contact DPO</h2>
           <p>
             Pour toute question ou pour exercer vos droits, contactez notre délégué à la

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+import theme from '../styles/theme';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -26,25 +27,26 @@ export default function MentionsLegales() {
         <link rel="canonical" href={url} />
       </Head>
         <motion.main
+          style={{ padding: theme.spacing.lg }}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
         <h1>Mentions légales</h1>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Éditeur du site</h2>
           <p>Alex Chesnay</p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Siège social</h2>
           <p>10 rue de la Liberté, 75000 Paris, France</p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Directeur de publication</h2>
           <p>Alex Chesnay</p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Hébergeur</h2>
           <p>
             Vercel Inc.<br />
@@ -53,11 +55,11 @@ export default function MentionsLegales() {
             États-Unis
           </p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Numéro SIREN / SIRET</h2>
           <p>123&nbsp;456&nbsp;789&nbsp;00000</p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Contact</h2>
           <p>
             <a href="mailto:alex-mennechet@outlook.fr">

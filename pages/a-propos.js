@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+import theme from '../styles/theme';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -27,13 +28,14 @@ export default function APropos() {
         <link rel="canonical" href={url} />
       </Head>
       <motion.main
+        style={{ padding: theme.spacing.lg }}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
         <h1>À propos de notre studio d'animation 3D</h1>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>L'équipe</h2>
           <p>
             Notre studio d'animation 3D réunit des spécialistes passionnés de
@@ -41,7 +43,7 @@ export default function APropos() {
             expertise pour donner vie à vos projets.
           </p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Historique</h2>
           <p>
             Depuis nos débuts, nous accompagnons studios et agences dans la
@@ -49,7 +51,7 @@ export default function APropos() {
             relever des défis toujours plus ambitieux.
           </p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Nos valeurs</h2>
           <p>
             Créativité, exigence et écoute sont au cœur de notre démarche. Nous
@@ -57,7 +59,7 @@ export default function APropos() {
             chaque projet.
           </p>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Ils nous font confiance</h2>
           <blockquote>
             « Une collaboration exceptionnelle ! » – Studio XYZ
@@ -90,7 +92,7 @@ export default function APropos() {
             />
           </div>
         </section>
-        <section>
+        <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Certifications et affiliations</h2>
           <p>
             Nous sommes <strong>Autodesk Certified</strong> et membres de la

@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+import theme from '../../styles/theme';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -27,6 +28,7 @@ export default function StudioAnimation3D() {
         <link rel="canonical" href={url} />
       </Head>
       <motion.main
+        style={{ padding: theme.spacing.lg }}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
