@@ -105,8 +105,8 @@ p {
 
 .responsive-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
 }
 
 .video-wrapper {
@@ -199,8 +199,8 @@ button:focus-visible {
 /* Project gallery grid and cards */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: var(--space-md);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
 }
 
 .project-card {
@@ -246,10 +246,6 @@ button:focus-visible {
 }
 
 @media (max-width: 768px) {
-  .responsive-grid {
-    grid-template-columns: 1fr;
-  }
-
   nav ul {
     flex-direction: column;
     gap: var(--space-xs);
@@ -257,5 +253,19 @@ button:focus-visible {
 
   .project-hero .hero-media {
     height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-grid,
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .responsive-grid,
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
