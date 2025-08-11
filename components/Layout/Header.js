@@ -33,7 +33,7 @@ export default function Header() {
           >
             ☰
           </button>
-          <Link href="/" className={asPath === '/' ? styles.active : ''}>Accueil</Link>
+          <Link href="/" className={`${styles.navLink} ${asPath === '/' ? styles.active : ''}`}>Accueil</Link>
           <details
             className={styles.dropdown}
             open={projectsOpen}
@@ -42,7 +42,9 @@ export default function Header() {
             <summary
               aria-haspopup="menu"
               aria-expanded={projectsOpen}
-              className={asPath.startsWith('/projets') ? styles.active : ''}
+              className={`${styles.navLink} ${
+                asPath.startsWith('/projets') ? styles.active : ''
+              }`}
             >
               Projets
             </summary>
@@ -51,7 +53,9 @@ export default function Header() {
                 <li key={project.slug} role="none">
                   <Link
                     href={`/projets/${project.slug}`}
-                    className={asPath === `/projets/${project.slug}` ? styles.active : ''}
+                    className={`${styles.navLink} ${
+                      asPath === `/projets/${project.slug}` ? styles.active : ''
+                    }`}
                     role="menuitem"
                   >
                     {project.title}
@@ -60,13 +64,30 @@ export default function Header() {
               ))}
             </ul>
           </details>
-          <Link href="/services/" className={asPath.startsWith('/services') ? styles.active : ''}>Services</Link>
-          <Link href="/a-propos/" className={asPath === '/a-propos' ? styles.active : ''}>À propos</Link>
-          <Link href="/blog/" className={asPath.startsWith('/blog') ? styles.active : ''}>Blog</Link>
+          <Link
+            href="/services/"
+            className={`${styles.navLink} ${asPath.startsWith('/services') ? styles.active : ''}`}
+          >
+            Services
+          </Link>
+          <Link
+            href="/a-propos/"
+            className={`${styles.navLink} ${asPath === '/a-propos' ? styles.active : ''}`}
+          >
+            À propos
+          </Link>
+          <Link
+            href="/blog/"
+            className={`${styles.navLink} ${asPath.startsWith('/blog') ? styles.active : ''}`}
+          >
+            Blog
+          </Link>
           <Link
             href="/contact/"
             aria-current={asPath === '/contact' ? 'page' : undefined}
-            className={`${asPath === '/contact' ? styles.active : ''} ${styles.contactLink}`}
+            className={`${styles.navLink} ${
+              asPath === '/contact' ? styles.active : ''
+            } ${styles.contactLink}`}
           >
             Contact
           </Link>
