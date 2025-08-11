@@ -528,11 +528,12 @@ header h1 {
 
 .contact-button-small {
   margin-left: auto;
-  padding: var(--space-8) var(--space-16);
+  padding: var(--space-4) var(--space-12);
   background-color: var(--cyan);
   color: var(--white);
   text-decoration: none;
   border-radius: var(--space-4);
+  font-size: var(--fs-16);
   font-weight: 700;
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
