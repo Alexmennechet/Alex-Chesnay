@@ -404,14 +404,14 @@ header h1 {
   .hero {
     display: none;
   }
-  nav ul {
-    flex-direction: column;
-    max-height: 0;
-    background: var(--grey-100);
+  nav {
     width: 100%;
   }
-  nav ul.open {
-    max-height: 400px;
+  nav.open {
+    max-height: 70vh;
+    overflow-y: auto;
+    background: #fff;
+    z-index: 100;
   }
 
 
@@ -558,6 +558,7 @@ header h1 {
   nav ul, .secondary-nav ul{
     flex-direction:column;
     gap:var(--space-16);
+    padding: var(--space-16);
     align-items:center;
     justify-content:flex-start;
   }
