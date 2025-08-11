@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import theme from '../styles/theme';
+import FadeInSection from './FadeInSection';
 
 export default function ServiceSection({ title, text, items, ctaText, ctaHref }) {
   return (
-    <section style={{ marginTop: theme.spacing.xl }}>
+    <FadeInSection style={{ marginTop: theme.spacing.xl }}>
       <h2>{title}</h2>
       <p>{text}</p>
       <ul
@@ -23,6 +24,6 @@ export default function ServiceSection({ title, text, items, ctaText, ctaHref })
       >
         {ctaText}
       </Link>
-    </section>
+    </FadeInSection>
   );
 }

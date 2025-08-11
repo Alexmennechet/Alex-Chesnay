@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import HeroHeader from '../components/HeroHeader';
 import theme from '../styles/theme';
-import { motion } from 'framer-motion';
+import FadeInSection from '../components/FadeInSection';
 import Link from 'next/link';
 
 const siteUrl = 'https://alex-chesnay.com';
@@ -39,19 +39,13 @@ export default function Home() {
             Voir nos réalisations
           </Link>
         </div>
-        <motion.section
-          style={{ padding: theme.spacing.lg }}
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
+        <FadeInSection style={{ padding: theme.spacing.lg }}>
           <h1>Accueil de notre studio d'animation 3D</h1>
           <p>
             Bienvenue sur le portfolio de notre studio d'animation 3D, dédié aux
             images de synthèse et effets visuels.
           </p>
-        </motion.section>
+        </FadeInSection>
       </main>
     </>
   );

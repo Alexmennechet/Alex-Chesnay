@@ -4,4 +4,19 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: var(--space-md);
   margin: var(--space-lg) 0;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(calc(var(--space-xs) * -1));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
 }
