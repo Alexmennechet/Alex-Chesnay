@@ -96,6 +96,7 @@ body {
   line-height: 1.6;
   color: var(--grey-900);
   background-color: var(--white);
+  overflow-x: hidden;
   opacity: 1;
 }
 
