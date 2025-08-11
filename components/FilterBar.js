@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import theme from '../styles/theme';
+import styles from './FilterBar.module.css';
 
 const categories = [
   'Featured',
@@ -10,6 +11,8 @@ const categories = [
 ];
 
 export default function FilterBar({ selectedCategory, onSelect }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <div
       style={{
@@ -22,21 +25,13 @@ export default function FilterBar({ selectedCategory, onSelect }) {
         <motion.button
           key={cat}
           onClick={() => onSelect(cat)}
-          whileHover={{ scale: 1.05 }}
-          style={{
-            padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
-            border: `1px solid ${theme.colors.primary}`,
-            borderRadius: '4px',
-            background:
-              selectedCategory === cat
-                ? theme.colors.primary
-                : theme.colors.background,
-            color:
-              selectedCategory === cat
-                ? theme.colors.background
-                : theme.colors.primary,
-            cursor: 'pointer'
-          }}
+          className={`${styles.button} ${selectedCategory === cat ? styles.buttonActive : ''}`}
+          whileHover={
+            shouldReduceMotion
+              ? {}
+              : { y: `calc(-1 * ${theme.spacing.xs})` }
+          }
+          transition={{ duration: 0.2 }}
         >
           {cat}
         </motion.button>
