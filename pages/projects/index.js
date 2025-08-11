@@ -6,6 +6,12 @@ import { useState } from 'react';
 import theme from '../../styles/theme';
 
 const siteUrl = 'https://alex-chesnay.com';
+const imageSizes = {
+  '/assets/images/project1.png': { width: 1536, height: 1024 },
+  '/assets/images/project2.png': { width: 1536, height: 1024 },
+  '/assets/images/project3.png': { width: 1024, height: 1536 },
+  '/assets/images/project4.png': { width: 1536, height: 1024 }
+};
 
 export default function Projects({ projects }) {
   const categories = [
@@ -77,21 +83,28 @@ export default function Projects({ projects }) {
         </nav>
         <section id="projects" className="project-gallery">
           <div className="grid">
-            {filteredProjects.map((p) => (
-              <Link
-                key={p.slug}
-                href={`/projects/${p.slug}`}
-                className="project-card"
-                data-category={p.category}
-                data-title={p.title}
-              >
-                <img
-                  src={p.images[0]}
-                  alt={p.imageAlts ? p.imageAlts[0] : p.title}
-                  className="project-img"
-                />
-              </Link>
-            ))}
+            {filteredProjects.map((p) => {
+              const size = imageSizes[p.images[0]] || { width: 800, height: 600 };
+              return (
+                <Link
+                  key={p.slug}
+                  href={`/projects/${p.slug}`}
+                  className="project-card"
+                  data-category={p.category}
+                  data-title={p.title}
+                >
+                  <img
+                    src={p.images[0]}
+                    alt={p.imageAlts ? p.imageAlts[0] : p.title}
+                    className="project-img"
+                    loading="lazy"
+                    decoding="async"
+                    width={size.width}
+                    height={size.height}
+                  />
+                </Link>
+              );
+            })}
           </div>
         </section>
         <div style={{ textAlign: 'center', marginTop: theme.spacing.lg }}>

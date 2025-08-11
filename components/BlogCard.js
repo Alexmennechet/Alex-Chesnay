@@ -5,7 +5,15 @@ export default function BlogCard({ title, date, excerpt, slug, image = '/assets/
   return (
     <article className={styles.card}>
       <div className={styles.imageWrapper}>
-        <img src={image} alt={title} className={styles.image} />
+        <img
+          src={image}
+          alt={title}
+          className={styles.image}
+          loading="lazy"
+          decoding="async"
+          width={600}
+          height={400}
+        />
       </div>
       <div className={styles.content}>
         <h2 className={styles.title}>{title}</h2>

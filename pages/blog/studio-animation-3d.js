@@ -44,6 +44,10 @@ export default function StudioAnimation3D() {
           src="/assets/images/ProjetGateauxRendu1.jpg"
           alt="Exemple de rendu d'animation 3D d'un gâteau coloré"
           style={{ maxWidth: '100%', height: 'auto' }}
+          loading="lazy"
+          decoding="async"
+          width={1841}
+          height={1035}
         />
       </motion.main>
     </>

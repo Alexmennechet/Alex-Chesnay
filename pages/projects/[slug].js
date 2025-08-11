@@ -7,6 +7,12 @@ import 'react-medium-image-zoom/dist/styles.css';
 import theme from '../../styles/theme';
 
 const siteUrl = 'https://alex-chesnay.com';
+const imageSizes = {
+  '/assets/images/project1.png': { width: 1536, height: 1024 },
+  '/assets/images/project2.png': { width: 1536, height: 1024 },
+  '/assets/images/project3.png': { width: 1024, height: 1536 },
+  '/assets/images/project4.png': { width: 1536, height: 1024 }
+};
 
 export default function Project({ project, prev, next }) {
   const url = `${siteUrl}/projets/${project.slug}`;
@@ -52,7 +58,10 @@ export default function Project({ project, prev, next }) {
             sizes="100vw"
             alt={project.imageAlts?.[0] || `${project.title} couverture`}
             fetchPriority="high"
+            loading="eager"
             decoding="async"
+            width={imageSizes[project.images[0]]?.width || 800}
+            height={imageSizes[project.images[0]]?.height || 600}
           />
         </header>
         <div className="project-content" style={{ padding: theme.spacing.lg }}>
@@ -78,18 +87,27 @@ export default function Project({ project, prev, next }) {
           <section className="gallery" style={{ margin: `${theme.spacing.lg} 0` }}>
             <h2>Galerie</h2>
             <div className="responsive-grid">
-              {project.images.map((img, idx) => (
-                <Zoom key={idx}>
-                  <img
-                    src={img}
-                    srcSet={`${img} 480w, ${img} 800w`}
-                    sizes="(max-width: 600px) 100vw, 50vw"
-                    alt={project.imageAlts?.[idx] || `${project.title} illustration ${idx + 1}`}
-                    {...(idx === 0 ? { fetchPriority: 'high' } : { loading: 'lazy' })}
-                    decoding="async"
-                  />
-                </Zoom>
-              ))}
+              {project.images.map((img, idx) => {
+                const size = imageSizes[img] || { width: 800, height: 600 };
+                return (
+                  <Zoom key={idx}>
+                    <img
+                      src={img}
+                      srcSet={`${img} 480w, ${img} 800w`}
+                      sizes="(max-width: 600px) 100vw, 50vw"
+                      alt={
+                        project.imageAlts?.[idx] || `${project.title} illustration ${idx + 1}`
+                      }
+                      {...(idx === 0
+                        ? { fetchPriority: 'high', loading: 'eager' }
+                        : { loading: 'lazy' })}
+                      decoding="async"
+                      width={size.width}
+                      height={size.height}
+                    />
+                  </Zoom>
+                );
+              })}
             </div>
           </section>
 
