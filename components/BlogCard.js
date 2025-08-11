@@ -11,8 +11,8 @@ export default function BlogCard({ title, date, excerpt, slug, image = '/assets/
           className={styles.image}
           loading="lazy"
           decoding="async"
-          width={600}
-          height={400}
+          width={640}
+          height={360}
         />
       </div>
       <div className={styles.content}>
