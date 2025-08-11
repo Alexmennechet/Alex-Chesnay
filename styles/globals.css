@@ -48,6 +48,11 @@
   --radius-sm: 4px;
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
 
+  /* typography */
+  --lh-tight: 1.2;
+  --lh-base: 1.5;
+  --lh-relaxed: 1.7;
+
   --max-width: 1200px;
 }
 
@@ -65,6 +70,37 @@
 body {
   margin: 0;
   padding-top: var(--space-xl);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  line-height: var(--lh-base);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw + 1rem, 4rem);
+  line-height: var(--lh-tight);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw + 0.5rem, 3rem);
+  line-height: var(--lh-tight);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw + 0.5rem, 2.25rem);
+  line-height: var(--lh-base);
+}
+
+p {
+  font-size: clamp(1rem, 2vw + 0.5rem, 1.25rem);
+  line-height: var(--lh-relaxed);
 }
 
 .responsive-grid {
@@ -90,6 +126,12 @@ body {
 button {
   padding: var(--space-sm) var(--space-md);
   min-height: 44px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 .fade-in {
