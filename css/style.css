@@ -908,3 +908,18 @@ header h1 {
 }
 
 main .contact-cta, #content .contact-cta { display:none !important; }
+@media (max-width: 768px) {
+  .cta,
+  .btn-primary,
+  .cta-reel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0 16px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 12px auto 20px;
+  }
+}
