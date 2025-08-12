@@ -852,6 +852,7 @@ header h1 {
   }
 }
 
+
  .btn-contact,
  .contact-button-small,
  .contact-cta {
@@ -887,3 +888,5 @@ header h1 {
     margin: 12px 0;
   }
 }
+
+main .contact-cta, #content .contact-cta { display:none !important; }
