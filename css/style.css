@@ -161,11 +161,14 @@ nav ul li.active {
   display: flex;
   gap: var(--space-16);
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .top-img {
   flex: 1;
-  height: 220px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -388,13 +391,8 @@ header h1 {
 }
 
 @media (max-width: 768px) {
-  .top-gallery {
-    flex-wrap: wrap;
-  }
-
   .top-img {
     width: calc(50% - var(--space-8));
-    height: auto;
   }
 
   .logo {
@@ -460,7 +458,7 @@ header h1 {
 }
 #hero-scroller{
   --gap:var(--space-24);
-  --height:clamp(120px,18vw,220px);
+  --size:clamp(120px,18vw,220px);
   --duration:60s;
   display:flex;
   gap:var(--gap);
@@ -474,8 +472,9 @@ header h1 {
 }
 .marquee-img{
   flex:0 0 auto;            /* overrides .top-img flex:1 */
-  height:var(--height);
-  width:auto;
+  width:var(--size);
+  height:auto;
+  aspect-ratio:16 / 9;
   object-fit:cover;
   border-radius:var(--space-12);
   box-shadow:0 10px var(--space-24) rgba(0,0,0,.06);
@@ -689,6 +688,7 @@ header h1 {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, .05);
   padding: 24px;
+  overflow-wrap: anywhere;
 }
 
 .card img {
