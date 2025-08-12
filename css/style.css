@@ -407,7 +407,20 @@ header h1 {
   }
 
   .secondary-nav a {
-    font-size: var(--fs-20);
+    font-size: clamp(13px, 3.6vw, 16px);
+    margin: 0 clamp(13px, 3.6vw, 16px);
+  }
+
+  .secondary-nav a:hover,
+  .secondary-nav a:focus,
+  .secondary-nav a:active {
+    color: var(--link-active);
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .secondary-nav a[aria-current="page"] {
+    color: var(--link-active);
+    background: rgba(0, 0, 0, 0.08);
   }
 }
 
@@ -610,9 +623,14 @@ header h1 {
     text-decoration: none;
     color: var(--link-inactive);
   }
+  .secondary-nav a{
+    margin: 0 clamp(13px, 3.6vw, 16px);
+  }
   nav a:hover,
+  nav a:focus,
   nav a:active,
   .secondary-nav a:hover,
+  .secondary-nav a:focus,
   .secondary-nav a:active{
     color: var(--link-active);
     background: rgba(0,0,0,.04);
