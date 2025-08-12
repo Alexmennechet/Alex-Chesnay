@@ -744,6 +744,7 @@ header h1 {
 
 .contact-form input,
 .contact-form textarea {
+  width: 100%;
   padding: var(--space-10);
   border: 1px solid var(--grey-200);
   border-radius: var(--space-4);
