@@ -51,7 +51,11 @@
 
   <header class="project-hero">
     <!-- Hero image or video -->
-    <img src="/assets/images/placeholder2.png" srcset="/assets/images/placeholder2.png" sizes="100vw" alt="Image de couverture du modèle de projet" class="hero-media" decoding="async" width="600" height="400" />
+    <picture>
+      <source type="image/avif" srcset="/assets/images/placeholder2-320.avif 320w, /assets/images/placeholder2-640.avif 640w, /assets/images/placeholder2-1280.avif 1280w" sizes="100vw" />
+      <source type="image/webp" srcset="/assets/images/placeholder2-320.webp 320w, /assets/images/placeholder2-640.webp 640w, /assets/images/placeholder2-1280.webp 1280w" sizes="100vw" />
+      <img src="/assets/images/placeholder2-640.png" srcset="/assets/images/placeholder2-320.png 320w, /assets/images/placeholder2-640.png 640w, /assets/images/placeholder2-1280.png 1280w" sizes="100vw" alt="Image de couverture du modèle de projet" class="hero-media" decoding="async" width="600" height="400" />
+    </picture>
   </header>
 
   <main id="main" class="project-content">
@@ -80,7 +84,11 @@
 
     <section class="gallery">
       <h2>Galerie</h2>
-      <img src="/assets/images/placeholder3.png" srcset="/assets/images/placeholder3.png" sizes="100vw" alt="Exemple d’image de galerie pour le modèle" loading="lazy" decoding="async" width="600" height="400" />
+      <picture>
+        <source type="image/avif" srcset="/assets/images/placeholder3-320.avif 320w, /assets/images/placeholder3-640.avif 640w, /assets/images/placeholder3-1280.avif 1280w" sizes="100vw" />
+        <source type="image/webp" srcset="/assets/images/placeholder3-320.webp 320w, /assets/images/placeholder3-640.webp 640w, /assets/images/placeholder3-1280.webp 1280w" sizes="100vw" />
+        <img src="/assets/images/placeholder3-640.png" srcset="/assets/images/placeholder3-320.png 320w, /assets/images/placeholder3-640.png 640w, /assets/images/placeholder3-1280.png 1280w" sizes="100vw" alt="Exemple d’image de galerie pour le modèle" loading="lazy" decoding="async" width="600" height="400" />
+      </picture>
     </section>
 
     <section class="cta">
