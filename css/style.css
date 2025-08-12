@@ -132,6 +132,10 @@ html.js body.loaded {
   opacity: 1;
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
 .logo {
   font-family: 'Raleway', sans-serif;
   font-size: var(--fs-72);
