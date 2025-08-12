@@ -604,8 +604,8 @@ header h1 {
   header {
     padding: 8px 12px;
   }
-  .site-header + * {
-    margin-top: 56px;
+  header + * {
+    margin-top: min(12px, 2.5vh);
   }
   nav ul, .secondary-nav ul{
     display: flex;
