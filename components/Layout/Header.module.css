@@ -5,37 +5,54 @@
   right: 0;
 }
 
-.inner {
+.nav-inner {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
 }
 
-.nav {
+.nav-scroll {
   flex: 1;
+  overflow-x: auto;
+}
+
+.main-menu {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-wrap: nowrap;
+  gap: var(--space-md);
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.menuButton {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
+.main-menu li {
+  flex-shrink: 0;
 }
 
-.nav a,
-.nav summary {
+.navLink {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  padding: var(--space-xs) var(--space-md);
   text-decoration: none;
-  min-height: 44px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
   display: flex;
   align-items: center;
+  min-height: 44px;
   cursor: pointer;
 }
 
-.nav summary::-webkit-details-marker {
+.navLink:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.navLink:active {
+  opacity: 0.8;
+  transform: translateY(0);
+}
+
+.navLink::-webkit-details-marker {
   display: none;
 }
 
@@ -65,65 +82,8 @@
   font-weight: bold;
 }
 
-.navLink {
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  padding: var(--space-xs) var(--space-md);
-  text-decoration: none;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.navLink:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-}
-
-.navLink:active {
-  opacity: 0.8;
-  transform: translateY(0);
-}
-
-.contactButton {
-  margin-left: auto;
-  padding: var(--space-xs) var(--space-md);
-  text-decoration: none;
-  border-radius: var(--radius-sm);
-  font-weight: 700;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.contactButton:hover {
-  opacity: 0.9;
-  transform: translateY(-2px);
-}
-
-@media (max-width: 768px) {
-  .menuButton {
-    display: flex;
-    align-items: center;
-  }
-  .nav a,
-  .nav summary {
-    display: none;
-  }
-  .open a,
-  .open summary {
-    display: flex;
-  }
-  .contactButton {
-    display: none;
-  }
-}
-
-@media (min-width: 769px) {
-  .nav {
-    justify-content: flex-start;
-  }
-
-  .contactLink {
-    display: none;
-  }
+.contact-cta {
+  margin-left: var(--space-md);
+  flex-shrink: 0;
 }
 
