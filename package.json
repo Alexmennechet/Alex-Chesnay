@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "echo \"No tests specified\" && exit 0",
-    "postbuild": "next-sitemap"
+    "postbuild": "next-sitemap",
+    "generate-images": "node scripts/generate-responsive-images.js"
   },
   "dependencies": {
     "framer-motion": "latest",
@@ -21,6 +22,7 @@
     "react-medium-image-zoom": "latest"
   },
   "devDependencies": {
-    "next-sitemap": "latest"
+    "next-sitemap": "latest",
+    "sharp": "^0.33.2"
   }
 }
