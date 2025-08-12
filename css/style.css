@@ -157,8 +157,9 @@ nav ul li {
   color: var(--link-inactive);
 }
 
-nav ul li.active {
+nav ul li.active > a {
   color: var(--link-active);
+  background: rgba(0,0,0,.08);
 }
 
 .top-gallery {
@@ -396,6 +397,10 @@ header h1 {
   display: flex;
   justify-content: center;
   gap: 16px;
+}
+
+.footer-links a[aria-current="page"] {
+  color: var(--link-active);
 }
 
 .footer-socials{
