@@ -814,3 +814,15 @@ header h1 {
   object-fit: cover;
   display: block;
 }
+
+.project-nav a {
+  display: inline-block;
+  padding: 10px 12px;
+  min-height: 44px;
+  color: var(--link-inactive);
+}
+
+.project-nav a:hover,
+.project-nav a:focus {
+  color: var(--link-active);
+}
