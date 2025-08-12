@@ -51,9 +51,8 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Aller au contenu principal</a>
-<header class="site-header">
-  <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">Menu</button>
-  <nav class="site-pages" id="primary-menu">
+<nav class="secondary-nav">
+  <div class="nav-scroll">
     <ul class="main-nav">
       <li class="active"><a href="/" aria-current="page">Accueil</a></li>
       <li><a href="/projets/">Projets</a></li>
@@ -61,9 +60,9 @@
       <li><a href="/a-propos/">À propos</a></li>
       <li><a href="/blog/">Blog</a></li>
     </ul>
-  </nav>
-  <a href="/contact/" class="contact-button-small">Contact</a>
-</header>
+  </div>
+  <a class="btn contact-cta" href="/contact/">Contact</a>
+</nav>
 
   <main id="main">
     <!-- Galerie supérieure (TOP) -->
@@ -81,19 +80,22 @@
       </div>
     </section>
 
-    <section class="main-hero">
-      <h1 class="logo">Alex Chesnay</h1>
-      <nav class="secondary-nav open">
-        <ul>
-          <li><a href="/" class="active" aria-current="page">En vedette</a></li>
-          <li><a href="/animation-3d">Animation 3D</a></li>
-          <li><a href="/animation-2d">Animation 2D</a></li>
-          <li><a href="/vfx">VFX</a></li>
-          <li><a href="/virtual-reality">Réalité virtuelle</a></li>
-        </ul>
-      </nav>
-      <a href="#projects" class="btn-primary">Voir nos réalisations</a>
-    </section>
+      <section class="main-hero">
+        <h1 class="logo">Alex Chesnay</h1>
+        <nav class="secondary-nav">
+          <div class="nav-scroll">
+            <ul>
+              <li><a href="/" class="active" aria-current="page">En vedette</a></li>
+              <li><a href="/animation-3d">Animation 3D</a></li>
+              <li><a href="/animation-2d">Animation 2D</a></li>
+              <li><a href="/vfx">VFX</a></li>
+              <li><a href="/virtual-reality">Réalité virtuelle</a></li>
+            </ul>
+          </div>
+          <a class="btn contact-cta" href="/contact/">Contact</a>
+        </nav>
+        <a href="#projects" class="btn-primary">Voir nos réalisations</a>
+      </section>
 
     <!-- Galerie inférieure (BOTTOM) -->
     <section id="projects" class="project-gallery">
