@@ -567,10 +567,6 @@ header h1 {
   border: none;
   font-size: var(--fs-24);
 }
-.mobile-logo {
-  display: none;
-}
-
 
 .contact-button-small {
   margin-left: auto;
@@ -606,13 +602,6 @@ header h1 {
   .site-header + * {
     margin-top: 56px;
   }
-    .mobile-logo {
-      display: block;
-      font-size: var(--fs-16);
-      font-weight: 700;
-      margin-left: var(--space-12);
-    }
-
   nav ul, .secondary-nav ul{
     display: flex;
     gap: 12px;
