@@ -573,17 +573,53 @@ header h1 {
 }
 
 @media (max-width: 768px){
-  nav, .secondary-nav{ display:none; }
-  nav.open, .secondary-nav.open{ display:block; }
-  .menu-toggle{ display:block; }
-  nav ul, .secondary-nav ul{
-    flex-direction:column;
-    gap:var(--space-16);
-    padding: var(--space-16);
-    align-items:center;
-    justify-content:flex-start;
+  .site-header, .secondary-nav{
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,.06);
   }
-  .contact-button-small{ display:none; }
+  nav ul, .secondary-nav ul{
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    list-style: none;
+    padding: 8px 12px;
+    margin: 0;
+  }
+  nav li, .secondary-nav li{
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+  }
+  nav a, .secondary-nav a{
+    font-size: clamp(13px, 3.6vw, 16px);
+    line-height: 1.25;
+    padding: 6px 10px;
+    border-radius: 9999px;
+    text-decoration: none;
+    color: var(--link-inactive);
+  }
+  nav a:hover,
+  nav a:active,
+  .secondary-nav a:hover,
+  .secondary-nav a:active{
+    color: var(--link-active);
+    background: rgba(0,0,0,.04);
+  }
+  nav a[aria-current="page"],
+  .secondary-nav a[aria-current="page"]{
+    color: var(--link-active);
+    background: rgba(0,0,0,.08);
+  }
+  nav a:focus-visible,
+  .secondary-nav a:focus-visible{
+    outline: 3px solid var(--link-active);
+    outline-offset: 2px;
+  }
 }
 
 .contact-button {
