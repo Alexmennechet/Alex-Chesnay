@@ -35,40 +35,40 @@
 
   <main id="main" class="container">
     <div class="content-narrow">
-      <h1>Contact</h1>
+      <h1 class="text-center">Contact</h1>
       <div class="map-embed">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.9174186333637!2d2.3364!3d48.8627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e671d877f6799d%3A0x8c43efed8a4f6f75!2s75001%20Paris!5e0!3m2!1sfr!2sfr!4v1716660000000!5m2!1sfr!2sfr" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <p class="map-link"><a href="https://www.google.com/maps?q=75001+Paris" target="_blank" rel="noopener">Ouvrir dans Google Maps</a></p>
+        <p class="map-link text-left"><a href="https://www.google.com/maps?q=75001+Paris" target="_blank" rel="noopener" class="btn-primary">Ouvrir dans Google Maps</a></p>
       </div>
+      <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="contact-form">
+        <input type="hidden" name="form-name" value="contact" />
+        <p class="visually-hidden text-left"><label>Ne pas remplir <input name="bot-field" /></label></p>
+        <div class="field">
+          <label for="first-name">Prénom</label>
+          <input id="first-name" name="prenom" required />
+        </div>
+        <div class="field">
+          <label for="last-name">Nom</label>
+          <input id="last-name" name="nom" required />
+        </div>
+        <div class="field">
+          <label for="phone">Téléphone</label>
+          <input id="phone" type="tel" name="telephone" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" name="email" required />
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div data-netlify-recaptcha="true"></div>
+        <button type="submit" class="btn-primary">Envoyer</button>
+        <p class="form-message success visually-hidden text-left">Merci, votre message a bien été envoyé.</p>
+        <p class="form-message error visually-hidden text-left">Une erreur est survenue.</p>
+      </form>
     </div>
-    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="content-narrow contact-form">
-      <input type="hidden" name="form-name" value="contact" />
-      <p class="visually-hidden"><label>Ne pas remplir <input name="bot-field" /></label></p>
-      <div class="field">
-        <label for="first-name">Prénom</label>
-        <input id="first-name" name="prenom" required />
-      </div>
-      <div class="field">
-        <label for="last-name">Nom</label>
-        <input id="last-name" name="nom" required />
-      </div>
-      <div class="field">
-        <label for="phone">Téléphone</label>
-        <input id="phone" type="tel" name="telephone" required />
-      </div>
-      <div class="field">
-        <label for="email">Email</label>
-        <input id="email" type="email" name="email" required />
-      </div>
-      <div class="field">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" required></textarea>
-      </div>
-      <div data-netlify-recaptcha="true"></div>
-      <button type="submit" class="btn-primary">Envoyer</button>
-      <p class="form-message success visually-hidden">Merci, votre message a bien été envoyé.</p>
-      <p class="form-message error visually-hidden">Une erreur est survenue.</p>
-    </form>
   </main>
 
   <footer class="site-footer">
