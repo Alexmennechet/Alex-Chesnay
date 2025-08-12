@@ -557,8 +557,6 @@ header h1 {
 .nav-scroll {
   flex: 1 1 auto;
   min-width: 0;
-  overflow-x: auto;
-  white-space: nowrap;
 }
 
 .main-menu {
@@ -837,48 +835,37 @@ header h1 {
     padding: 8px 12px;
   }
 
-  .secondary-nav {
-    flex: 1 1 auto;
-    min-width: 0;
-    overflow-x: auto;
-    white-space: nowrap;
-  }
-
-  .secondary-nav > ul {
-    display: flex;
-    flex-wrap: nowrap;
-    list-style: none;
+  .secondary-nav ul {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
+    justify-items: center;
+    list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .secondary-nav li {
-    flex: 0 0 auto;
-    display: inline-flex;
-    align-items: center;
-  }
-
   .secondary-nav a {
-    display: inline-block;
-    padding: 6px 10px;
+    display: block;
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: clamp(13px, 3.6vw, 15px);
+    background: #f6f7f8;
     min-height: 44px;
     line-height: 1.25;
-    border-radius: 9999px;
     text-decoration: none;
     color: var(--link-inactive);
+    text-align: center;
   }
 
   .secondary-nav a:hover,
   .secondary-nav a:focus,
   .secondary-nav a:active {
     color: var(--link-active);
-    background: rgba(0, 0, 0, 0.04);
   }
 
   .secondary-nav a[aria-current="page"] {
     color: var(--link-active);
-    background: rgba(0, 0, 0, 0.08);
   }
 }
 
