@@ -115,7 +115,6 @@ button:focus {
 }
 
 .secondary-nav a:focus-visible,
-.nav-scroll .menu a:focus-visible,
 .btn-contact:focus-visible,
 .contact-button-small:focus-visible {
   outline: 2px solid var(--link-active);
@@ -756,63 +755,78 @@ header h1 {
 }
 
 /* TOPBAR MOBILE */
-.topbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: var(--white);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-}
+@media (max-width: 768px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
 
-.topbar__inner {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 8px 12px;
-}
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
 
-.nav-scroll {
-  flex: 1 1 auto;
-  min-width: 0;
-  overflow-x: auto;
-  white-space: nowrap;
-}
+  .topbar__inner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+  }
 
-.nav-scroll .menu {
-  display: flex;
-  flex-wrap: nowrap;
-  list-style: none;
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-}
+  .secondary-nav {
+    flex: 1 1 auto;
+    min-width: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
 
-.nav-scroll .menu li {
-  flex: 0 0 auto;
-  display: inline-flex;
-  align-items: center;
-}
+  .secondary-nav > ul {
+    display: flex;
+    flex-wrap: nowrap;
+    list-style: none;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+  }
 
-.nav-scroll .menu a {
-  display: inline-block;
-  padding: 6px 10px;
-  min-height: 44px;
-  line-height: 1.25;
-  border-radius: 9999px;
-  text-decoration: none;
-  color: var(--link-inactive);
-}
+  .secondary-nav li {
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+  }
 
-.nav-scroll .menu a:hover,
-.nav-scroll .menu a:focus,
-.nav-scroll .menu a:active {
-  color: var(--link-active);
-  background: rgba(0, 0, 0, 0.04);
-}
+  .secondary-nav a {
+    display: inline-block;
+    padding: 6px 10px;
+    min-height: 44px;
+    line-height: 1.25;
+    border-radius: 9999px;
+    text-decoration: none;
+    color: var(--link-inactive);
+  }
 
-.nav-scroll .menu a[aria-current="page"] {
-  color: var(--link-active);
-  background: rgba(0, 0, 0, 0.08);
+  .secondary-nav a:hover,
+  .secondary-nav a:focus,
+  .secondary-nav a:active {
+    color: var(--link-active);
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .secondary-nav a[aria-current="page"] {
+    color: var(--link-active);
+    background: rgba(0, 0, 0, 0.08);
+  }
+
+  nav ul,
+  .secondary-nav ul {
+    flex-direction: row !important;
+  }
+
+  nav li {
+    width: auto !important;
+  }
 }
 
  .btn-contact,
