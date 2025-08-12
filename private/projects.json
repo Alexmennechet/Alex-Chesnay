@@ -12,7 +12,7 @@
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Alpha.",
-    "category": "3D Animation",
+    "category": "Animation 3D",
     "tools": "Blender, Photoshop",
     "duration": "3 mois",
     "role": "Artiste 3D"
@@ -30,7 +30,7 @@
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Beta.",
-    "category": "2D Animation",
+    "category": "Animation 2D",
     "tools": "After Effects, Premiere",
     "duration": "2 mois",
     "role": "Animateur"
@@ -66,7 +66,7 @@
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Delta.",
-    "category": "Virtual Reality",
+    "category": "Réalité virtuelle",
     "tools": "Unity, C#",
     "duration": "4 mois",
     "role": "Développeur VR"
@@ -84,7 +84,7 @@
     ],
     "video": "https://www.youtube.com/embed/dQw4w9WgXcQ",
     "description": "Description du projet Epsilon.",
-    "category": "Featured",
+    "category": "En vedette",
     "tools": "Python, TensorFlow",
     "duration": "6 mois",
     "role": "Data Scientist"

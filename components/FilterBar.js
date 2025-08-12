@@ -3,11 +3,11 @@ import theme from '../styles/theme';
 import styles from './FilterBar.module.css';
 
 const categories = [
-  'Featured',
-  '3D Animation',
-  '2D Animation',
+  'En vedette',
+  'Animation 3D',
+  'Animation 2D',
   'VFX',
-  'Virtual Reality'
+  'Réalité virtuelle'
 ];
 
 export default function FilterBar({ selectedCategory, onSelect }) {
