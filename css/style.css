@@ -447,17 +447,6 @@ header h1 {
   .hero {
     display: none;
   }
-  nav {
-    width: 100%;
-  }
-  nav.open {
-    max-height: 70vh;
-    overflow-y: auto;
-    background: #fff;
-    z-index: 100;
-  }
-
-
 }
 
 @media (max-width: 480px) {
@@ -539,6 +528,40 @@ header h1 {
 .site-header {
   display: flex;
   align-items: center;
+}
+
+/* Mobile navigation */
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+  padding-block: var(--space-16);
+}
+
+.nav-scroll {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.main-menu {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style: none;
+  gap: var(--space-16);
+  margin: 0;
+  padding: 0;
+}
+
+.main-menu li {
+  flex: 0 0 auto;
+}
+
+.main-menu a {
+  display: inline-block;
+  padding: var(--space-8) var(--space-16);
+  border-radius: 9999px;
 }
 
 .nav-wrapper {
@@ -840,15 +863,6 @@ header h1 {
   .secondary-nav a[aria-current="page"] {
     color: var(--link-active);
     background: rgba(0, 0, 0, 0.08);
-  }
-
-  nav ul,
-  .secondary-nav ul {
-    flex-direction: row !important;
-  }
-
-  nav li {
-    width: auto !important;
   }
 }
 
