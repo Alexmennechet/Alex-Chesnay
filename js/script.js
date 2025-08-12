@@ -43,3 +43,41 @@ window.addEventListener('pageshow', (event) => {
     document.body.classList.add('loaded');
   }
 });
+
+/**
+ * Pagination du blog.
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.querySelector('.load-more');
+  const grid = document.querySelector('.card-grid');
+  if (!button || !grid || button.hidden) return;
+
+  let nextPage = 2;
+  const defaultText = button.textContent;
+
+  button.addEventListener('click', async () => {
+    button.disabled = true;
+    button.textContent = 'Chargement…';
+    try {
+      const res = await fetch(`/blog/page-${nextPage}.html`);
+      if (!res.ok) throw new Error('no more');
+
+      const html = await res.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const articles = doc.querySelectorAll('.card-grid .card');
+      articles.forEach((article) => grid.appendChild(article));
+      nextPage++;
+      button.disabled = false;
+      button.textContent = defaultText;
+
+      if (!doc.querySelector('.load-more')) {
+        button.hidden = true;
+      }
+    } catch (err) {
+      button.textContent = "Plus d'articles";
+      setTimeout(() => {
+        button.hidden = true;
+      }, 1500);
+    }
+  });
+});
