@@ -125,14 +125,22 @@ export default function Project({ project, prev, next }) {
 
         <nav className="project-nav">
           {prev ? (
-            <Link className="prev" href={`/projets/${prev.slug}`}>
+            <Link
+              className="prev"
+              href={`/projets/${prev.slug}`}
+              aria-label="Projet précédent"
+            >
               Projet précédent
             </Link>
           ) : (
             <span />
           )}
           {next ? (
-            <Link className="next" href={`/projets/${next.slug}`}>
+            <Link
+              className="next"
+              href={`/projets/${next.slug}`}
+              aria-label="Projet suivant"
+            >
               Projet suivant
             </Link>
           ) : (
