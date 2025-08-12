@@ -853,6 +853,10 @@ header h1 {
   transform: translateY(-2px);
 }
 @media (max-width: 768px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
   h1,
   .site-title,
   .logo-text {
