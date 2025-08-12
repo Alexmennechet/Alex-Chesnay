@@ -609,6 +609,8 @@ header h1 {
   }
   nav ul, .secondary-nav ul{
     display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
     gap: 12px;
     overflow-x: auto;
     white-space: nowrap;
@@ -621,6 +623,7 @@ header h1 {
     display: inline-flex;
     align-items: center;
     margin: 0;
+    flex: 0 0 auto;
   }
   nav a, .secondary-nav a{
     font-size: clamp(13px, 3.6vw, 16px);
