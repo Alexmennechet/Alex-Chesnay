@@ -175,6 +175,7 @@ nav ul li.active > a {
   gap: var(--space-16);
   width: 100%;
   flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .top-img {
@@ -437,6 +438,20 @@ header h1 {
   .logo {
     text-align: center;
   }
+
+  .hero-marquee img,
+  .top-gallery img,
+  .scroller__content img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 12px;
+  }
+
+  .marquee-img {
+    width: 100%;
+    flex: 0 0 100%;
+  }
 }
 
 @media (max-width: 600px) {
@@ -496,6 +511,7 @@ header h1 {
 .scroller__content{
   display:flex;
   gap:var(--gap);
+  overflow:hidden;
 }
 .marquee-img{
   flex:0 0 auto;            /* overrides .top-img flex:1 */
