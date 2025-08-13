@@ -1054,3 +1054,24 @@ main .contact-cta, #content .contact-cta { display:none !important; }
 .gallery--slider .gallery__next {
   right: 8px;
 }
+
+/* Project content typography */
+.project-content p {
+  margin-block: var(--space-16);
+  font-size: clamp(14px, 3.8vw, 18px);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.project-content blockquote {
+  margin-block: var(--space-32);
+  padding: var(--space-16) var(--space-24);
+  border-left: var(--space-4) solid var(--cyan);
+  background: var(--grey-200);
+}
+
+.project-content blockquote p {
+  margin: 0;
+  font-style: italic;
+}
