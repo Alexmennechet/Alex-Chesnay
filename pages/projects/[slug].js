@@ -51,14 +51,15 @@ export default function Project({ project, prev, next }) {
         />
       </Head>
       <main>
-        <Breadcrumb
-          items={[
-            { label: 'Accueil', href: '/' },
-            { label: 'Projets', href: '/projets/' },
-            { label: project.title }
-          ]}
-        />
         <header className="project-hero">
+          <Breadcrumb
+            items={[
+              { label: 'Accueil', href: '/' },
+              { label: 'Projets', href: '/projets/' },
+              { label: project.title }
+            ]}
+          />
+          <h1>{project.title}</h1>
           <img
             className="hero-media"
             src={project.images[0]}
@@ -74,7 +75,6 @@ export default function Project({ project, prev, next }) {
         </header>
         <div className="project-content" style={{ padding: theme.spacing.lg }}>
           <section className="pitch">
-            <h1>{project.title}</h1>
             <p>{project.description}</p>
           </section>
 
