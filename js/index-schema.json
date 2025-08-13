@@ -1,0 +1,12 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Alex Chesnay",
+  "url": "https://alexchesnay.com/",
+  "email": "alex-mennechet@outlook.fr",
+  "telephone": "+33768563197",
+  "sameAs": [
+    "https://www.instagram.com/alexchesnay",
+    "https://www.linkedin.com/in/alexchesnay"
+  ]
+}
