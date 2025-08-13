@@ -29,7 +29,7 @@ export default function HeroHeader({
     <header
       style={{
         position: 'relative',
-        height: '60vh',
+        minHeight: 'clamp(400px, 60vh, 600px)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
