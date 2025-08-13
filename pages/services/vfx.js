@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import theme from '../../styles/theme';
 import ServiceSection from '../../components/ServiceSection';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -34,6 +35,13 @@ export default function VFX() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Services', href: '/services' },
+            { label: 'VFX' }
+          ]}
+        />
         <h1>VFX</h1>
         <p>
           Nous concevons des effets visuels saisissants pour renforcer l'impact

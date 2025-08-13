@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import HeroHeader from '../components/HeroHeader';
 import Card from '../components/Card';
 import theme from '../styles/theme';
+import Breadcrumb from '../components/Breadcrumb';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -30,6 +31,12 @@ export default function APropos() {
         <link rel="canonical" href={url} />
       </Head>
       <main>
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'À propos' }
+          ]}
+        />
         <HeroHeader title="À propos" baseline="Découvrez notre studio" />
         <motion.div
           style={{ padding: theme.spacing.lg }}

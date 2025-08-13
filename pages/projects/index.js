@@ -4,6 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { useState } from 'react';
 import theme from '../../styles/theme';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const siteUrl = 'https://alex-chesnay.com';
 const imageSizes = {
@@ -45,6 +46,12 @@ export default function Projects({ projects }) {
         <link rel="canonical" href={url} />
       </Head>
       <main style={{ padding: theme.spacing.lg }}>
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Projets' }
+          ]}
+        />
         <h1>Galerie de notre studio d'animation 3D</h1>
         <nav
           className="project-filters"

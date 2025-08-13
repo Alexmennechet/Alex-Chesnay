@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import theme from '../styles/theme';
+import Breadcrumb from '../components/Breadcrumb';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -33,6 +34,12 @@ export default function PolitiqueDeConfidentialite() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Politique de confidentialité' }
+          ]}
+        />
         <h1>Politique de confidentialité</h1>
         <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Données collectées</h2>

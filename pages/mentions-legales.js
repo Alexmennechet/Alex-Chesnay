@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import theme from '../styles/theme';
+import Breadcrumb from '../components/Breadcrumb';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -33,6 +34,12 @@ export default function MentionsLegales() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Mentions légales' }
+          ]}
+        />
         <h1>Mentions légales</h1>
         <section style={{ margin: `${theme.spacing.lg} 0` }}>
           <h2>Éditeur du site</h2>
