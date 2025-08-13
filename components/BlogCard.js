@@ -1,7 +1,14 @@
 import Link from 'next/link';
 import styles from './BlogCard.module.css';
 
-export default function BlogCard({ title, date, excerpt, slug, image = '/assets/images/placeholder2.png' }) {
+export default function BlogCard({
+  title,
+  date,
+  excerpt,
+  slug,
+  image = '/assets/images/placeholder2.png',
+  category
+}) {
   return (
     <article className={styles.card}>
       <div className={styles.imageWrapper}>
@@ -16,6 +23,9 @@ export default function BlogCard({ title, date, excerpt, slug, image = '/assets/
         />
       </div>
       <div className={styles.content}>
+        <Link href={`/blog/${category}`} className={styles.category}>
+          {category}
+        </Link>
         <h2 className={styles.title}>{title}</h2>
         <time className={styles.date}>{date}</time>
         <p className={styles.excerpt}>{excerpt}</p>
