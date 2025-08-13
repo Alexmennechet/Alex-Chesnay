@@ -6,6 +6,7 @@ import theme from '../../styles/theme';
 import Breadcrumb from '../../components/Breadcrumb';
 import Gallery from '../../components/Gallery';
 import SimilarItems from '../../components/SimilarItems';
+import FreeModels from '../../components/FreeModels';
 
 const siteUrl = 'https://alex-chesnay.com';
 const imageSizes = {
@@ -157,6 +158,8 @@ export default function Project({ project, prev, next, related }) {
           </section>
 
           <SimilarItems items={related} imageSizes={imageSizes} />
+
+          <FreeModels />
 
           <Link className="back-link" href="/projets/">
             Retour à la galerie
