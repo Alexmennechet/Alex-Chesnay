@@ -43,6 +43,13 @@ export default function Header() {
         <div className="container">
         <nav>
           <div className={styles['nav-inner']}>
+            <Link
+              href="/"
+              aria-current={asPath === '/' ? 'page' : undefined}
+              className={styles.logo}
+            >
+              Alex Chesnay
+            </Link>
             <button
               className={`${styles.burger} ${menuOpen ? styles.open : ''}`}
               aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
