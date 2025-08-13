@@ -1,5 +1,15 @@
 # Alex-Chesnay
 
+Ce dépôt contient le code source du site [alexchesnay.fr](https://alexchesnay.fr) construit avec **Next.js**. 
+L'ancienne version en HTML statique a été supprimée : toutes les pages doivent désormais être modifiées dans le répertoire `pages/` et les composants React correspondants. 
+
+## Développement
+
+1. Installer les dépendances : `npm install`.
+2. Lancer le serveur de développement : `npm run dev`.
+3. Construire la version de production : `npm run build`.
+4. Netlify utilise `@netlify/plugin-nextjs` pour le déploiement, en publiant le dossier `.next`.
+
 ## Ajouter un projet
 
 1. Ajouter les images du projet dans le dossier `assets/images`.

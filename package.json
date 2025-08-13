@@ -21,6 +21,7 @@
     "react-medium-image-zoom": "latest"
   },
   "devDependencies": {
-    "next-sitemap": "latest"
+    "next-sitemap": "latest",
+    "@netlify/plugin-nextjs": "latest"
   }
 }
