@@ -3,7 +3,7 @@
 /services.html /services/ 301
 /a-propos.html /a-propos/ 301
 /work /projets/ 301
-/work/ /projets/ 301
+/work/* /projets/:splat 301
 /projects /projets/ 301
 /mentions-legales.html /mentions-legales 301
 /politique-confidentialite.html /politique-de-confidentialite 301

@@ -16,7 +16,7 @@ const imageSizes = {
 };
 
 export default function Project({ project, prev, next }) {
-  const url = `${siteUrl}/projets/${project.slug}`;
+  const url = `${siteUrl}/projets/${project.slug}.html`;
   const image = `${siteUrl}${project.images[0]}`;
   const title = `${project.title} - Projet - Alex Chesnay`;
   const description = project.description;
@@ -135,7 +135,7 @@ export default function Project({ project, prev, next }) {
           {prev ? (
             <Link
               className="prev"
-              href={`/projets/${prev.slug}`}
+              href={`/projets/${prev.slug}.html`}
               aria-label="Projet précédent"
             >
               Projet précédent
@@ -146,7 +146,7 @@ export default function Project({ project, prev, next }) {
           {next ? (
             <Link
               className="next"
-              href={`/projets/${next.slug}`}
+              href={`/projets/${next.slug}.html`}
               aria-label="Projet suivant"
             >
               Projet suivant
