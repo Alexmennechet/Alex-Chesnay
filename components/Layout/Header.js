@@ -4,11 +4,25 @@ import { useState, useEffect } from 'react';
 import styles from './Header.module.css';
 import theme from '../../styles/theme';
 import projects from '../../private/projects.json' assert { type: 'json' };
+
+const storeMenu = [
+  { slug: '', title: 'Boutique' },
+  { slug: 'prints', title: 'Prints' },
+  { slug: 'downloads', title: 'Downloads' }
+];
+
+const blogMenu = [
+  { slug: '', title: 'Tous les articles' },
+  { slug: 'news', title: 'Actualités' },
+  { slug: 'tutorials', title: 'Tutoriels' }
+];
 import Topbar from './Topbar';
 
 export default function Header() {
   const { asPath } = useRouter();
   const [projectsOpen, setProjectsOpen] = useState(asPath.startsWith('/projets'));
+  const [storeOpen, setStoreOpen] = useState(asPath.startsWith('/store'));
+  const [blogOpen, setBlogOpen] = useState(asPath.startsWith('/blog'));
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -121,14 +135,74 @@ export default function Header() {
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/blog/"
-                    className={`${styles.navLink} ${
-                      asPath.startsWith('/blog') ? styles.active : ''
-                    }`}
+                  <details
+                    className={styles.dropdown}
+                    open={storeOpen}
+                    onToggle={(e) => setStoreOpen(e.target.open)}
                   >
-                    Blog
-                  </Link>
+                    <summary
+                      aria-haspopup="menu"
+                      aria-expanded={storeOpen}
+                      className={`${styles.navLink} ${
+                        asPath.startsWith('/store') ? styles.active : ''
+                      }`}
+                    >
+                      Store
+                    </summary>
+                    <ul className={styles.dropdownMenu} role="menu">
+                      {storeMenu.map((item) => {
+                        const path = item.slug ? `/store/${item.slug}` : '/store';
+                        return (
+                          <li key={item.slug || 'index'} role="none">
+                            <Link
+                              href={item.slug ? `/store/${item.slug}/` : '/store/'}
+                              className={`${styles.navLink} ${
+                                asPath === path ? styles.active : ''
+                              }`}
+                              role="menuitem"
+                            >
+                              {item.title}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </details>
+                </li>
+                <li>
+                  <details
+                    className={styles.dropdown}
+                    open={blogOpen}
+                    onToggle={(e) => setBlogOpen(e.target.open)}
+                  >
+                    <summary
+                      aria-haspopup="menu"
+                      aria-expanded={blogOpen}
+                      className={`${styles.navLink} ${
+                        asPath.startsWith('/blog') ? styles.active : ''
+                      }`}
+                    >
+                      Blog
+                    </summary>
+                    <ul className={styles.dropdownMenu} role="menu">
+                      {blogMenu.map((item) => {
+                        const path = item.slug ? `/blog/${item.slug}` : '/blog';
+                        return (
+                          <li key={item.slug || 'index'} role="none">
+                            <Link
+                              href={item.slug ? `/blog/${item.slug}/` : '/blog/'}
+                              className={`${styles.navLink} ${
+                                asPath === path ? styles.active : ''
+                              }`}
+                              role="menuitem"
+                            >
+                              {item.title}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </details>
                 </li>
               </ul>
             </div>
