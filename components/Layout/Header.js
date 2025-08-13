@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import styles from './Header.module.css';
 import theme from '../../styles/theme';
 import projects from '../../private/projects.json' assert { type: 'json' };
+import Topbar from './Topbar';
 
 export default function Header() {
   const { asPath } = useRouter();
@@ -28,16 +29,18 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      className={styles.header}
-      style={{
-        background: theme.colors.background,
-        borderBottom: `1px solid ${theme.colors.text}`,
-        color: theme.colors.text,
-        padding: 'var(--space-md) 0'
-      }}
-    >
-      <div className="container">
+    <>
+      <Topbar />
+      <header
+        className={styles.header}
+        style={{
+          background: theme.colors.background,
+          borderBottom: `1px solid ${theme.colors.text}`,
+          color: theme.colors.text,
+          padding: 'var(--space-md) 0'
+        }}
+      >
+        <div className="container">
         <nav>
           <div className={styles['nav-inner']}>
             <button
@@ -136,5 +139,6 @@ export default function Header() {
         </nav>
       </div>
     </header>
+  </>
   );
 }
