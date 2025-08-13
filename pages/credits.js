@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import theme from '../styles/theme';
+import Breadcrumb from '../components/Breadcrumb';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -51,6 +52,12 @@ export default function Credits() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Crédits' }
+          ]}
+        />
         <h1>Crédits</h1>
         <p>Liste des images utilisées sur ce site avec leur source et licence.</p>
         <ul>

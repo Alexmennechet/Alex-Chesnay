@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import theme from '../../styles/theme';
 import ServiceSection from '../../components/ServiceSection';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -35,6 +36,12 @@ export default function Services() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Services' }
+          ]}
+        />
         <h1>Nos services</h1>
         <ServiceSection
           title="Prestations disponibles"

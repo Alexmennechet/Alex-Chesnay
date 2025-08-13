@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 import theme from '../styles/theme';
+import Breadcrumb from '../components/Breadcrumb';
 
 const ReCAPTCHA = dynamic(() => import('react-google-recaptcha'), { ssr: false });
 
@@ -82,6 +83,12 @@ export default function Contact() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Contact' }
+          ]}
+        />
         <h1>Contactez notre studio d'animation 3D</h1>
         <form
           onSubmit={handleSubmit}

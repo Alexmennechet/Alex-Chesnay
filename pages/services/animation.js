@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import theme from '../../styles/theme';
 import ServiceSection from '../../components/ServiceSection';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -34,6 +35,13 @@ export default function Animation() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Services', href: '/services' },
+            { label: 'Animation' }
+          ]}
+        />
         <h1>Animation</h1>
         <p>
           Nous produisons des animations fluides pour le cinéma, la publicité ou

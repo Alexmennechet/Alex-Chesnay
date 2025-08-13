@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { motion } from 'framer-motion';
 import theme from '../../styles/theme';
 import ServiceSection from '../../components/ServiceSection';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -34,6 +35,13 @@ export default function Modelisation() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Services', href: '/services' },
+            { label: 'Modélisation' }
+          ]}
+        />
         <h1>Modélisation</h1>
         <p>
           Nous réalisons des modèles 3D précis et optimisés pour vos besoins,

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import theme from '../../styles/theme';
 import BlogCard from '../../components/BlogCard';
 import posts from '../../private/blog.json' assert { type: 'json' };
+import Breadcrumb from '../../components/Breadcrumb';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -40,6 +41,12 @@ export default function Blog() {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Blog' }
+          ]}
+        />
         <h1>Blog du studio d'animation 3D</h1>
         <div className="responsive-grid">
           {posts.slice(0, visibleCount).map((post) => (
