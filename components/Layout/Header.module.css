@@ -49,6 +49,24 @@
   align-items: center;
   min-height: 44px;
   cursor: pointer;
+  position: relative;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+.navLink:hover::after,
+.navLink:focus-visible::after,
+.navLink:active::after {
+  width: 100%;
 }
 
 .navLink:hover {
