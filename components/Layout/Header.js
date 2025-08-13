@@ -24,6 +24,7 @@ export default function Header() {
   const [storeOpen, setStoreOpen] = useState(asPath.startsWith('/store'));
   const [blogOpen, setBlogOpen] = useState(asPath.startsWith('/blog'));
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : '';
@@ -42,11 +43,20 @@ export default function Header() {
     return () => document.removeEventListener('keydown', handleKey);
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
       <Topbar />
       <header
-        className={styles.header}
+        className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}
         style={{
           background: theme.colors.background,
           borderBottom: `1px solid ${theme.colors.text}`,
