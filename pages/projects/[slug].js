@@ -5,6 +5,7 @@ import Link from 'next/link';
 import theme from '../../styles/theme';
 import Breadcrumb from '../../components/Breadcrumb';
 import Gallery from '../../components/Gallery';
+import SimilarItems from '../../components/SimilarItems';
 
 const siteUrl = 'https://alex-chesnay.com';
 const imageSizes = {
@@ -14,7 +15,7 @@ const imageSizes = {
   '/assets/images/project4.png': { width: 1536, height: 1024 }
 };
 
-export default function Project({ project, prev, next }) {
+export default function Project({ project, prev, next, related }) {
   const url = `${siteUrl}/projets/${project.slug}.html`;
   const image = `${siteUrl}${project.images[0]}`;
   const title = `${project.title} - Projet - Alex Chesnay`;
@@ -155,6 +156,8 @@ export default function Project({ project, prev, next }) {
             </a>
           </section>
 
+          <SimilarItems items={related} imageSizes={imageSizes} />
+
           <Link className="back-link" href="/projets/">
             Retour à la galerie
           </Link>
@@ -203,5 +206,8 @@ export async function getStaticProps({ params }) {
   const project = projects[index];
   const prev = projects[index - 1] || null;
   const next = projects[index + 1] || null;
-  return { props: { project, prev, next } };
+  const related = projects.filter(
+    (p) => p.category === project.category && p.slug !== project.slug
+  );
+  return { props: { project, prev, next, related } };
 }
