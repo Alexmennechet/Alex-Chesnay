@@ -6,7 +6,12 @@ import theme from '../styles/theme';
 export default function HeroHeader({
   title = "Studio d'animation 3D – Mon Portfolio",
   baseline,
-  images = ['/assets/images/PAGES_0_Couverture.jpg']
+  images = [
+    {
+      src: '/assets/images/PAGES_0_Couverture.jpg',
+      alt: 'Image de couverture du portfolio'
+    }
+  ]
 }) {
   const [index, setIndex] = useState(0);
 
@@ -36,11 +41,11 @@ export default function HeroHeader({
         overflow: 'hidden'
       }}
     >
-      {images.map((src, i) => (
+      {images.map((image, i) => (
         <Image
-          key={src}
-          src={src}
-          alt=""
+          key={image.src}
+          src={image.src}
+          alt={image.alt}
           fill
           priority={i === 0}
           loading="lazy"

@@ -37,7 +37,16 @@ export default function APropos() {
             { label: 'À propos' }
           ]}
         />
-        <HeroHeader title="À propos" baseline="Découvrez notre studio" />
+        <HeroHeader
+          title="À propos"
+          baseline="Découvrez notre studio"
+          images={[
+            {
+              src: '/assets/images/PAGES_0_Couverture.jpg',
+              alt: 'Visuel de couverture du portfolio 3D'
+            }
+          ]}
+        />
         <motion.div
           style={{ padding: theme.spacing.lg }}
           initial={{ opacity: 0, y: 40 }}

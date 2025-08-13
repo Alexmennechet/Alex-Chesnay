@@ -34,9 +34,18 @@ export default function Home() {
         <HeroHeader
           baseline="Spécialiste 3D, VFX et réalité virtuelle"
           images={[
-            '/assets/images/PAGES_0_Couverture.jpg',
-            '/assets/images/MENNECHET_Alex_Cognac_1.jpg',
-            '/assets/images/MENNECHET_Alex_Cognac_2.jpg'
+            {
+              src: '/assets/images/PAGES_0_Couverture.jpg',
+              alt: 'Visuel de couverture du portfolio 3D'
+            },
+            {
+              src: '/assets/images/MENNECHET_Alex_Cognac_1.jpg',
+              alt: 'Bouteille de cognac en 3D - vue 1'
+            },
+            {
+              src: '/assets/images/MENNECHET_Alex_Cognac_2.jpg',
+              alt: 'Bouteille de cognac en 3D - vue 2'
+            }
           ]}
         />
         <FadeInSection style={{ padding: theme.spacing.lg }}>
