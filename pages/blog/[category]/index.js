@@ -3,15 +3,24 @@ import { motion } from 'framer-motion';
 import theme from '../../../styles/theme';
 import Breadcrumb from '../../../components/Breadcrumb';
 import BlogCard from '../../../components/BlogCard';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { getPostsByCategory, getCategories } from '../../../lib/blog';
 
 const siteUrl = 'https://alex-chesnay.com';
 
+const POSTS_PER_PAGE = 6;
+
 export default function BlogCategoryPage({ category, posts }) {
+  const router = useRouter();
+  const page = parseInt(router.query.page || '1', 10);
   const title = `${category} - Blog - Studio d'animation 3D Alex Chesnay`;
   const description = `Articles de la catégorie ${category}.`;
   const image = `${siteUrl}/assets/images/PAGES_0_Couverture.jpg`;
   const url = `${siteUrl}/blog/${category}`;
+  const totalPages = Math.ceil(posts.length / POSTS_PER_PAGE);
+  const startIndex = (page - 1) * POSTS_PER_PAGE;
+  const paginatedPosts = posts.slice(startIndex, startIndex + POSTS_PER_PAGE);
 
   return (
     <>
@@ -45,10 +54,18 @@ export default function BlogCategoryPage({ category, posts }) {
         />
         <h1>{category}</h1>
         <div className="responsive-grid">
-          {posts.map((post) => (
+          {paginatedPosts.map((post) => (
             <BlogCard key={post.slug} {...post} />
           ))}
         </div>
+        <nav className="pagination">
+          {page > 1 && (
+            <Link href={`/blog/${category}?page=${page - 1}`}>Précédent</Link>
+          )}
+          {page < totalPages && (
+            <Link href={`/blog/${category}?page=${page + 1}`}>Suivant</Link>
+          )}
+        </nav>
       </motion.main>
     </>
   );
