@@ -2,10 +2,9 @@ import Head from 'next/head';
 import fs from 'fs';
 import path from 'path';
 import Link from 'next/link';
-import Zoom from 'react-medium-image-zoom';
-import 'react-medium-image-zoom/dist/styles.css';
 import theme from '../../styles/theme';
 import Breadcrumb from '../../components/Breadcrumb';
+import Gallery from '../../components/Gallery';
 
 const siteUrl = 'https://alex-chesnay.com';
 const imageSizes = {
@@ -141,29 +140,12 @@ export default function Project({ project, prev, next }) {
 
           <section className="gallery" style={{ margin: `${theme.spacing.lg} 0` }}>
             <h2>Galerie</h2>
-            <div className="responsive-grid">
-              {project.images.map((img, idx) => {
-                const size = imageSizes[img] || { width: 800, height: 600 };
-                return (
-                  <Zoom key={idx}>
-                    <img
-                      src={img}
-                      srcSet={`${img} 480w, ${img} 800w`}
-                      sizes="(max-width: 600px) 100vw, 50vw"
-                      alt={
-                        project.imageAlts?.[idx] || `${project.title} illustration ${idx + 1}`
-                      }
-                      {...(idx === 0
-                        ? { fetchPriority: 'high', loading: 'eager' }
-                        : { loading: 'lazy' })}
-                      decoding="async"
-                      width={size.width}
-                      height={size.height}
-                    />
-                  </Zoom>
-                );
-              })}
-            </div>
+            <Gallery
+              images={project.images}
+              alts={project.imageAlts}
+              sizes={imageSizes}
+              layout="two-columns"
+            />
           </section>
 
           <section className="cta" style={{ margin: `${theme.spacing.lg} 0` }}>
