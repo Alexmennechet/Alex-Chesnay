@@ -382,19 +382,31 @@ header h1 {
 
 .footer-content {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   gap: var(--space-16);
 }
 
-.footer-bottom {
-  position: relative;
-  width: 100%;
+.footer-left,
+.footer-center,
+.footer-right {
+  flex: 1;
+}
+
+.footer-left {
+  text-align: left;
+}
+
+.footer-center {
+  text-align: center;
+}
+
+.footer-right {
+  text-align: right;
 }
 
 .footer-email {
   display: block;
-  text-align: center;
 }
 
 .footer-phone,
@@ -430,12 +442,27 @@ header h1 {
   color:#6f6f6f;
 }
 
+.footer-socials a:focus-visible{
+  outline:2px solid var(--link-active);
+  outline-offset:2px;
+}
+
 @media (max-width: 768px) {
   .top-img {
     width: calc(50% - var(--space-8));
   }
 
   .logo {
+    text-align: center;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-left,
+  .footer-right {
     text-align: center;
   }
 
