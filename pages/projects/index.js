@@ -95,7 +95,7 @@ export default function Projects({ projects }) {
               return (
                 <Link
                   key={p.slug}
-                  href={`/projects/${p.slug}`}
+                    href={`/projets/${p.slug}.html`}
                   className="project-card"
                   data-category={p.category}
                   data-title={p.title}
