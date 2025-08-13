@@ -1,0 +1,9 @@
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Titre du projet",
+  "image": "https://alexchesnay.com/assets/images/placeholder2.png",
+  "datePublished": "2025-08-08",
+  "role": "Description du rôle joué dans ce projet.",
+  "softwareUsed": ["Outil 1", "Outil 2"]
+}

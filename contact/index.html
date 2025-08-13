@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <script>document.documentElement.classList.add('js');</script>
+  <script src="/js/init.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Contactez Alex Chesnay pour vos projets d'animation 3D, 2D, VFX et réalité virtuelle." />
@@ -108,32 +108,7 @@
     </div>
   </div>
 </footer>
-  <script>
-    const form = document.querySelector('form[name="contact"]');
-    const successMessage = form.querySelector('.form-message.success');
-    const errorMessage = form.querySelector('.form-message.error');
-    form.addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const formData = new FormData(form);
-      try {
-        const response = await fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: new URLSearchParams(formData).toString()
-        });
-        if (response.ok) {
-          successMessage.classList.remove('visually-hidden');
-          errorMessage.classList.add('visually-hidden');
-          form.reset();
-        } else {
-          throw new Error('Network response was not ok');
-        }
-      } catch (err) {
-        errorMessage.classList.remove('visually-hidden');
-        successMessage.classList.add('visually-hidden');
-      }
-    });
-  </script>
+  <script src="/js/contact.js"></script>
   <script src="/js/script.min.js" defer></script>
 </body>
 </html>
