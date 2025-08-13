@@ -3,6 +3,7 @@ import HeroHeader from '../components/HeroHeader';
 import theme from '../styles/theme';
 import FadeInSection from '../components/FadeInSection';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -30,15 +31,14 @@ export default function Home() {
         <link rel="canonical" href={url} />
       </Head>
       <main>
-        <HeroHeader />
-        <div style={{ textAlign: 'center', marginBottom: theme.spacing.lg }}>
-          <Link href="/contact/" className="contact-button">
-            Contactez-nous
-          </Link>
-          <Link href="/projets/" className="contact-button" style={{ marginLeft: theme.spacing.md }}>
-            Voir nos réalisations
-          </Link>
-        </div>
+        <HeroHeader
+          baseline="Spécialiste 3D, VFX et réalité virtuelle"
+          images={[
+            '/assets/images/PAGES_0_Couverture.jpg',
+            '/assets/images/MENNECHET_Alex_Cognac_1.jpg',
+            '/assets/images/MENNECHET_Alex_Cognac_2.jpg'
+          ]}
+        />
         <FadeInSection style={{ padding: theme.spacing.lg }}>
           <h1>Accueil de notre studio d'animation 3D</h1>
           <p>
@@ -46,6 +46,102 @@ export default function Home() {
             images de synthèse et effets visuels.
           </p>
         </FadeInSection>
+
+        <section style={{ padding: theme.spacing.lg }}>
+          <h2>En vedette</h2>
+          <div className="responsive-grid">
+            <Image
+              src="/assets/images/MENNECHET_Alex_Cognac_1.jpg"
+              alt="Projet 1"
+              width={400}
+              height={225}
+              loading="lazy"
+            />
+            <Image
+              src="/assets/images/MENNECHET_Alex_Cognac_2.jpg"
+              alt="Projet 2"
+              width={400}
+              height={225}
+              loading="lazy"
+            />
+            <Image
+              src="/assets/images/MENNECHET_Alex_Cognac_3.jpg"
+              alt="Projet 3"
+              width={400}
+              height={225}
+              loading="lazy"
+            />
+          </div>
+        </section>
+
+        <section style={{ padding: theme.spacing.lg, backgroundColor: theme.colors.grey100 }}>
+          <h2>Catégories</h2>
+          <div className="responsive-grid">
+            <div style={{ textAlign: 'center' }}>
+              <Image
+                src="/assets/images/placeholder2.png"
+                alt="Animation 3D"
+                width={300}
+                height={200}
+                loading="lazy"
+              />
+              <p>Animation 3D</p>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <Image
+                src="/assets/images/placeholder3.png"
+                alt="Effets visuels"
+                width={300}
+                height={200}
+                loading="lazy"
+              />
+              <p>Effets visuels</p>
+            </div>
+            <div style={{ textAlign: 'center' }}>
+              <Image
+                src="/assets/images/MontreMaisonEclatIA.jpg"
+                alt="Réalité virtuelle"
+                width={300}
+                height={200}
+                loading="lazy"
+              />
+              <p>Réalité virtuelle</p>
+            </div>
+          </div>
+        </section>
+
+        <section style={{ padding: theme.spacing.lg }}>
+          <h2>Extrait blog</h2>
+          <div className="responsive-grid">
+            <article>
+              <Image
+                src="/assets/images/ProjetGateauxRendu1.jpg"
+                alt="Article de blog"
+                width={400}
+                height={225}
+                loading="lazy"
+              />
+              <h3>Créer des textures réalistes</h3>
+              <p>Découvrez nos conseils pour des rendus gourmands.</p>
+              <Link href="/blog">Lire plus</Link>
+            </article>
+          </div>
+        </section>
+
+        <section style={{ padding: theme.spacing.lg, textAlign: 'center', backgroundColor: theme.colors.grey200 }}>
+          <Image
+            src="/assets/images/MENNECHET_Alex_parfum_rendu1.jpg"
+            alt="Contact"
+            width={600}
+            height={338}
+            loading="lazy"
+          />
+          <h2>Prêt à démarrer votre projet ?</h2>
+          <p>Contactez notre studio pour discuter de vos besoins.</p>
+          <Link href="/contact/" className="btn-primary">
+            Contact
+          </Link>
+        </section>
       </main>
     </>
   );
