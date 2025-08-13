@@ -3,11 +3,12 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import theme from '../../styles/theme';
 import Breadcrumb from '../../components/Breadcrumb';
+import BlogCard from '../../components/BlogCard';
 import { getAllPosts, getPostBySlug } from '../../lib/blog';
 
 const siteUrl = 'https://alex-chesnay.com';
 
-export default function BlogPost({ post }) {
+export default function BlogPost({ post, prevPost, nextPost, relatedPosts }) {
   const url = `${siteUrl}/blog/${post.slug}`;
   const image = `${siteUrl}${post.image}`;
   const title = `${post.title} - Alex Chesnay`;
@@ -54,6 +55,24 @@ export default function BlogPost({ post }) {
           className="post-content"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+        <nav className="post-navigation">
+          {prevPost && (
+            <Link href={`/blog/${prevPost.slug}`}>{`← ${prevPost.title}`}</Link>
+          )}
+          {nextPost && (
+            <Link href={`/blog/${nextPost.slug}`}>{`${nextPost.title} →`}</Link>
+          )}
+        </nav>
+        {relatedPosts.length > 0 && (
+          <section className="related-posts">
+            <h2>Articles similaires</h2>
+            <div className="responsive-grid">
+              {relatedPosts.map((p) => (
+                <BlogCard key={p.slug} {...p} />
+              ))}
+            </div>
+          </section>
+        )}
       </motion.main>
     </>
   );
@@ -67,5 +86,17 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const post = getPostBySlug(params.slug);
-  return { props: { post } };
+  const posts = getAllPosts().sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
+  const index = posts.findIndex((p) => p.slug === params.slug);
+  const prevPost = index > 0 ? posts[index - 1] : null;
+  const nextPost = index < posts.length - 1 ? posts[index + 1] : null;
+  const relatedPosts = posts
+    .filter(
+      (p) => p.category === post.category && p.slug !== post.slug
+    )
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
+  return { props: { post, prevPost, nextPost, relatedPosts } };
 }
