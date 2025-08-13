@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="container">
         <div className={styles.content}>
           <a className={styles.phone} href="tel:0768563197">0768563197</a>
-          <div className={styles.bottom}>
+          <div className={styles.center}>
             <a className={styles.email} href="mailto:alex-mennechet@outlook.fr">alex-mennechet@outlook.fr</a>
             <ul className={styles.links}>
               <li>
@@ -25,39 +25,69 @@ export default function Footer() {
                 <a href="/politique-confidentialite.html">Politique de confidentialité</a>
               </li>
             </ul>
-            <ul className={styles.social}>
-              <li>
-                <a
-                  href="https://www.instagram.com/alexchesnay"
-                  aria-label="Instagram"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <i className="fa-brands fa-instagram" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/alexchesnay"
-                  aria-label="LinkedIn"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <i className="fa-brands fa-linkedin-in" />
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.artstation.com/alexchesnay"
-                  aria-label="ArtStation"
-                  target="_blank"
-                  rel="noopener"
-                >
-                  <i className="fa-brands fa-artstation" />
-                </a>
-              </li>
-            </ul>
           </div>
+          <ul className={styles.social}>
+            <li>
+              <a
+                href="https://www.instagram.com/alexchesnay"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener"
+              >
+                <i className="fa-brands fa-instagram" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/alexchesnay"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener"
+              >
+                <i className="fa-brands fa-linkedin-in" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.artstation.com/alexchesnay"
+                aria-label="ArtStation"
+                target="_blank"
+                rel="noopener"
+              >
+                <i className="fa-brands fa-artstation" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/alexchesnay"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener"
+              >
+                <i className="fa-brands fa-facebook-f" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://vimeo.com/alexchesnay"
+                aria-label="Vimeo"
+                target="_blank"
+                rel="noopener"
+              >
+                <i className="fa-brands fa-vimeo-v" />
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://twitter.com/alexchesnay"
+                aria-label="X (formerly Twitter)"
+                target="_blank"
+                rel="noopener"
+              >
+                <i className="fa-brands fa-x-twitter" />
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </footer>
