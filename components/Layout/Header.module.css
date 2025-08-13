@@ -70,7 +70,7 @@
 }
 
 .dropdownMenu {
-  display: none;
+  display: flex;
   flex-direction: column;
   position: absolute;
   top: 100%;
@@ -81,10 +81,21 @@
   background: inherit;
   border: 1px solid currentColor;
   z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
+
+.dropdown:hover .dropdownMenu,
+.dropdown:focus-within .dropdownMenu,
 .dropdown[open] .dropdownMenu {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .active {
