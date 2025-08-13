@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import theme from '../../styles/theme';
 import Breadcrumb from '../../components/Breadcrumb';
 import { getAllPosts, getPostBySlug } from '../../lib/blog';
@@ -44,7 +45,15 @@ export default function BlogPost({ post }) {
           ]}
         />
         <h1>{post.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post.content }} />
+        <div className="post-meta">
+          <time dateTime={post.date}>{post.date}</time>
+          {' • '}
+          <Link href={`/blog/${post.category}`}>{post.category}</Link>
+        </div>
+        <article
+          className="post-content"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
       </motion.main>
     </>
   );
