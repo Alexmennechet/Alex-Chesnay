@@ -59,7 +59,7 @@ export default function HeroHeader({
       ))}
       <h1>{title}</h1>
       {baseline && (
-        <p style={{ fontFamily: theme.fonts.body }}>{baseline}</p>
+        <p className="hero-tagline">{baseline}</p>
       )}
       <div style={{ marginTop: theme.spacing.md }}>
         <Link href="/projets/" className="btn-primary">
