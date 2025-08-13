@@ -1,10 +1,9 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import fs from 'fs';
-import path from 'path';
 import theme from '../../../styles/theme';
 import Breadcrumb from '../../../components/Breadcrumb';
 import BlogCard from '../../../components/BlogCard';
+import { getPostsByCategory, getCategories } from '../../../lib/blog';
 
 const siteUrl = 'https://alex-chesnay.com';
 
@@ -56,17 +55,13 @@ export default function BlogCategoryPage({ category, posts }) {
 }
 
 export async function getStaticPaths() {
-  const filePath = path.join(process.cwd(), 'private', 'blog.json');
-  const posts = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  const categories = Array.from(new Set(posts.map((p) => p.category)));
+  const categories = getCategories();
   const paths = categories.map((category) => ({ params: { category } }));
   return { paths, fallback: false };
 }
 
 export async function getStaticProps({ params }) {
-  const filePath = path.join(process.cwd(), 'private', 'blog.json');
-  const posts = JSON.parse(fs.readFileSync(filePath, 'utf8'));
-  const filtered = posts.filter((p) => p.category === params.category);
+  const filtered = getPostsByCategory(params.category);
   return { props: { category: params.category, posts: filtered } };
 }
 
