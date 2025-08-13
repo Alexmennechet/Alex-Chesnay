@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Zoom from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 import theme from '../../styles/theme';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const siteUrl = 'https://alex-chesnay.com';
 const imageSizes = {
@@ -50,6 +51,13 @@ export default function Project({ project, prev, next }) {
         />
       </Head>
       <main>
+        <Breadcrumb
+          items={[
+            { label: 'Accueil', href: '/' },
+            { label: 'Projets', href: '/projets/' },
+            { label: project.title }
+          ]}
+        />
         <header className="project-hero">
           <img
             className="hero-media"

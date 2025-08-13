@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Header.module.css';
 import theme from '../../styles/theme';
 import projects from '../../private/projects.json' assert { type: 'json' };
@@ -8,6 +8,24 @@ import projects from '../../private/projects.json' assert { type: 'json' };
 export default function Header() {
   const { asPath } = useRouter();
   const [projectsOpen, setProjectsOpen] = useState(asPath.startsWith('/projets'));
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === 'Escape') {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => document.removeEventListener('keydown', handleKey);
+  }, []);
 
   return (
     <header
@@ -22,7 +40,15 @@ export default function Header() {
       <div className="container">
         <nav>
           <div className={styles['nav-inner']}>
-            <div className={styles['nav-scroll']}>
+            <button
+              className={`${styles.burger} ${menuOpen ? styles.open : ''}`}
+              aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-expanded={menuOpen}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <span />
+            </button>
+            <div className={`${styles['nav-scroll']} ${menuOpen ? styles.open : ''}`}>
               <ul className={styles['main-menu']}>
                 <li>
                   <Link

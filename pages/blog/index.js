@@ -3,25 +3,9 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import theme from '../../styles/theme';
 import BlogCard from '../../components/BlogCard';
+import posts from '../../private/blog.json' assert { type: 'json' };
 
 const siteUrl = 'https://alex-chesnay.com';
-
-const posts = [
-  {
-    slug: 'premier-article',
-    title: 'Premier article',
-    date: '1 janvier 2023',
-    excerpt: "Introduction au blog et premières actualités.",
-    image: '/assets/images/placeholder2.png'
-  },
-  {
-    slug: 'studio-animation-3d',
-    title: "Studio d'animation 3D : nouveautés",
-    date: '15 février 2023',
-    excerpt: "Les dernières nouveautés du studio d'animation 3D.",
-    image: '/assets/images/placeholder3.png'
-  }
-];
 
 export default function Blog() {
   const title = "Blog - Studio d'animation 3D Alex Chesnay";
