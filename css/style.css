@@ -559,6 +559,14 @@ header h1 {
   min-width: 0;
 }
 
+.main-nav {
+  display: none;
+}
+
+.main-nav.open {
+  display: block;
+}
+
 .main-menu {
   display: flex;
   flex-wrap: nowrap;
@@ -613,7 +621,7 @@ header h1 {
 }
 
 .menu-toggle {
-  display: none;
+  display: block;
   background: none;
   border: none;
   font-size: var(--fs-24);
@@ -654,6 +662,9 @@ header h1 {
 }
 
 @media (min-width: 1024px){
+  .main-nav{
+    display:block;
+  }
   .site-header .nav-inner{
     display:flex;
     align-items:center;

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.site-header');
   if (!header) return;
   const toggle = header.querySelector('.menu-toggle');
-  const nav = header.querySelector('nav');
+  const nav = header.querySelector('.main-nav');
   if (!toggle || !nav) return;
 
   let lastFocus = null;
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function setOpen(open) {
     nav.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Fermer' : 'Menu');
     document.body.classList.toggle('menu-open', open);
     toggle.textContent = open ? 'Fermer' : 'Menu';
     if (open) {
@@ -34,6 +35,20 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && nav.classList.contains('open')) {
       setOpen(false);
+      return;
+    }
+    if (e.key === 'Tab' && nav.classList.contains('open')) {
+      const focusables = nav.querySelectorAll('a, button');
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     }
   });
 });
