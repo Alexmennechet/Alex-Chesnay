@@ -78,6 +78,53 @@ export default function Project({ project, prev, next }) {
             <p>{project.description}</p>
           </section>
 
+          {(project.workDone ||
+            project.software ||
+            project.charDesigner ||
+            project.production ||
+            project.year) && (
+            <section className="project-meta" style={{ margin: `${theme.spacing.lg} 0` }}>
+              <dl>
+                {project.workDone && (
+                  <>
+                    <dt>Work&nbsp;Done</dt>
+                    <dd>{project.workDone}</dd>
+                  </>
+                )}
+                {project.software && (
+                  <>
+                    <dt>Software</dt>
+                    <dd>{project.software}</dd>
+                  </>
+                )}
+                {project.charDesigner && (
+                  <>
+                    <dt>Char.&nbsp;Designer</dt>
+                    <dd>
+                      {project.charDesignerLink ? (
+                        <a href={project.charDesignerLink}>{project.charDesigner}</a>
+                      ) : (
+                        project.charDesigner
+                      )}
+                    </dd>
+                  </>
+                )}
+                {project.production && (
+                  <>
+                    <dt>Production</dt>
+                    <dd>{project.production}</dd>
+                  </>
+                )}
+                {project.year && (
+                  <>
+                    <dt>Year</dt>
+                    <dd>{project.year}</dd>
+                  </>
+                )}
+              </dl>
+            </section>
+          )}
+
           <section className="role" style={{ margin: `${theme.spacing.lg} 0` }}>
             <h2>Rôle</h2>
             <p>{project.role}</p>

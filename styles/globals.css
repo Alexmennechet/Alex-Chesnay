@@ -235,6 +235,18 @@ button:focus-visible {
   margin-top: var(--space-md);
 }
 
+.project-meta dl {
+  margin: 0;
+}
+
+.project-meta dt {
+  font-weight: 700;
+}
+
+.project-meta dd {
+  margin: 0 0 var(--space-sm);
+}
+
 /* Project gallery grid and cards */
 .grid {
   display: grid;

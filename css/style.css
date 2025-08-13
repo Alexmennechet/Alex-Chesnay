@@ -871,6 +871,18 @@ header h1 {
   display: block;
 }
 
+.project-meta dl {
+  margin: 0;
+}
+
+.project-meta dt {
+  font-weight: 700;
+}
+
+.project-meta dd {
+  margin: 0 0 var(--space-8);
+}
+
 .project-nav a {
   display: inline-block;
   padding: 10px 12px;
