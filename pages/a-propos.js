@@ -81,7 +81,7 @@ export default function APropos() {
             <aside style={{ marginTop: theme.spacing.md }}>
               <a
                 className="btn-primary"
-                href="/assets/AlexChesnay-CV.pdf"
+                href="/CV_Alex_Chesnay.pdf"
                 target="_blank"
                 rel="noopener"
               >
