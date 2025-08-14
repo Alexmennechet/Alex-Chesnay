@@ -75,7 +75,7 @@ export default function Project({ project, prev, next, related }) {
           />
         </header>
         <div className="project-content" style={{ padding: theme.spacing.lg }}>
-          <section className="pitch">
+            <section className="pitch" data-delay="0" data-duration="600">
             <p>{project.description}</p>
           </section>
 
@@ -84,7 +84,12 @@ export default function Project({ project, prev, next, related }) {
             project.charDesigner ||
             project.production ||
             project.year) && (
-            <section className="project-meta" style={{ margin: `${theme.spacing.lg} 0` }}>
+              <section
+                className="project-meta"
+                style={{ margin: `${theme.spacing.lg} 0` }}
+                data-delay="0"
+                data-duration="600"
+              >
               <dl>
                 {project.workDone && (
                   <>
@@ -126,12 +131,22 @@ export default function Project({ project, prev, next, related }) {
             </section>
           )}
 
-          <section className="role" style={{ margin: `${theme.spacing.lg} 0` }}>
+            <section
+              className="role"
+              style={{ margin: `${theme.spacing.lg} 0` }}
+              data-delay="0"
+              data-duration="600"
+            >
             <h2>Rôle</h2>
             <p>{project.role}</p>
           </section>
 
-          <section className="tools" style={{ margin: `${theme.spacing.lg} 0` }}>
+            <section
+              className="tools"
+              style={{ margin: `${theme.spacing.lg} 0` }}
+              data-delay="0"
+              data-duration="600"
+            >
             <h2>Outils</h2>
             <ul>
               {project.tools.split(',').map((tool) => (
@@ -140,7 +155,12 @@ export default function Project({ project, prev, next, related }) {
             </ul>
           </section>
 
-          <section className="gallery" style={{ margin: `${theme.spacing.lg} 0` }}>
+            <section
+              className="gallery"
+              style={{ margin: `${theme.spacing.lg} 0` }}
+              data-delay="0"
+              data-duration="600"
+            >
             <h2>Galerie</h2>
             <Gallery
               images={project.images}
@@ -150,7 +170,12 @@ export default function Project({ project, prev, next, related }) {
             />
           </section>
 
-          <section className="cta" style={{ margin: `${theme.spacing.lg} 0` }}>
+            <section
+              className="cta"
+              style={{ margin: `${theme.spacing.lg} 0` }}
+              data-delay="0"
+              data-duration="600"
+            >
             <h2>Intéressé ?</h2>
             <a className="contact-button" href="mailto:alex-mennechet@outlook.fr">
               Contactez-nous

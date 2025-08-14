@@ -416,3 +416,23 @@ button:focus-visible {
 .gallery--slider .gallery__next {
   right: 8px;
 }
+section.sr {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+section.sr-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--sr-duration, 600ms) ease-out var(--sr-delay, 0ms),
+    transform var(--sr-duration, 600ms) ease-out var(--sr-delay, 0ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  section.sr,
+  section.sr-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

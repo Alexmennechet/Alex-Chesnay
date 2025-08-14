@@ -63,7 +63,11 @@ export default function FacialModelingTimelapse() {
           GET IT NOW
         </a>
       </Card>
-      <section style={{ marginTop: 'var(--space-xl)' }}>
+        <section
+          style={{ marginTop: 'var(--space-xl)' }}
+          data-delay="0"
+          data-duration="600"
+        >
         <h2>Autres modèles disponibles</h2>
         <ul>
           <li>

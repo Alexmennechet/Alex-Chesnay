@@ -7,6 +7,7 @@ import Footer from '../components/Layout/Footer';
 import CookieBanner from '../components/CookieBanner';
 import Preloader from '../components/Preloader';
 import theme from '../styles/theme';
+import initScrollReveal from '../lib/scrollReveal';
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -25,6 +26,12 @@ export default function MyApp({ Component, pageProps }) {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (!loading) {
+      initScrollReveal();
+    }
+  }, [loading, router.asPath]);
 
   if (loading) {
     return <Preloader />;
