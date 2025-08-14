@@ -11,7 +11,7 @@
   text-align: center;
   font-size: 1.25rem;
   font-weight: 500;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition: all 0.3s ease;
 }
 
 .card:hover,
