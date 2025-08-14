@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import theme from '../../styles/theme';
 import Breadcrumb from '../../components/Breadcrumb';
 import BlogCard from '../../components/BlogCard';
+import styles from './Post.module.css';
 import { getAllPosts, getPostBySlug } from '../../lib/blog';
 
 const siteUrl = 'https://alex-chesnay.com';
@@ -31,7 +31,7 @@ export default function BlogPost({ post, prevPost, nextPost, relatedPosts }) {
         <link rel="canonical" href={url} />
       </Head>
       <motion.main
-        style={{ padding: theme.spacing.lg }}
+        className={styles.container}
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -55,7 +55,7 @@ export default function BlogPost({ post, prevPost, nextPost, relatedPosts }) {
           className="post-content"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
-        <nav className="post-navigation">
+        <nav className={styles.navigation}>
           {prevPost && (
             <Link href={`/blog/${prevPost.slug}`}>{`← ${prevPost.title}`}</Link>
           )}
@@ -64,9 +64,9 @@ export default function BlogPost({ post, prevPost, nextPost, relatedPosts }) {
           )}
         </nav>
         {relatedPosts.length > 0 && (
-          <section className="related-posts">
+          <section className={styles.related}>
             <h2>Articles similaires</h2>
-            <div className="responsive-grid">
+            <div className={`${styles.grid} responsive-grid`}>
               {relatedPosts.map((p) => (
                 <BlogCard key={p.slug} {...p} />
               ))}
