@@ -60,8 +60,7 @@ export default function Header() {
         style={{
           background: theme.colors.background,
           borderBottom: `1px solid ${theme.colors.text}`,
-          color: theme.colors.text,
-          padding: 'var(--space-md) 0'
+          color: theme.colors.text
         }}
       >
         <div className="container">

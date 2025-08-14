@@ -4,11 +4,15 @@
   left: 0;
   right: 0;
   box-shadow: none;
-  transition: box-shadow 0.3s ease;
+  padding: var(--space-md) 0;
+  height: 80px;
+  transition: box-shadow 0.3s ease, padding 0.25s ease, height 0.25s ease;
 }
 
 .scrolled {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: var(--space-sm) 0;
+  height: 60px;
 }
 
 .nav-inner {
