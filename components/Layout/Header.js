@@ -136,7 +136,7 @@ export default function Header() {
                 </li>
                 <li>
                   <Link
-                    href="/a-propos"
+                    href="/a-propos/"
                     className={`${styles.navLink} ${
                       asPath === '/a-propos' ? styles.active : ''
                     }`}
