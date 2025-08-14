@@ -89,23 +89,6 @@ body {
   line-height: var(--lh-base);
 }
 
-a,
-button,
-.project-card {
-  transition: all 0.3s ease;
-}
-
-a:hover {
-  opacity: 0.8;
-  text-decoration: underline;
-}
-
-button:hover,
-.project-card:hover {
-  opacity: 0.8;
-  box-shadow: var(--shadow-sm);
-}
-
 h1,
 h2,
 h3,
@@ -235,7 +218,7 @@ button:focus-visible {
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: opacity 0.3s, transform 0.3s;
+  transition: opacity .4s, transform .4s;
 }
 
 .in-view {
@@ -252,7 +235,7 @@ button:focus-visible {
   text-decoration: none;
   border-radius: var(--radius-sm);
   font-weight: 700;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .contact-button:hover {
@@ -269,7 +252,7 @@ button:focus-visible {
   text-decoration: none;
   border-radius: var(--radius-sm);
   font-weight: 700;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .btn-primary:hover {
@@ -361,7 +344,7 @@ button:focus-visible {
   line-height: 1.3;
   opacity: 0;
   transform: translateY(8px);
-  transition: 0.3s ease;
+  transition: 0.25s ease;
 }
 
 .project-card:hover::after {
