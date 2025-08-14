@@ -5,12 +5,16 @@
   background: var(--color-background);
   color: var(--color-primary);
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .buttonActive {
   background: var(--color-primary);
   color: var(--color-background);
+}
+
+.button:hover {
+  opacity: 0.8;
 }
 
 @media (prefers-reduced-motion: reduce) {
