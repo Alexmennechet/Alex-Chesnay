@@ -54,6 +54,41 @@ export default function APropos() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
+          <section style={{ margin: `${theme.spacing.lg} 0` }}>
+            <h2>Biographie</h2>
+            <p>
+              Passionné par la création d’images de synthèse, Alex Chesnay est un
+              artiste 3D basé à Paris. Retrouvez son parcours sur{' '}
+              <a
+                className="btn"
+                href="https://www.linkedin.com/in/alexchesnay"
+                target="_blank"
+                rel="noopener"
+              >
+                LinkedIn
+              </a>{' '}
+              et{' '}
+              <a
+                className="btn"
+                href="https://www.artstation.com/alexchesnay"
+                target="_blank"
+                rel="noopener"
+              >
+                ArtStation
+              </a>
+              .
+            </p>
+            <aside style={{ marginTop: theme.spacing.md }}>
+              <a
+                className="btn-primary"
+                href="/assets/AlexChesnay-CV.pdf"
+                target="_blank"
+                rel="noopener"
+              >
+                Télécharger mon CV
+              </a>
+            </aside>
+          </section>
           <Card>
             <h2>L'équipe</h2>
             <p>
