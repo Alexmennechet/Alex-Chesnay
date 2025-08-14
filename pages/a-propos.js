@@ -54,7 +54,11 @@ export default function APropos() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <section style={{ margin: `${theme.spacing.lg} 0` }}>
+            <section
+              style={{ margin: `${theme.spacing.lg} 0` }}
+              data-delay="0"
+              data-duration="600"
+            >
             <h2>Biographie</h2>
             <p>
               Passionné par la création d’images de synthèse, Alex Chesnay est un
@@ -97,7 +101,11 @@ export default function APropos() {
               expertise pour donner vie à vos projets.
             </p>
           </Card>
-          <section style={{ margin: `${theme.spacing.lg} 0` }}>
+            <section
+              style={{ margin: `${theme.spacing.lg} 0` }}
+              data-delay="0"
+              data-duration="600"
+            >
             <h2>Historique</h2>
             <p>
               Depuis nos débuts, nous accompagnons studios et agences dans la
@@ -105,7 +113,11 @@ export default function APropos() {
               relever des défis toujours plus ambitieux.
             </p>
           </section>
-          <section style={{ margin: `${theme.spacing.lg} 0` }}>
+            <section
+              style={{ margin: `${theme.spacing.lg} 0` }}
+              data-delay="0"
+              data-duration="600"
+            >
             <h2>Nos valeurs</h2>
             <p>
               Créativité, exigence et écoute sont au cœur de notre démarche. Nous
@@ -161,7 +173,11 @@ export default function APropos() {
               « Des résultats au-delà de nos attentes. » – Agence 123
             </blockquote>
           </Card>
-          <section style={{ margin: `${theme.spacing.lg} 0` }}>
+            <section
+              style={{ margin: `${theme.spacing.lg} 0` }}
+              data-delay="0"
+              data-duration="600"
+            >
             <h2>Certifications et affiliations</h2>
             <p>
               Nous sommes <strong>Autodesk Certified</strong> et membres de la

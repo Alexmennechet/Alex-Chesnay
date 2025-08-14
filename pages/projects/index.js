@@ -88,7 +88,12 @@ export default function Projects({ projects }) {
             ))}
           </ul>
         </nav>
-        <section id="projects" className="project-gallery">
+          <section
+            id="projects"
+            className="project-gallery"
+            data-delay="0"
+            data-duration="600"
+          >
           <div className="grid">
             {filteredProjects.map((p) => {
               const size = imageSizes[p.images[0]] || { width: 800, height: 600 };

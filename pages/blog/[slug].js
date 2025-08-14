@@ -63,8 +63,12 @@ export default function BlogPost({ post, prevPost, nextPost, relatedPosts }) {
             <Link href={`/blog/${nextPost.slug}`}>{`${nextPost.title} →`}</Link>
           )}
         </nav>
-        {relatedPosts.length > 0 && (
-          <section className={styles.related}>
+          {relatedPosts.length > 0 && (
+            <section
+              className={styles.related}
+              data-delay="0"
+              data-duration="600"
+            >
             <h2>Articles similaires</h2>
             <div className={`${styles.grid} responsive-grid`}>
               {relatedPosts.map((p) => (

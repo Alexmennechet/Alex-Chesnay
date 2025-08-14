@@ -27,7 +27,11 @@ export default function StoreIndex() {
         ]}
       />
       <h1>Boutique</h1>
-      <section className="card-grid">
+        <section
+          className="card-grid"
+          data-delay="0"
+          data-duration="600"
+        >
         {products.map((product) => (
           <Card key={product.slug}>
             <img src={product.image} alt={product.title} width="640" height="360" />

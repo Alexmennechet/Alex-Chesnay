@@ -4,7 +4,12 @@ import theme from '../styles/theme';
 export default function SimilarItems({ items, imageSizes }) {
   if (!items || items.length === 0) return null;
   return (
-    <section className="similar-items" style={{ margin: `${theme.spacing.lg} 0` }}>
+    <section
+      className="similar-items"
+      style={{ margin: `${theme.spacing.lg} 0` }}
+      data-delay="0"
+      data-duration="600"
+    >
       <h2>Projets similaires</h2>
       <div className="grid">
         {items.map((p) => {

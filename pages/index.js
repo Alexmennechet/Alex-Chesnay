@@ -56,7 +56,11 @@ export default function Home() {
           </p>
         </FadeInSection>
 
-        <section style={{ padding: theme.spacing.lg }}>
+          <section
+            style={{ padding: theme.spacing.lg }}
+            data-delay="0"
+            data-duration="600"
+          >
           <h2>En vedette</h2>
           <div className="responsive-grid">
             <Image
@@ -83,7 +87,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section style={{ padding: theme.spacing.lg, backgroundColor: theme.colors.grey100 }}>
+          <section
+            style={{ padding: theme.spacing.lg, backgroundColor: theme.colors.grey100 }}
+            data-delay="0"
+            data-duration="600"
+          >
           <h2>Catégories</h2>
           <div className="responsive-grid">
             <div style={{ textAlign: 'center' }}>
@@ -119,7 +127,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section style={{ padding: theme.spacing.lg }}>
+          <section
+            style={{ padding: theme.spacing.lg }}
+            data-delay="0"
+            data-duration="600"
+          >
           <h2>Extrait blog</h2>
           <div className="responsive-grid">
             <article>
@@ -137,7 +149,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section style={{ padding: theme.spacing.lg, textAlign: 'center', backgroundColor: theme.colors.grey200 }}>
+          <section
+            style={{ padding: theme.spacing.lg, textAlign: 'center', backgroundColor: theme.colors.grey200 }}
+            data-delay="0"
+            data-duration="600"
+          >
           <Image
             src="/assets/images/MENNECHET_Alex_parfum_rendu1.jpg"
             alt="Contact"
