@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Chesnay - Réalisateur 3D | Cinématiques Temps Réel</title>
+    
+    <!-- Icône du site (Favicon mise à jour avec la photo de profil) -->
+    <link rel="icon" type="image/jpg" href="https://media.licdn.com/dms/image/v2/D4E03AQETEEW9YSKwOg/profile-displayphoto-scale_200_200/B4EZq808ANHUAY-/0/1764104585845?e=1768435200&v=beta&t=LcIfLv_mbVmQWjoyGobVtvVVKWVawjVvaMcDTh7Khv4">
+    
+    <!-- 1. MOTEUR DE STYLE (Tailwind CSS) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- 2. FEUILLE DE STYLE CARTE (Leaflet) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+    <!-- 3. MOTEUR REACT -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- 4. TRADUCTEUR DE CODE (Babel) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <!-- 5. MOTEUR CARTE (Leaflet JS) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { margin: 0; padding: 0; background: white; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        
+        @keyframes ticker-infinite {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-ticker {
+          display: flex;
+          width: fit-content;
+          animation: ticker-infinite 50s linear infinite;
+        }
+
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        .hover-underline-shine {
+            position: relative;
+            display: inline-block;
+        }
+        .hover-underline-shine::after {
+            content: '';
+            position: absolute;
+            left: 0; bottom: -2px;
+            width: 0; height: 1px;
+            background: linear-gradient(90deg, transparent, #000, transparent);
+            transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0.8;
+        }
+        .hover-underline-shine:hover::after { width: 100%; }
+        
+        button:focus-visible, a:focus-visible {
+            outline: 2px solid #0076ce;
+            outline-offset: 4px;
+        }
+
+        /* Animation de rapprochement (zoom léger) accélérée pour le loader */
+        @keyframes softZoomIn {
+            0% { opacity: 0; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.05); }
+        }
+        .animate-loader-zoom {
+            /* Durée réduite à 1.2s pour plus de réactivité */
+            animation: softZoomIn 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // --- ICONES SVG ---
+        const CustomLogos = {
+            zbrush: (
+                <svg viewBox="0 0 100 100" fill="currentColor" className="h-10 w-auto" aria-label="ZBrush">
+                    <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 92.5C26.6 92.5 7.5 73.4 7.5 50S26.6 7.5 50 7.5 92.5 26.6 92.5 50 73.4 92.5 50 92.5zM27.5 32.5h45v8.8h-23.7L72.5 71.2v8.8h-45v-8.8h23.7L27.5 41.3v-8.8z"/>
+                </svg>
+            ),
+            embergen: (
+                <svg viewBox="0 0 100 100" fill="currentColor" className="h-10 w-auto" aria-label="EmberGen">
+                    <path d="M50 5L10 25v50l40 20 40-20V25L50 5zm0 8.5l30 15v43l-30 15-30-15v-43l30-15zm0 15L30 55h40L50 28.5z"/>
+                </svg>
+            ),
+            vray: (
+                <svg viewBox="0 0 100 100" fill="currentColor" className="h-10 w-auto" aria-label="V-Ray">
+                    <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 90C27.9 90 10 72.1 10 50S27.9 10 50 10s40 17.9 40 40-17.9 40-40 40zm-15-65h10l5 14 5-14h10l-10 28h-10l-10-28z"/>
+                </svg>
+            ),
+            marvelous: (
+                <svg viewBox="0 0 100 100" fill="currentColor" className="h-10 w-auto" aria-label="Marvelous Designer">
+                    <rect x="10" y="10" width="80" height="80" rx="4" fill="none" stroke="currentColor" strokeWidth="8"/>
+                    <path d="M30 30h40v40H30V30zm5 5v30h30V35H35z"/>
+                    <rect x="40" y="45" width="20" height="10" fill="currentColor"/>
+                </svg>
+            )
+        };
+
+        const IconMenu = () => <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>;
+        const IconX = ({ size = 24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>;
+        const IconArrowUpRight = ({ size = 24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>;
+        const IconArrowDown = ({ size = 24 }) => <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><polyline points="19 12 12 19 5 12"></polyline></svg>;
+
+        const PROJECTS = [
+            {
+                id: 'motion-capture',
+                client: "Motion Capture", 
+                category: "MetaHuman / Unreal Engine",
+                role: "Dynamics Artist",
+                year: "2024",
+                video: "https://assets.mixkit.co/videos/preview/mixkit-futuristic-abstract-explosions-23005-large.mp4", 
+                image: "https://i.ytimg.com/vi/ikIpVG7Zjns/maxresdefault.jpg", 
+                description: "Étude avancée sur les simulations dynamiques et l'intégration de captures faciales en temps réel via Unreal Engine.",
+                tech: ["Unreal Engine", "Live Link Face", "MetaHuman"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=1200",
+                    "https://images.unsplash.com/photo-1614728263952-84ea256f9679?q=80&w=1200",
+                    "https://images.unsplash.com/photo-1635336021113-d09f7a30368b?q=80&w=1200"
+                ]
+            },
+            { 
+                id: 'nova', 
+                client: "NOVA", 
+                category: "Blender / Substance / Adobe", 
+                role: "Tech Artist / Shaders",
+                year: "2024", 
+                video: "https://assets.mixkit.co/videos/preview/mixkit-floating-white-spheres-in-abstract-space-23008-large.mp4", 
+                image: "https://media.licdn.com/dms/image/v2/D4E22AQFOTRo9oNvZGg/feedshare-shrink_1280/B4EZakxkZ1H4Ao-/0/1746521222116?e=1768435200&v=beta&t=oDxnGpy8w1IjYx_MCyerBOnM2LmH51y4qRmGFhvUP3A",
+                description: "Installation numérique immersive explorant les matériaux futuristes et les shaders procéduraux.",
+                tech: ["Blender", "Substance Painter", "Adobe"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200",
+                    "https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=1200",
+                    "https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=1200"
+                ]
+            },
+            { 
+                id: 'marvelous', 
+                client: "MARVELOUS", 
+                category: "Simulation / Unreal Engine / Substance", 
+                role: "Modeling / Lighting",
+                year: "2023", 
+                video: "https://assets.mixkit.co/videos/preview/mixkit-slow-motion-of-abstract-white-particles-23007-large.mp4", 
+                image: "https://cdna.artstation.com/p/assets/images/images/094/891/714/large/alex-chesnay-1-rendu1-marvelous2-alex-chesnay.jpg?1766867064",
+                description: "Exploration de la dynamique des textiles et de l'éclairage cinématique haut de gamme.",
+                tech: ["Unreal Engine 5", "Marvelous Designer", "Substance Painter"],
+                gallery: [
+                    "https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=1200",
+                    "https://images.unsplash.com/photo-1550684847-75bdda21cc95?q=80&w=1200",
+                    "https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?q=80&w=1200"
+                ]
+            }
+        ];
+
+        const TECH_LOGOS = [
+            { name: "Unreal Engine", slug: "unrealengine" },
+            { name: "3ds Max", slug: "autodesk" }, 
+            { name: "Blender", slug: "blender" },
+            { name: "Adobe", slug: "adobe" }, 
+            { name: "EmberGen", custom: "embergen" }, 
+            { name: "Unity", slug: "unity" },
+            { name: "ZBrush", custom: "zbrush" }, 
+            { name: "Marvelous Designer", custom: "marvelous" }, 
+            { name: "After Effects", slug: "adobeaftereffects" },
+            { name: "V-Ray", custom: "vray" }
+        ];
+
+        const JOURNEY = [
+            { date: "2025 - 2027", title: "Mastère Design 3D Temps Réel", school: "ICAN Design - Paris" },
+            { date: "2023 - 2025", title: "Bachelor Réalisateur 3D", school: "MJM Graphic Design - Paris" },
+            { date: "2023", title: "Formation Unity / Animation 3D / VR", school: "Waide-Somme - Amiens" },
+            { date: "2022", title: "Game Design", school: "Pop School - Valenciennes" },
+            { date: "2021", title: "Concepteur Web", school: "ID Formation - Laon" },
+            { date: "2018", title: "BTS Photographie", school: "Lycée Jean Rostand - Roubaix" },
+            { date: "2017", title: "Bac Pro Photographie", school: "Lycée Louise de Bettignies - Cambrai" }
+        ];
+
+        const MapComponent = () => {
+            const mapRef = useRef(null);
+            const mapInstance = useRef(null);
+            useEffect(() => {
+                const initMap = () => {
+                    if (!mapRef.current || typeof window.L === 'undefined' || !window.L.map) return;
+                    if (mapInstance.current) return; 
+                    try {
+                        const L = window.L;
+                        mapInstance.current = L.map(mapRef.current, { scrollWheelZoom: false, zoomControl: false, attributionControl: false }).setView([48.8737, 2.3592], 13);
+                        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(mapInstance.current);
+                        const customIcon = L.divIcon({ className: 'custom-pin', html: '<div style="width:16px; height:16px; background:#0076ce; border-radius:50%; border: 3px solid white;"></div>' });
+                        L.marker([48.8737, 2.3592], { icon: customIcon }).addTo(mapInstance.current);
+                    } catch (e) { console.error(e); }
+                };
+                const timer = setInterval(() => { if (window.L) { initMap(); clearInterval(timer); } }, 100);
+                return () => { if (mapInstance.current) mapInstance.current.remove(); };
+            }, []);
+            return <div ref={mapRef} className="h-[300px] md:h-[400px] w-full rounded border border-black/10 bg-[#f8f8f8] relative z-10 shadow-inner" />;
+        };
+
+        const SimpleLoader = () => {
+            return (
+                <div className="relative w-full h-screen flex flex-col items-center justify-center bg-white overflow-hidden">
+                    <div className="flex flex-col items-center justify-center p-14 animate-loader-zoom">
+                        <div className="font-serif text-5xl md:text-6xl italic mb-3 text-black tracking-tight text-center">Alex Chesnay</div>
+                        <div className="text-[10px] font-mono tracking-[0.5em] text-amber-800 uppercase font-bold text-center">Réalisateur 3D</div>
+                    </div>
+                </div>
+            );
+        };
+
+        function App() {
+            const [view, setView] = useState('home'); 
+            const [loading, setLoading] = useState(true);
+            const [menuOpen, setMenuOpen] = useState(false);
+            const [selectedProject, setSelectedProject] = useState(null);
+            const [mouse, setMouse] = useState({ x: 0, y: 0 });
+
+            const profilePic = "https://media.licdn.com/dms/image/v2/D4E03AQETEEW9YSKwOg/profile-displayphoto-scale_200_200/B4EZq808ANHUAY-/0/1764104585845?e=1768435200&v=beta&t=LcIfLv_mbVmQWjoyGobVtvVVKWVawjVvaMcDTh7Khv4";
+            const reelLink = "https://www.linkedin.com/pulse/showreel-graphiste-3d-monteur-vid%C3%A9o-disponible-alex-chesnay-hsyne/";
+
+            useEffect(() => {
+                const handleMouseMove = (e) => setMouse({ x: e.clientX, y: e.clientY });
+                window.addEventListener('mousemove', handleMouseMove);
+                // Le temps de chargement correspond maintenant à l'animation de 1.2s plus un petit buffer
+                const timer = setTimeout(() => setLoading(false), 1400); 
+                return () => { window.removeEventListener('mousemove', handleMouseMove); clearTimeout(timer); };
+            }, []);
+
+            const handleScrollToSection = (id) => {
+                setView('home');
+                setMenuOpen(false);
+                setTimeout(() => {
+                    const el = document.getElementById(id);
+                    if(el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            };
+
+            const openPortfolioPage = () => { setView('portfolio'); setMenuOpen(false); window.scrollTo(0, 0); };
+            const openContactPage = () => { setView('contact'); setMenuOpen(false); window.scrollTo(0, 0); };
+            const handleOpenReel = () => { window.open(reelLink, '_blank'); };
+            const handleOpenProject = (p) => { setSelectedProject(p); setView('project'); window.scrollTo(0, 0); };
+
+            if (loading) return <div className="fixed inset-0 bg-white z-[2000] flex items-center justify-center overflow-hidden"><SimpleLoader /></div>;
+
+            return (
+                <div className="bg-white text-[#1a1a1a] min-h-screen font-sans selection:bg-black selection:text-white overflow-x-hidden">
+                    <div className="fixed inset-0 pointer-events-none z-[1]" style={{ backgroundImage: 'linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px)', backgroundSize: '50px 50px' }} />
+                    <div className="fixed top-0 left-0 w-2 h-2 bg-black rounded-full pointer-events-none mix-blend-difference z-[9999] -translate-x-1/2 -translate-y-1/2 hidden md:block" style={{ transform: `translate3d(${mouse.x}px, ${mouse.y}px, 0)` }} />
+
+                    {/* Menu Overlay */}
+                    <div className={`fixed inset-0 z-[1000] bg-white transition-all duration-700 ${menuOpen ? 'translate-y-0 opacity-100' : '-translate-y-full opacity-0'}`} style={{ clipPath: menuOpen ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)' }}>
+                        <button onClick={() => setMenuOpen(false)} className="absolute top-10 right-10 text-black hover:opacity-50"><IconX size={40} /></button>
+                        <nav className="flex flex-col items-center justify-center h-full gap-8">
+                            <button onClick={() => handleScrollToSection('studio')} className="font-serif text-3xl md:text-5xl italic text-black hover:text-gray-400 transition-colors uppercase tracking-tighter">Profil</button>
+                            <button onClick={openPortfolioPage} className="font-serif text-3xl md:text-5xl italic text-black hover:text-gray-400 transition-colors uppercase tracking-tighter">Portfolio</button>
+                            <button onClick={openContactPage} className="font-serif text-3xl md:text-5xl italic text-black hover:text-gray-400 transition-colors uppercase tracking-tighter">Contact</button>
+                        </nav>
+                    </div>
+
+                    {/* Header */}
+                    <header className="fixed top-0 left-0 w-full z-[140] bg-white/90 backdrop-blur-md px-6 py-4 md:px-12 md:py-6 flex justify-between items-center text-black border-b border-gray-100 shadow-sm">
+                        <div className="flex items-center gap-4 cursor-pointer" onClick={() => setView('home')}>
+                            <div className="relative w-10 h-10 overflow-hidden rounded-full border border-black/10 bg-gray-50 flex items-center justify-center shadow-inner">
+                                <img src={profilePic} alt="Logo" className="w-full h-full object-cover relative z-10 block" />
+                            </div>
+                            <div className="font-serif text-2xl italic tracking-tight hover-underline-shine">Alex Chesnay</div>
+                        </div>
+                        <div className="flex items-center gap-8 font-bold">
+                            <button onClick={handleOpenReel} className="hidden md:block uppercase text-[10px] tracking-[0.4em] hover:opacity-50 transition-all leading-none">Demo Reel</button>
+                            <button onClick={() => setMenuOpen(true)} className="uppercase text-[10px] tracking-[0.3em] flex items-center gap-3 leading-none">Menu <IconMenu /></button>
+                        </div>
+                    </header>
+
+                    <main className="relative z-10 min-h-screen">
+                        {/* Vue Projet Détail */}
+                        {view === 'project' && selectedProject && (
+                            <div className="fade-view pt-32 animate-in fade-in duration-700 bg-white pb-20">
+                                <section className="relative h-[60vh] md:h-[80vh] w-full overflow-hidden bg-black">
+                                    <img src={selectedProject.image} className="w-full h-full object-cover opacity-80" alt={selectedProject.client} />
+                                    <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white" />
+                                    <div className="absolute bottom-20 left-0 w-full container mx-auto px-6 md:px-12 text-white">
+                                        <span className="text-[10px] uppercase tracking-[0.5em] text-white/50 mb-4 block font-bold tracking-widest">{selectedProject.category}</span>
+                                        <h1 className="font-serif text-4xl md:text-6xl italic text-white leading-none drop-shadow-lg uppercase tracking-tight">{selectedProject.client}</h1>
+                                    </div>
+                                </section>
+                                
+                                <div className="container mx-auto px-6 md:px-12 py-16 grid lg:grid-cols-12 gap-16">
+                                    <div className="lg:col-span-8 text-left">
+                                        <h4 className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-6">Brief</h4>
+                                        <p className="font-serif text-2xl md:text-4xl italic leading-tight text-black">{selectedProject.description}</p>
+                                    </div>
+                                    <div className="lg:col-span-4 text-left">
+                                        <h4 className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-4">Pipeline</h4>
+                                        <div className="flex flex-wrap gap-2">{selectedProject.tech.map(t => <span key={t} className="text-[10px] border border-black/10 px-4 py-1 rounded-full text-black">{t}</span>)}</div>
+                                    </div>
+                                </div>
+
+                                {selectedProject.gallery && (
+                                    <div className="container mx-auto px-6 md:px-12 py-12">
+                                        <h4 className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-10 border-b border-gray-100 pb-4">Étude Visuelle</h4>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                                            {selectedProject.gallery.map((img, index) => (
+                                                <div key={index} className="overflow-hidden rounded-lg bg-gray-50 aspect-video group shadow-sm border border-gray-100">
+                                                    <img src={img} alt={`Détail ${index}`} className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-1000 ease-in-out" />
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
+                        {/* Vue Portfolio */}
+                        {view === 'portfolio' && (
+                            <div className="fade-view pt-40 pb-32 container mx-auto px-6 md:px-12 bg-white animate-in fade-in duration-500">
+                                <h1 className="font-serif text-4xl md:text-5xl italic mb-16 text-black uppercase tracking-tighter">Portfolio</h1>
+                                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                    {PROJECTS.map((p) => (
+                                        <div 
+                                            key={p.id} 
+                                            onClick={() => handleOpenProject(p)} 
+                                            className="relative group overflow-hidden bg-gray-100 aspect-video cursor-pointer border border-black/5 rounded-lg"
+                                        >
+                                            <img 
+                                                src={p.image} 
+                                                alt={p.client} 
+                                                className={`w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 ${p.id === 'nova' ? 'object-top' : ''}`} 
+                                            />
+                                            <div className="absolute inset-0 bg-gradient-to-t from-white/95 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                                                <span className="text-[8px] font-mono text-gray-500 mb-2 uppercase tracking-widest">{p.category}</span>
+                                                <h3 className="font-serif italic text-3xl text-black mb-1 uppercase tracking-tight">{p.client}</h3>
+                                                <p className="text-[10px] text-gray-400 uppercase tracking-widest">{p.role}</p>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Vue Contact */}
+                        {view === 'contact' && (
+                            <div className="fade-view pt-40 pb-32 container mx-auto px-6 md:px-12 text-black bg-white animate-in fade-in duration-500">
+                                <h1 className="font-serif text-4xl md:text-5xl italic mb-16 uppercase tracking-tighter text-black">Contact</h1>
+                                <div className="grid lg:grid-cols-2 gap-24">
+                                    <form className="space-y-10" onSubmit={e => e.preventDefault()}>
+                                        <div className="grid md:grid-cols-2 gap-10">
+                                            <div className="space-y-1 relative group text-left">
+                                                <label className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Nom / Entreprise</label>
+                                                <input type="text" className="w-full bg-transparent border-b border-gray-200 py-3 text-lg focus:outline-none focus:border-black transition-colors" placeholder="Votre nom" />
+                                            </div>
+                                            <div className="space-y-1 relative group text-left">
+                                                <label className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Email</label>
+                                                <input type="email" className="w-full bg-transparent border-b border-gray-200 py-3 text-lg focus:outline-none focus:border-black transition-colors" placeholder="email@exemple.com" />
+                                            </div>
+                                        </div>
+                                        <div className="space-y-1 relative group text-left">
+                                            <label className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Sujet</label>
+                                            <select className="w-full bg-transparent border-b border-gray-200 py-3 text-lg focus:outline-none focus:border-black transition-colors cursor-pointer rounded-none">
+                                                <option>Proposition de projet</option><option>Opportunité de travail</option><option>Collaboration</option><option>Autre</option>
+                                            </select>
+                                        </div>
+                                        <div className="space-y-1 relative group text-left">
+                                            <label className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Message</label>
+                                            <textarea className="w-full bg-transparent border-b border-gray-200 py-3 text-lg focus:outline-none focus:border-black transition-colors resize-y min-h-[120px]" rows="3" placeholder="Parlez-moi de votre projet..."></textarea>
+                                        </div>
+                                        <div className="pt-6 text-left">
+                                            <button className="px-12 py-5 bg-black text-white text-[10px] font-bold uppercase tracking-widest hover:bg-gray-800 transition-all transform hover:translate-x-1">Envoyer le message</button>
+                                        </div>
+                                    </form>
+                                    <div className="space-y-12 text-left">
+                                        <div><h4 className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-4">Siège</h4><p className="text-2xl font-light italic">75010 Paris, France</p></div>
+                                        <MapComponent />
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Vue Home */}
+                        {view === 'home' && (
+                            <React.Fragment>
+                                <section className="relative h-screen w-full overflow-hidden flex items-center bg-white">
+                                    <div className="absolute inset-0 z-0">
+                                        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white z-10" />
+                                        <img className="w-full h-full object-cover opacity-30 blur-sm scale-105" src="https://media.licdn.com/dms/image/v2/D4E16AQGnmteeoKXgdQ/profile-displaybackgroundimage-shrink_350_1400/B4EZtlAqOKIUAY-/0/1766926231939?e=1768435200&v=beta&t=oU8ehauIcyzmCsOyTp5hJKMMdaJ0PgXm15pNLKIK9g4" alt="Hero BG" />
+                                    </div>
+                                    <div className="container mx-auto px-6 md:px-12 relative z-20 text-black text-left">
+                                        <h1 className="font-serif text-4xl md:text-5xl lg:text-7xl leading-[0.9] italic tracking-tight uppercase">Production 3D<br/>& Post-prod.</h1>
+                                        <div className="mt-14 max-w-2xl space-y-8">
+                                            <p className="text-xl md:text-2xl font-light text-gray-600 leading-relaxed font-serif italic">Spécialiste CGI, je réalise des cinématiques en temps réel — mise en scène, lighting et rendu — pour le cinéma et les agences de communication</p>
+                                            <div className="flex gap-4">
+                                                <button onClick={handleOpenReel} className="px-8 py-3 bg-[#0076ce] hover:bg-[#005c9e] text-white text-[10px] font-bold uppercase tracking-widest rounded-full transition-all shadow-md">Watch Reel</button>
+                                                <button onClick={openPortfolioPage} className="px-8 py-3 bg-[#0076ce] hover:bg-[#005c9e] text-white text-[10px] font-bold uppercase tracking-widest rounded-full transition-all shadow-md">Portfolio</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20 animate-bounce opacity-20 text-black"><IconArrowDown size={24} /></div>
+                                </section>
+
+                                <div className="py-16 bg-[#f8f8f8] border-y border-black/5 overflow-hidden flex">
+                                    <div className="flex animate-ticker whitespace-nowrap items-center">
+                                        {[...TECH_LOGOS, ...TECH_LOGOS, ...TECH_LOGOS].map((tech, i) => (
+                                            <div key={i} className="mx-20 flex items-center justify-center min-w-[100px]">
+                                                {tech.custom ? <div className="text-black opacity-100 hover:opacity-50 transition-all">{CustomLogos[tech.custom]}</div> : <img src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${tech.slug}.svg`} alt={tech.name} className="h-8 w-auto filter grayscale opacity-100 hover:opacity-50 transition-all" onError={(e) => { e.target.style.display='none'; }} />}
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                <section id="work" className="py-24 md:py-40 bg-[#050505] text-white">
+                                    {PROJECTS.map((p) => (
+                                        <div key={p.id} onClick={() => handleOpenProject(p)} className="group border-t border-white/5 py-12 md:py-16 cursor-pointer hover:bg-white/[0.05] transition-colors relative">
+                                            <div className="container mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-start md:items-center relative z-10">
+                                                <div className="transition-transform duration-700 group-hover:translate-x-6 text-left">
+                                                    <h3 className="font-serif text-2xl md:text-4xl italic leading-none uppercase tracking-tight">{p.client}</h3>
+                                                    <p className="text-gray-400 mt-2 tracking-widest uppercase text-[9px] font-mono">{p.category}</p>
+                                                </div>
+                                                <div className="hidden md:flex w-14 h-14 rounded-full border border-white/20 items-center justify-center group-hover:bg-white group-hover:text-black transition-all"><IconArrowUpRight size={20} /></div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </section>
+
+                                <section id="studio" className="py-24 md:py-40 bg-[#fafafa] text-black relative z-20">
+                                    <div className="container mx-auto px-6 md:px-12 flex flex-col items-center">
+                                        <div className="grid lg:grid-cols-12 gap-16 w-full">
+                                            <div className="lg:col-span-4 space-y-12 text-left">
+                                                <h2 className="text-[10px] font-bold uppercase tracking-[0.4em] text-gray-400 uppercase tracking-widest">Parcours</h2>
+                                                <div className="space-y-8 mt-12">
+                                                    {JOURNEY.map((j, i) => (
+                                                        <div key={i} className="border-l-2 border-black/10 pl-6 py-1">
+                                                            <p className="text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-tighter">{j.date}</p>
+                                                            <h4 className="font-serif italic text-lg leading-tight">{j.title}</h4>
+                                                            <p className="text-[10px] text-gray-500 mt-1 uppercase tracking-tighter font-medium">{j.school}</p>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                            <div className="lg:col-span-8 space-y-10 flex flex-col items-center text-center">
+                                                <h3 className="font-serif text-3xl md:text-5xl italic leading-tight text-black max-w-3xl">Après un Bachelor Réalisateur 3D à MJM Graphic Design Paris, je poursuis un Mastère Design 3D à l'ICAN Design Paris.</h3>
+                                                <div className="space-y-6 text-lg md:text-xl font-light leading-relaxed text-gray-600 max-w-3xl">
+                                                    <p>Spécialisé en modélisation et animation 3D depuis 2017, j’utilise quotidiennement 3ds Max, Maya, Blender, Substance 3D Painter/Designer, Unreal Engine et Unity.</p>
+                                                    <p>Je complète mes compétences par une veille constante sur l’IA et les nouvelles technologies immersives pour enrichir mes projets.</p>
+                                                </div>
+                                                <div className="mt-16 w-full flex justify-center">
+                                                    <div className="relative group">
+                                                        <div className="absolute inset-0 bg-black/5 rounded-full blur-xl group-hover:bg-[#0076ce]/10 transition-colors" />
+                                                        <img src={profilePic} alt="Alex Chesnay" className="w-44 h-44 rounded-full object-cover shadow-2xl border-2 border-white relative z-10 transition-transform duration-500 group-hover:scale-105" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </React.Fragment>
+                        )}
+                    </main>
+
+                    <footer id="footer" className="py-20 md:py-32 bg-white text-black border-t border-black/5 relative z-[20]">
+                        <div className="container mx-auto px-6 md:px-12">
+                            <div className="grid lg:grid-cols-12 gap-12 text-gray-400">
+                                <div className="lg:col-span-3 text-left">
+                                    <h4 className="text-[10px] uppercase tracking-widest mb-6 font-bold text-gray-400">Localisation</h4>
+                                    <p className="text-xl font-sans text-black tracking-tighter uppercase">75010 Paris, France</p>
+                                </div>
+                                <div className="lg:col-span-5 text-left">
+                                    <h4 className="text-[10px] uppercase tracking-widest mb-6 font-bold text-gray-400">Réseaux</h4>
+                                    <div className="flex flex-row flex-nowrap items-center gap-6 font-mono text-black uppercase text-lg overflow-x-auto no-scrollbar">
+                                        {[{n: "LinkedIn", u: "https://www.linkedin.com/in/alex-mennechet/"}, {n: "ArtStation", u: "https://alex-mennechet.artstation.com/"}, {n: "Instagram", u: "https://www.instagram.com/alex.chesnay/"}, {n: "YouTube", u: "https://www.youtube.com/@AlexChesnay"}].map(l => (
+                                            <a key={l.n} href={l.u} target="_blank" rel="noopener noreferrer" className="hover:text-gray-400 transition-colors whitespace-nowrap">{l.n}</a>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="lg:col-span-4 flex flex-col items-end text-right">
+                                    <span className="text-[10px] uppercase tracking-widest text-gray-400 mb-6 font-bold">Email</span>
+                                    <a href="mailto:alex-mennechet@outlook.fr" className="font-serif text-xl italic text-black hover:text-gray-400">alex-mennechet@outlook.fr</a>
+                                </div>
+                            </div>
+                            <div className="mt-24 flex justify-between items-center text-[10px] uppercase tracking-[0.4em] text-gray-400 pt-8 border-t border-black/5 font-mono">
+                                <p>©2026 Alex Chesnay — Réalisateur 3D</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
