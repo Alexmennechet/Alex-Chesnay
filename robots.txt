@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://monsite.netlify.app/sitemap.xml
+Sitemap: https://alex-chesnay.netlify.app/sitemap.xml
