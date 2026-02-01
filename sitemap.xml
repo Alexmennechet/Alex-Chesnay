@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://monsite.netlify.app/</loc>
-  </url>
-  <url>
-    <loc>https://monsite.netlify.app/contact.html</loc>
-  </url>
+   <url>
+      <loc>https://VOTRE_URL_DU_SITE/</loc>
+      <lastmod>2026-02-01</lastmod>
+      <priority>1.0</priority>
+   </url>
 </urlset>
