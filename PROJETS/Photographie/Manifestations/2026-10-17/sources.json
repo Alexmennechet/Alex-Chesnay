@@ -369,57 +369,12 @@
     "icc": true
   },
   {
-    "name": "IMG_6249-2.jpg",
-    "format": "JPEG",
-    "width": 3129,
-    "height": 4694,
-    "bytes": 1306628,
-    "sha256": "7acadd94ab2944a4276affe76a508ae12f570e71b9dbea0a6cb9ac19843c7a7a",
-    "icc": true
-  },
-  {
-    "name": "IMG_6249.jpg",
-    "format": "JPEG",
-    "width": 3129,
-    "height": 4694,
-    "bytes": 1571149,
-    "sha256": "1c33a7dea8a5371c319a7aaa123510dbd2355b5e3522770e43151c3567ef859a",
-    "icc": true
-  },
-  {
-    "name": "IMG_6251-2.jpg",
-    "format": "JPEG",
-    "width": 3437,
-    "height": 5156,
-    "bytes": 1445202,
-    "sha256": "8b6db4813920050c2e062b7e4293a6cbe5879fe1559514f68f1b16e313339368",
-    "icc": true
-  },
-  {
-    "name": "IMG_6251-3.jpg",
-    "format": "JPEG",
-    "width": 3249,
-    "height": 2068,
-    "bytes": 1027977,
-    "sha256": "c5bf9f6f0e8b3837cf4373d35f6aec273067786eb915a62037fe184b91252e05",
-    "icc": true
-  },
-  {
     "name": "IMG_6251-4.jpg",
     "format": "JPEG",
     "width": 3249,
     "height": 2068,
     "bytes": 776474,
     "sha256": "da532d347643ff440581ff8f281b260fc0c3c6ee17478927fa1f0f7abcfdf754",
-    "icc": true
-  },
-  {
-    "name": "IMG_6251.jpg",
-    "format": "JPEG",
-    "width": 3437,
-    "height": 5156,
-    "bytes": 1802093,
-    "sha256": "7dbc34aef274186d64bd2401e1df1620407dec40fbb07aad218c99bf59350ec2",
     "icc": true
   },
   {
@@ -663,51 +618,6 @@
     "height": 2853,
     "bytes": 2773853,
     "sha256": "e215c06979c540082fbeb8da83165baf80350e7a4bf3af8f69ff95b51aa0eb28",
-    "icc": true
-  },
-  {
-    "name": "IMG_6584-2.jpg",
-    "format": "JPEG",
-    "width": 2787,
-    "height": 4181,
-    "bytes": 2104170,
-    "sha256": "3fa536705d8d056de72c32ba5d5a2d7a618f1d26808a83f854147ec6026f3a50",
-    "icc": true
-  },
-  {
-    "name": "IMG_6584.jpg",
-    "format": "JPEG",
-    "width": 3289,
-    "height": 4933,
-    "bytes": 3463616,
-    "sha256": "2de234101e263467fb8f9220d5e855794f7ce75ac9234f2436d721743c33c851",
-    "icc": true
-  },
-  {
-    "name": "IMG_6586-2.jpg",
-    "format": "JPEG",
-    "width": 4916,
-    "height": 3277,
-    "bytes": 2483786,
-    "sha256": "96a02d701286f6ad960f9a9ac2cb580b7518ac421b082792d2ec673520049aad",
-    "icc": true
-  },
-  {
-    "name": "IMG_6586-3.jpg",
-    "format": "JPEG",
-    "width": 3559,
-    "height": 3277,
-    "bytes": 1855298,
-    "sha256": "933f57825446b40c6cd558922530b70e535d83d79626d1934709c570ec20bf3d",
-    "icc": true
-  },
-  {
-    "name": "IMG_6586.jpg",
-    "format": "JPEG",
-    "width": 4541,
-    "height": 3027,
-    "bytes": 2130126,
-    "sha256": "6e292ddc78262c0b80113033eee5a3061b20e1f9b98fc720578860c603f7dd72",
     "icc": true
   },
   {

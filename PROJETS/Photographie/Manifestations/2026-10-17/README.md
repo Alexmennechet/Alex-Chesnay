@@ -1,8 +1,8 @@
 # Paris — 17 octobre 2026
 
-86 photographies, toutes les variantes fournies sont conservées. Couverture : `IMG_5981.jpg`.
+76 photographies sélectionnées après retrait des 10 images demandées. Couverture : `IMG_5981.jpg`.
 
-Les originaux ne sont pas modifiés ni inclus dans ces exports. `sources.json` consigne leurs noms, dimensions après orientation, poids et SHA-256 pour vérifier l’exhaustivité.
+Les originaux ne sont pas modifiés ni inclus dans ces exports. `sources.json` consigne leurs noms, dimensions après orientation, poids et SHA-256 pour vérifier l’exhaustivité de la sélection publiée.
 
 `web/` contient trois exports WebP par source : grand côté de 640, 1280 et 2560 pixels, qualités 84, 88 et 91. Les proportions et profils ICC sont conservés ; aucune retouche, aucun recadrage ou filtre ajouté. Les métadonnées EXIF ne sont pas recopiées dans les fichiers diffusés.
 
