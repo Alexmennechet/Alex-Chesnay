@@ -1059,6 +1059,12 @@
         
         // --- NOUVEAU SYSTEME DE FILTRES ---
         // Ajout de Animation, IA, Expérimental
+        // Dernière publication en tête du Portfolio ; la sélection de l'accueil garde son ordre.
+        const PORTFOLIO_PROJECTS = [
+            ...PROJECTS.filter(p => p.id === 'photo-manifestations'),
+            ...PROJECTS.filter(p => p.id !== 'photo-manifestations')
+        ];
+
         const MAIN_FILTERS = ["Tout", "Modélisations", "Animation", "IA", "Expérimental", "Sculpting", "Environnements", "Texturing", "Photographie", "Marvelous", "MOCAP"];
         const PHOTO_FILTERS = ["Photographie Culinaire", "Photographie de Mode", "Photographie de produits", "Photographie d’environnements", "Photographie sociale", "Manifestations"];
 
@@ -1358,7 +1364,7 @@
                 } catch { setContactStatus('error'); }
             };
 
-            const filteredProjects = PROJECTS.filter(p => activeFilter === 'Tout' || (p.tags && p.tags.includes(activeFilter)));
+            const filteredProjects = PORTFOLIO_PROJECTS.filter(p => activeFilter === 'Tout' || (p.tags && p.tags.includes(activeFilter)));
 
             if (loading) return <SimpleLoader />;
 
