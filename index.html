@@ -949,6 +949,69 @@
                 gallery: [],
                 reports: MANIFESTATION_REPORTS
             },
+            // --- IA EXPERIMENTAL ---
+            {
+                id: 'observatoire-predictif',
+                client: "Observatoire Prédictif",
+                category: "IA expérimentale / Veille & prospective",
+                role: "Conception & développement",
+                image: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/hero-1280.webp",
+                imageSrcSet: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/hero-640.webp 640w, PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/hero-1280.webp 1280w, PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/hero-2560.webp 2560w",
+                imageAlt: "Des fibres lumineuses convergent vers une sphère de verre, d'où repartent plusieurs faisceaux : des sources aux futurs possibles.",
+                cardImage: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-1280.webp",
+                cardSrcSet: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-640.webp 640w, PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-1280.webp 1280w, PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-2560.webp 2560w",
+                description: "Un prototype qui part d'une question d'actualité, recoupe des sources ouvertes, en tire une synthèse documentée puis explore des scénarios conditionnels. Et quand les sources ne suffisent pas, il s'abstient.",
+                tech: ["Python", "FastAPI", "SQLite", "RSS & Web", "Prospective"],
+                tags: ["IA EXPERIMENTAL"],
+                keepColor: true,
+                experiment: {
+                    number: "01",
+                    status: "Prototype local · Windows",
+                    facts: [
+                        { value: "346", label: "sources au catalogue" },
+                        { value: "3", label: "temps : sources, synthèse, scénarios" },
+                        { value: "∅", label: "abstention si le dossier est trop mince" },
+                        { value: "100 %", label: "local, sur le poste de l'utilisateur" }
+                    ],
+                    steps: [
+                        { key: "Sources", title: "Collecter et recouper", text: "À partir d'une question, le moteur dégage le thème et les entités, choisit dans le catalogue les sources pertinentes, puis collecte articles, flux RSS et documents de contexte. Doublons et contenus hors sujet sont écartés." },
+                        { key: "Synthèse", title: "Ce que disent vraiment les sources", text: "Les articles repris d'une même dépêche sont regroupés autour de l'événement principal. La synthèse distingue les éléments corroborés, les contradictions et les signaux à surveiller." },
+                        { key: "Scénarios", title: "Des suites possibles, pas une prédiction", text: "Chaque scénario précise un horizon, ses conditions, ce qui le soutient ou le fragilise, et des critères pour le vérifier plus tard." }
+                    ],
+                    highlight: {
+                        title: "Le droit de ne pas conclure",
+                        text: "Quand le dossier est trop mince, l'Observatoire ne force pas de scénario : il explique pourquoi il s'abstient. C'est le cœur de l'expérience, un outil d'analyse qui sait dire « pas assez d'éléments »."
+                    },
+                    principles: [
+                        "Les sources de chaque analyse restent visibles.",
+                        "Observation, interprétation et recommandation sont séparées.",
+                        "Confiance et incertitude sont affichées, jamais masquées.",
+                        "Pas de ciblage d'individus ni d'aide à la manipulation.",
+                        "L'humain reste dans la boucle pour les sujets sensibles."
+                    ],
+                    limits: [
+                        "Un prototype en développement, non distribué publiquement.",
+                        "Un moteur à base de règles et de scores explicables, sans grand modèle de langage à ce stade.",
+                        "Les indicateurs de confiance ne sont pas des probabilités validées.",
+                        "Les scénarios aident à réfléchir ; ils ne remplacent pas l'analyse humaine."
+                    ],
+                    stack: [
+                        { label: "Moteur", value: "Python" },
+                        { label: "API", value: "FastAPI" },
+                        { label: "Stockage", value: "SQLite, avec quotas et purge automatique" },
+                        { label: "Interface", value: "Tableau de bord dans le navigateur" },
+                        { label: "Restitution", value: "Historique et rapports exportables en Markdown" },
+                        { label: "Distribution", value: "Exécutable Windows, fonctionnement local" }
+                    ],
+                    visuals: [
+                        { url: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/portrait-1080.webp", legend: "Déclinaison réseaux sociaux — 4:5", alt: "Bannière verticale de l'Observatoire Prédictif au format 4:5." },
+                        { url: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/story-1080.webp", legend: "Déclinaison Story — 9:16", alt: "Bannière Story de l'Observatoire Prédictif au format 9:16." }
+                    ]
+                },
+                gallery: [
+                    { url: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/banniere-1920.webp", legend: "Bannière de présentation — des sources aux futurs possibles" }
+                ]
+            },
             // --- ANCIENS PROJETS ---
             {
                 id: 'orc-bust',
@@ -1059,8 +1122,9 @@
         
         // Dernière publication en tête du Portfolio ; la sélection de l'accueil garde son ordre.
         const PORTFOLIO_PROJECTS = [
+            ...PROJECTS.filter(p => p.id === 'observatoire-predictif'),
             ...PROJECTS.filter(p => p.id === 'photo-manifestations'),
-            ...PROJECTS.filter(p => p.id !== 'photo-manifestations')
+            ...PROJECTS.filter(p => p.id !== 'observatoire-predictif' && p.id !== 'photo-manifestations')
         ];
 
         const EXPERIMENTAL_AI_FILTER = "IA EXPERIMENTAL";
@@ -1152,6 +1216,89 @@
                 </div>
             );
         };
+
+        const ExperimentDetails = ({ data, onOpen }) => (
+            <div className="mb-16 text-left">
+                <p className="text-[10px] uppercase tracking-[0.4em] font-mono text-gray-500 mb-10 flex flex-wrap items-center gap-3">
+                    <span className="inline-block w-2 h-2 rounded-full bg-[#FF6A1F] shadow-[0_0_10px_#FF6A1F]" />
+                    <span className="text-black font-bold">IA Expérimental</span>
+                    <span className="text-[#FF6A1F] font-bold">N°{data.number}</span>
+                    <span>· {data.status}</span>
+                </p>
+
+                <dl className="grid grid-cols-2 md:grid-cols-4 gap-px bg-black/10 border border-black/10 rounded-lg overflow-hidden mb-16">
+                    {data.facts.map(f => (
+                        <div key={f.label} className="bg-white p-6">
+                            <dt className="sr-only">{f.label}</dt>
+                            <dd className="font-serif italic text-4xl md:text-5xl text-black leading-none mb-3">{f.value}</dd>
+                            <dd className="text-[10px] uppercase tracking-widest text-gray-500 leading-relaxed">{f.label}</dd>
+                        </div>
+                    ))}
+                </dl>
+
+                <section aria-labelledby="exp-steps" className="relative rounded-xl overflow-hidden bg-[#061D24] text-[#F2ECE1] p-8 md:p-12 mb-16 shadow-2xl">
+                    <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(60% 80% at 50% 0%, rgba(255,106,31,.16), transparent 70%)' }} />
+                    <h2 id="exp-steps" className="relative text-[10px] uppercase tracking-[0.4em] font-mono text-[#F2ECE1]/60 mb-10">Le principe — des sources aux futurs possibles</h2>
+                    <ol className="relative grid md:grid-cols-3 gap-10 md:gap-8">
+                        {data.steps.map((step, i) => (
+                            <li key={step.key} className="relative">
+                                <span className="block text-[10px] uppercase tracking-[0.35em] font-mono mb-4"><span className="text-[#FF6A1F] font-bold">0{i + 1}</span> — {step.key}</span>
+                                <h3 className="font-serif italic text-2xl leading-tight mb-4">{step.title}</h3>
+                                <p className="text-sm leading-relaxed text-[#F2ECE1]/75">{step.text}</p>
+                            </li>
+                        ))}
+                    </ol>
+                </section>
+
+                <blockquote className="border-l-2 border-[#FF6A1F] pl-6 md:pl-10 mb-20">
+                    <p className="text-[10px] uppercase tracking-[0.4em] font-mono text-[#FF6A1F] font-bold mb-4">{data.highlight.title}</p>
+                    <p className="font-serif italic text-2xl md:text-3xl text-black leading-snug">{data.highlight.text}</p>
+                </blockquote>
+
+                <div className="grid md:grid-cols-2 gap-12 mb-20">
+                    <section aria-labelledby="exp-principles">
+                        <h2 id="exp-principles" className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-6">Principes de conception</h2>
+                        <ul className="space-y-4">
+                            {data.principles.map(t => <li key={t} className="flex gap-4 text-gray-700 leading-relaxed"><span className="mt-2 w-1.5 h-1.5 rounded-full bg-black shrink-0" />{t}</li>)}
+                        </ul>
+                    </section>
+                    <section aria-labelledby="exp-limits">
+                        <h2 id="exp-limits" className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-6">Limites assumées</h2>
+                        <ul className="space-y-4">
+                            {data.limits.map(t => <li key={t} className="flex gap-4 text-gray-700 leading-relaxed"><span className="mt-2 w-1.5 h-1.5 rounded-full border border-[#FF6A1F] shrink-0" />{t}</li>)}
+                        </ul>
+                    </section>
+                </div>
+
+                <section aria-labelledby="exp-stack" className="mb-20">
+                    <h2 id="exp-stack" className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-6">Sous le capot</h2>
+                    <dl className="divide-y divide-black/10 border-y border-black/10">
+                        {data.stack.map(r => (
+                            <div key={r.label} className="grid grid-cols-3 gap-6 py-4">
+                                <dt className="text-[10px] uppercase tracking-widest font-mono text-gray-500 pt-1">{r.label}</dt>
+                                <dd className="col-span-2 text-black">{r.value}</dd>
+                            </div>
+                        ))}
+                    </dl>
+                </section>
+
+                {data.visuals && data.visuals.length > 0 && (
+                    <section aria-labelledby="exp-visuals">
+                        <h2 id="exp-visuals" className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-6">Identité visuelle</h2>
+                        <div className="grid grid-cols-2 gap-6 items-start">
+                            {data.visuals.map(v => (
+                                <figure key={v.url} className="min-w-0">
+                                    <button type="button" onClick={() => onOpen(v.url)} className="block w-full rounded overflow-hidden border border-black/5 shadow-sm cursor-zoom-in">
+                                        <img src={v.url} loading="lazy" decoding="async" className="block w-full h-auto" alt={v.alt} />
+                                    </button>
+                                    <figcaption className="mt-4 text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold border-l-2 border-[#FF6A1F] pl-3 font-mono">{v.legend}</figcaption>
+                                </figure>
+                            ))}
+                        </div>
+                    </section>
+                )}
+            </div>
+        );
 
         const ReportageGallery = ({ report, onOpen }) => {
             const [visibleCount, setVisibleCount] = useState(18);
@@ -1298,6 +1445,24 @@
                 const nextIdx = (idx + 1) % PROJECTS.length;
                 return PROJECTS[nextIdx];
             };
+
+            // Liens directs : ouvrir la bonne vue quand l'URL contient #project/<id>, #portfolio ou #contact
+            useEffect(() => {
+                const hash = window.location.hash;
+                const match = hash.match(/^#project\/(.+)$/);
+                if (match) {
+                    const proj = PROJECTS.find(p => p.id === decodeURIComponent(match[1]));
+                    if (proj) {
+                        setView('project');
+                        setSelectedProject(proj);
+                        window.history.replaceState({ view: 'project', projectId: proj.id }, '', hash);
+                    }
+                } else if (hash === '#portfolio' || hash === '#contact') {
+                    const v = hash.slice(1);
+                    setView(v);
+                    window.history.replaceState({ view: v, projectId: null }, '', hash);
+                }
+            }, []);
 
             useEffect(() => {
                 const timer = setTimeout(() => setLoading(false), 1400); 
@@ -1491,7 +1656,7 @@
                                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
                                     {filteredProjects.map((p) => (
                                         <div key={p.id} onClick={() => navigateTo('project', p)} className="relative group overflow-hidden bg-gray-100 aspect-video cursor-pointer border border-black/5 rounded-lg shadow-sm animate-in zoom-in duration-300">
-                                            <img src={p.image} srcSet={p.imageSrcSet} sizes={p.imageSrcSet ? '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw' : undefined} alt={p.imageAlt || p.client} className={`w-full h-full ${p.preserveImage ? 'object-contain' : 'object-cover transition-transform duration-1000 group-hover:scale-110'} ${p.id === 'nova' ? 'object-top' : ''}`} />
+                                            <img src={p.cardImage || p.image} srcSet={p.cardSrcSet || p.imageSrcSet} sizes={(p.cardSrcSet || p.imageSrcSet) ? '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw' : undefined} alt={p.imageAlt || p.client} className={`w-full h-full ${p.preserveImage ? 'object-contain' : 'object-cover transition-transform duration-1000 group-hover:scale-110'} ${p.id === 'nova' ? 'object-top' : ''}`} />
                                             <div className="absolute inset-0 bg-gradient-to-t from-white/95 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-6 flex flex-col justify-end text-left">
                                                 <span className="text-[8px] font-mono text-gray-500 mb-2 uppercase tracking-widest text-left">{p.category}</span>
                                                 <h3 className="font-serif italic text-3xl text-black mb-1 uppercase tracking-tight text-left">{p.client}</h3>
@@ -1519,6 +1684,7 @@
                                         <div className="lg:col-span-8 text-left">
                                             <h4 className="text-[10px] uppercase tracking-widest text-gray-400 font-bold mb-6 text-left">Brief & Vision</h4>
                                             <p className="font-serif text-2xl md:text-4xl italic text-black leading-tight mb-12 text-left">{selectedProject.description}</p>
+                                            {selectedProject.experiment && <ExperimentDetails data={selectedProject.experiment} onOpen={setLightboxImg} />}
                                             {selectedProject.socialTags && <p className="text-sm text-gray-500 font-mono mb-12 leading-relaxed text-left">{selectedProject.socialTags}</p>}
                                             
                                             {selectedProject.comparisons ? selectedProject.comparisons.map((comp, i) => (
@@ -1551,7 +1717,7 @@
                                                     {selectedProject.gallery.map((item, idx) => (
                                                         <div key={idx} className="space-y-6 text-left">
                                                             <div className="overflow-hidden rounded shadow-sm border border-black/5 cursor-zoom-in text-left" onClick={() => setLightboxImg(item.url)}>
-                                                                <img src={item.url} className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000 text-left" alt={item.legend} />
+                                                                <img src={item.url} className={`w-full h-auto ${selectedProject.keepColor ? '' : 'grayscale hover:grayscale-0'} transition-all duration-1000 text-left`} alt={item.legend} />
                                                             </div>
                                                             {item.legend && <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-bold border-l-2 border-amber-400 pl-4 font-mono text-left">{item.legend}</p>}
                                                         </div>
