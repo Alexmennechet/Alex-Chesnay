@@ -1057,15 +1057,15 @@
             }
         ];
         
-        // --- NOUVEAU SYSTEME DE FILTRES ---
-        // Ajout de Animation, IA, Expérimental
         // Dernière publication en tête du Portfolio ; la sélection de l'accueil garde son ordre.
         const PORTFOLIO_PROJECTS = [
             ...PROJECTS.filter(p => p.id === 'photo-manifestations'),
             ...PROJECTS.filter(p => p.id !== 'photo-manifestations')
         ];
 
-        const MAIN_FILTERS = ["Tout", "Modélisations", "Animation", "IA", "Expérimental", "Sculpting", "Environnements", "Texturing", "Photographie", "Marvelous", "MOCAP"];
+        const EXPERIMENTAL_AI_FILTER = "IA EXPERIMENTAL";
+        const MAIN_FILTERS = ["Tout", "Modélisations", "Animation", EXPERIMENTAL_AI_FILTER, "Sculpting", "Environnements", "Texturing", "Photographie", "Marvelous", "MOCAP"];
+        const FILTER_TAGS = { [EXPERIMENTAL_AI_FILTER]: [EXPERIMENTAL_AI_FILTER, "IA", "Expérimental"] };
         const PHOTO_FILTERS = ["Photographie Culinaire", "Photographie de Mode", "Photographie de produits", "Photographie d’environnements", "Photographie sociale", "Manifestations"];
 
         const TECH_LOGOS = [
@@ -1364,7 +1364,8 @@
                 } catch { setContactStatus('error'); }
             };
 
-            const filteredProjects = PORTFOLIO_PROJECTS.filter(p => activeFilter === 'Tout' || (p.tags && p.tags.includes(activeFilter)));
+            const activeTags = FILTER_TAGS[activeFilter] || [activeFilter];
+            const filteredProjects = PORTFOLIO_PROJECTS.filter(p => activeFilter === 'Tout' || activeTags.some(tag => p.tags?.includes(tag)));
 
             if (loading) return <SimpleLoader />;
 
