@@ -960,57 +960,44 @@
                 imageAlt: "Des fibres lumineuses convergent vers une sphère de verre, d'où repartent plusieurs faisceaux : des sources aux futurs possibles.",
                 cardImage: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-1280.webp",
                 cardSrcSet: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-640.webp 640w, PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-1280.webp 1280w, PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-2560.webp 2560w",
-                description: "Un prototype qui part d'une question d'actualité, recoupe des sources ouvertes, en tire une synthèse documentée puis explore des scénarios conditionnels. Et quand les sources ne suffisent pas, il s'abstient.",
+                description: "Une question. Des sources recoupées. Des futurs possibles.",
                 tech: ["Python", "FastAPI", "SQLite", "RSS & Web", "Prospective"],
                 tags: ["IA EXPERIMENTAL"],
-                keepColor: true,
                 experiment: {
                     number: "01",
-                    status: "Prototype local · Windows",
+                    status: "Prototype local",
                     facts: [
                         { value: "346", label: "sources au catalogue" },
-                        { value: "3", label: "temps : sources, synthèse, scénarios" },
-                        { value: "∅", label: "abstention si le dossier est trop mince" },
-                        { value: "100 %", label: "local, sur le poste de l'utilisateur" }
+                        { value: "3", label: "étapes" },
+                        { value: "∅", label: "s'abstient si besoin" },
+                        { value: "100 %", label: "local" }
                     ],
+                    stepsTitle: "Le principe",
                     steps: [
-                        { key: "Sources", title: "Collecter et recouper", text: "À partir d'une question, le moteur dégage le thème et les entités, choisit dans le catalogue les sources pertinentes, puis collecte articles, flux RSS et documents de contexte. Doublons et contenus hors sujet sont écartés." },
-                        { key: "Synthèse", title: "Ce que disent vraiment les sources", text: "Les articles repris d'une même dépêche sont regroupés autour de l'événement principal. La synthèse distingue les éléments corroborés, les contradictions et les signaux à surveiller." },
-                        { key: "Scénarios", title: "Des suites possibles, pas une prédiction", text: "Chaque scénario précise un horizon, ses conditions, ce qui le soutient ou le fragilise, et des critères pour le vérifier plus tard." }
+                        { key: "Sources", title: "Il cherche", text: "Les bonnes sources, sans les doublons." },
+                        { key: "Synthèse", title: "Il recoupe", text: "Ce qui est confirmé, contredit ou à surveiller." },
+                        { key: "Scénarios", title: "Il anticipe", text: "Des suites possibles, jamais une certitude." }
                     ],
                     highlight: {
                         title: "Le droit de ne pas conclure",
-                        text: "Quand le dossier est trop mince, l'Observatoire ne force pas de scénario : il explique pourquoi il s'abstient. C'est le cœur de l'expérience, un outil d'analyse qui sait dire « pas assez d'éléments »."
+                        text: "Pas assez de preuves ? Il ne devine pas. Il s'abstient."
                     },
                     principles: [
-                        "Les sources de chaque analyse restent visibles.",
-                        "Observation, interprétation et recommandation sont séparées.",
-                        "Confiance et incertitude sont affichées, jamais masquées.",
-                        "Pas de ciblage d'individus ni d'aide à la manipulation.",
-                        "L'humain reste dans la boucle pour les sujets sensibles."
+                        "Sources toujours visibles.",
+                        "Incertitude affichée.",
+                        "Aucun ciblage, aucune manipulation."
                     ],
                     limits: [
-                        "Un prototype en développement, non distribué publiquement.",
-                        "Un moteur à base de règles et de scores explicables, sans grand modèle de langage à ce stade.",
-                        "Les indicateurs de confiance ne sont pas des probabilités validées.",
-                        "Les scénarios aident à réfléchir ; ils ne remplacent pas l'analyse humaine."
+                        "Prototype, non public.",
+                        "Règles et scores, sans grand modèle de langage.",
+                        "Des pistes, pas des probabilités."
                     ],
                     stack: [
-                        { label: "Moteur", value: "Python" },
-                        { label: "API", value: "FastAPI" },
-                        { label: "Stockage", value: "SQLite, avec quotas et purge automatique" },
-                        { label: "Interface", value: "Tableau de bord dans le navigateur" },
-                        { label: "Restitution", value: "Historique et rapports exportables en Markdown" },
-                        { label: "Distribution", value: "Exécutable Windows, fonctionnement local" }
-                    ],
-                    visuals: [
-                        { url: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/portrait-1080.webp", legend: "Déclinaison réseaux sociaux — 4:5", alt: "Bannière verticale de l'Observatoire Prédictif au format 4:5." },
-                        { url: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/story-1080.webp", legend: "Déclinaison Story — 9:16", alt: "Bannière Story de l'Observatoire Prédictif au format 9:16." }
+                        { label: "Moteur", value: "Python + FastAPI" },
+                        { label: "Données", value: "SQLite, en local" },
+                        { label: "Interface", value: "Tableau de bord web" }
                     ]
-                },
-                gallery: [
-                    { url: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/banniere-1920.webp", legend: "Bannière de présentation — des sources aux futurs possibles" }
-                ]
+                }
             },
             // --- ANCIENS PROJETS ---
             {
@@ -1238,7 +1225,7 @@
 
                 <section aria-labelledby="exp-steps" className="relative rounded-xl overflow-hidden bg-[#061D24] text-[#F2ECE1] p-8 md:p-12 mb-16 shadow-2xl">
                     <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(60% 80% at 50% 0%, rgba(255,106,31,.16), transparent 70%)' }} />
-                    <h2 id="exp-steps" className="relative text-[10px] uppercase tracking-[0.4em] font-mono text-[#F2ECE1]/60 mb-10">Le principe — des sources aux futurs possibles</h2>
+                    <h2 id="exp-steps" className="relative text-[10px] uppercase tracking-[0.4em] font-mono text-[#F2ECE1]/60 mb-10">{data.stepsTitle || "Le principe"}</h2>
                     <ol className="relative grid md:grid-cols-3 gap-10 md:gap-8">
                         {data.steps.map((step, i) => (
                             <li key={step.key} className="relative">
