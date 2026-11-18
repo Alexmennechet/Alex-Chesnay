@@ -963,6 +963,12 @@
                 description: "Une question. Des sources recoupées. Des futurs possibles.",
                 tech: ["Python", "FastAPI", "SQLite", "RSS & Web", "Prospective"],
                 tags: ["IA EXPERIMENTAL"],
+                demoVideo: {
+                    src: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/video/demo-1080.mp4",
+                    srcMobile: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/video/demo-720.mp4",
+                    poster: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/video/demo-poster.webp",
+                    caption: "Démo réelle : une recherche « Ukraine », des sources aux futurs possibles."
+                },
                 experiment: {
                     number: "01",
                     status: "Prototype local",
@@ -1666,6 +1672,17 @@
                                     </div>
                                 </section>
 
+                                {selectedProject.demoVideo && (
+                                    <div className="container mx-auto px-6 md:px-12 pt-4 md:pt-8 text-left">
+                                        <figure className="max-w-6xl">
+                                            <video className="block w-full aspect-video rounded-xl overflow-hidden bg-[#061D24] shadow-2xl border border-black/5" autoPlay muted loop playsInline preload="metadata" poster={selectedProject.demoVideo.poster} aria-label={selectedProject.demoVideo.caption}>
+                                                <source src={selectedProject.demoVideo.srcMobile} type="video/mp4" media="(max-width: 768px)" />
+                                                <source src={selectedProject.demoVideo.src} type="video/mp4" />
+                                            </video>
+                                            <figcaption className="mt-4 text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold border-l-2 border-[#FF6A1F] pl-3 font-mono">{selectedProject.demoVideo.caption}</figcaption>
+                                        </figure>
+                                    </div>
+                                )}
                                 <div className="container mx-auto px-6 md:px-12 py-16 text-left">
                                     <div className="grid lg:grid-cols-12 gap-16 items-start text-left">
                                         <div className="lg:col-span-8 text-left">
