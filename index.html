@@ -960,12 +960,12 @@
                 imageAlt: "Des fibres lumineuses convergent vers une sphère de verre, d'où repartent plusieurs faisceaux : des sources aux futurs possibles.",
                 cardImage: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-1280.webp",
                 cardSrcSet: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-640.webp 640w, PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-1280.webp 1280w, PROJETS/IA-EXPERIMENTAL/observatoire-predictif/web/carte-2560.webp 2560w",
-                description: "Une question. Des sources recoupées. Des futurs possibles.",
+                description: "Comprendre aujourd’hui. Anticiper demain.",
                 tech: ["Python", "FastAPI", "SQLite", "RSS & Web", "Prospective"],
                 tags: ["IA EXPERIMENTAL"],
                 demoVideo: {
-                    src: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/video/demo-1080.mp4",
-                    srcMobile: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/video/demo-720.mp4",
+                    src: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/video/demo-son-1080.mp4",
+                    srcMobile: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/video/demo-son-720.mp4",
                     poster: "PROJETS/IA-EXPERIMENTAL/observatoire-predictif/video/demo-poster.webp",
                     caption: "Démo réelle : une recherche « Ukraine », des sources aux futurs possibles."
                 },
@@ -1207,6 +1207,37 @@
                         </div>
                     </div>
                 </div>
+            );
+        };
+
+        const DemoVideo = ({ data }) => {
+            const videoRef = useRef(null);
+            const [muted, setMuted] = useState(true);
+            useEffect(() => { if (videoRef.current) videoRef.current.muted = true; }, []);
+            const toggleSound = () => {
+                const v = videoRef.current; if (!v) return;
+                const next = !v.muted;
+                v.muted = next;
+                if (!next) { v.currentTime = 0; v.play().catch(() => {}); }
+                setMuted(next);
+            };
+            return (
+                <figure className="max-w-6xl">
+                    <div className="relative">
+                        <video ref={videoRef} className="block w-full aspect-video rounded-xl overflow-hidden bg-[#061D24] shadow-2xl border border-black/5" autoPlay muted loop playsInline preload="metadata" poster={data.poster} aria-label={data.caption}>
+                            <source src={data.srcMobile} type="video/mp4" media="(max-width: 768px)" />
+                            <source src={data.src} type="video/mp4" />
+                        </video>
+                        <button type="button" onClick={toggleSound} aria-pressed={!muted} className="absolute bottom-3 right-3 md:bottom-5 md:right-5 flex items-center gap-2 px-4 py-2 rounded-full bg-[#061D24]/70 backdrop-blur-md border border-white/20 text-[#F2ECE1] text-[10px] font-bold uppercase tracking-widest hover:bg-[#061D24]/90 transition-colors">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                                <path d="M11 5 6 9H2v6h4l5 4V5z" />
+                                {muted ? <path d="m22 9-6 6M16 9l6 6" /> : <path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14" />}
+                            </svg>
+                            {muted ? 'Activer le son' : 'Couper le son'}
+                        </button>
+                    </div>
+                    <figcaption className="mt-4 text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold border-l-2 border-[#FF6A1F] pl-3 font-mono">{data.caption}</figcaption>
+                </figure>
             );
         };
 
@@ -1674,13 +1705,7 @@
 
                                 {selectedProject.demoVideo && (
                                     <div className="container mx-auto px-6 md:px-12 pt-4 md:pt-8 text-left">
-                                        <figure className="max-w-6xl">
-                                            <video className="block w-full aspect-video rounded-xl overflow-hidden bg-[#061D24] shadow-2xl border border-black/5" autoPlay muted loop playsInline preload="metadata" poster={selectedProject.demoVideo.poster} aria-label={selectedProject.demoVideo.caption}>
-                                                <source src={selectedProject.demoVideo.srcMobile} type="video/mp4" media="(max-width: 768px)" />
-                                                <source src={selectedProject.demoVideo.src} type="video/mp4" />
-                                            </video>
-                                            <figcaption className="mt-4 text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold border-l-2 border-[#FF6A1F] pl-3 font-mono">{selectedProject.demoVideo.caption}</figcaption>
-                                        </figure>
+                                        <DemoVideo data={selectedProject.demoVideo} />
                                     </div>
                                 )}
                                 <div className="container mx-auto px-6 md:px-12 py-16 text-left">
